@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 0fe994c71f3fc2e499df64c66332d1e05013e15d6092d1917836673c03415070
+-- hash: b952e4514f0e09ad31df25779ba7017ccb1ca8a47ed045736e4e2aaf6baab013
 
 name:           hs-dawg
 version:        0.1.0.0
@@ -28,9 +28,10 @@ source-repository head
 library
   exposed-modules:
       DAFSA.Graph
+      DAFSA.GraphDot
+      DAFSA.Id
       DAFSA.Inspect
       DAFSA.Node
-      Lib
   other-modules:
       Paths_hs_dawg
   hs-source-dirs:
@@ -38,9 +39,14 @@ library
   ghc-options: -Wall -Wcompat -Wincomplete-record-updates -Wincomplete-uni-patterns -Wredundant-constraints -Wmissing-fields -fno-warn-orphans
   build-depends:
       base >=4.7 && <5
+    , containers
     , deepseq
     , dotgen
+    , hashable
+    , hashtables
     , mtl
+    , text
+    , transformers
     , unordered-containers
     , vector
   default-language: Haskell2010
@@ -51,7 +57,7 @@ executable hs-dawg-exe
       Paths_hs_dawg
   hs-source-dirs:
       app
-  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N -O2
   build-depends:
       base >=4.7 && <5
     , hs-dawg
@@ -71,6 +77,7 @@ test-suite hs-dawg-test
     , hs-dawg
     , hspec
     , hspec-hedgehog
+    , text
   default-language: Haskell2010
 
 benchmark hs-dawg-benchmark
@@ -82,6 +89,9 @@ benchmark hs-dawg-benchmark
       benchmark
   build-depends:
       base >=4.7 && <5
+    , containers
     , criterion
     , hs-dawg
+    , text
+    , text-set
   default-language: Haskell2010

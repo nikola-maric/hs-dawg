@@ -27,8 +27,13 @@ library:
   dependencies:
     - vector
     - unordered-containers
-    - deepseq
+    - text
+    - transformers
     - mtl
+    - containers
+    - hashtables
+    - hashable
+    - deepseq
     - dotgen
   ghc-options:
     - -Wall
@@ -47,6 +52,7 @@ executables:
     - -threaded
     - -rtsopts
     - -with-rtsopts=-N
+    - -O2
     dependencies:
     - hs-dawg
 
@@ -63,6 +69,7 @@ tests:
     - hspec
     - hedgehog
     - hspec-hedgehog
+    - text
 
 benchmarks:
   hs-dawg-benchmark:
@@ -71,3 +78,6 @@ benchmarks:
     dependencies:
     - hs-dawg
     - criterion
+    - text-set
+    - containers
+    - text

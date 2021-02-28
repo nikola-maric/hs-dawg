@@ -1,36 +1,25 @@
+{-# LANGUAGE NumericUnderscores #-}
 {-# LANGUAGE BangPatterns #-}
 import DAFSA.Graph
-import Criterion.Main ( bench, bgroup, env, whnf, defaultMain )
+import Criterion.Main ( bench, bgroup, env, nf, defaultMain, whnf )
+import qualified Data.Text as T
+import Data.Text (Text)
+import Data.List (sort)
 
 main :: IO ()
 main = 
     defaultMain [
-        env setupEnvConstruct $ \ ~(_words, _moreWords) -> bgroup "construction" [
-            bench "10.000"  $ whnf graphFromList  _words,
-            bench "100.000"  $ whnf graphFromList  _moreWords
-            ],
-        env setupEnvSearch $ \ ~(_words, _moreWords, smallFst, largeFst) -> bgroup "search" [
-            bench "one search, small corpus"  $ whnf (graphContains (_words !! 1)) smallFst,
-            bench "one search, large corpus"  $ whnf (graphContains (_moreWords !! 1)) largeFst,
-            bench "search all, small corpus"  $ whnf (all (`graphContains` smallFst)) _words,
-            bench "search all, large corpus"  $ whnf (all (`graphContains` largeFst)) _moreWords
+        env setupEnvConstructText $ \ ~(_words, _moreWords) -> bgroup "construction hs-dawg" [
+            bench "10.000"  $ whnf fromWords _words
+            -- bench "100.000"  $ whnf fromList  _moreWords
             ]
     ]
 
--- Setting up word lists
-setupEnvConstruct :: IO ([String], [String])
-setupEnvConstruct = do
+
+setupEnvConstructText :: IO ([String], [String])
+setupEnvConstructText = do
   !contents_small <- readFile "data/words-10000"
   !contents_big <- readFile "data/words-100000"
-  let !_words = concatMap words (lines contents_small)
-  let !_moreWords = concatMap words (lines contents_big)
+  let !_words = sort $ concatMap words (lines contents_small)
+  let !_moreWords = sort $ concatMap words (lines contents_big)
   return (_words, _moreWords)
-
-
-setupEnvSearch :: IO ([String], [String], Graph , Graph )
-setupEnvSearch = do
-  !contents_small <- readFile "data/words-10000"
-  !contents_big <- readFile "data/words-100000"
-  let !_words = concatMap words (lines contents_small)
-  let !_moreWords = concatMap words (lines contents_big)
-  return (_words, _moreWords, graphFromList _words, graphFromList _moreWords)

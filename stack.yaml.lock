@@ -3,10 +3,21 @@
 # For more information, please see the documentation at:
 #   https://docs.haskellstack.org/en/stable/lock_files
 
-packages: []
+packages:
+- completed:
+    name: text-set
+    version: 0.1.0.0
+    git: /Users/nikola/git_clones/text-set
+    pantry-tree:
+      size: 1540
+      sha256: 8bdf67fc22ad9bfcc604fa27a8748ce14006d53838d19ef9b751cdfffa844bb2
+    commit: ee8bf0ce907a89beee8fe5564ba4b1a34b1b639a
+  original:
+    git: /Users/nikola/git_clones/text-set
+    commit: ee8bf0ce907a89beee8fe5564ba4b1a34b1b639a
 snapshots:
 - completed:
-    size: 514590
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/nightly/2020/7/24.yaml
-    sha256: 347514e3d62da1b886772e507aae245f8e84f8a4be469e0cffa26fc572542794
-  original: nightly-2020-07-24
+    size: 563100
+    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/17/0.yaml
+    sha256: e93a85871577ea3423d5f3454b2b6bd37c2c2123c79faf511dfb64f5b49a9f8b
+  original: lts-17.0
