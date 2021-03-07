@@ -50,7 +50,7 @@ data GraphNode = GraphNode {
         } deriving (Ord, Read, Generic)
 instance NFData GraphNode
 instance Eq GraphNode where
-        gn == gn' = nodeId gn == nodeId gn'
+        gn == gn' = totalEquivalence gn gn'
 instance Show GraphNode where
         show GraphNode{..} = "{(" <> show nodeId <> "-" <> show nodeType <> ")[" <> show nodeChildTransitions <> "][" <> show nodeLastChild <> "]}"
 
@@ -200,26 +200,16 @@ swapChildState g registry n childNode = do
                         -- traceM ("swapChildState: registry is now " <> show _reg)
                         pure changedParentNode
 
--- If graph contains node with exactly same type and transitions, that is not this particular node
-graphContainsFrozenState :: GraphNode -> STRef s (S.Set GraphNode) -> ST s Bool
-graphContainsFrozenState n registry = do
-        -- reg <- readSTRef registry
-        same <- findEquivalentFrozenNode n registry
-        -- traceM ("graphContainsFrozenState " <> show n <> " : " <> show same <> ", register is " <> show reg)
-        case same of
-          Nothing -> pure False 
-          Just _ -> pure True
-
 findEquivalentFrozenNode :: GraphNode -> STRef s (S.Set GraphNode) -> ST s (Maybe GraphNode)
 findEquivalentFrozenNode n registry = do
         -- traceM ("findEquivalentFrozenNode of " <> show n )
         reg <- readSTRef registry
-        let sames = filter (\nd -> totalEquivalence n nd) (S.toList reg)
-        case sames of
-          [] -> do
+        let index = S.lookupIndex n reg
+        case index of
+          Nothing -> do
                 modifySTRef' registry (S.insert n)
                 pure Nothing
-          (x:_) -> pure (Just x)
+          Just i -> pure (Just (S.elemAt i reg))
 
 totalEquivalence :: GraphNode -> GraphNode -> Bool
 totalEquivalence n n'= equivalentState n n' && childrenEquivalence n n'

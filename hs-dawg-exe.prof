@@ -1,197 +1,135 @@
-	Sun Mar  7 12:19 2021 Time and Allocation Profiling Report  (Final)
+	Sun Mar  7 17:49 2021 Time and Allocation Profiling Report  (Final)
 
 	   hs-dawg-exe +RTS -N -p -RTS
 
-	total time  =        0.11 secs   (416 ticks @ 1000 us, 8 processors)
-	total alloc = 854,155,536 bytes  (excludes profiling overheads)
+	total time  =        1.04 secs   (3867 ticks @ 1000 us, 8 processors)
+	total alloc = 6,906,406,720 bytes  (excludes profiling overheads)
 
-COST CENTRE                          MODULE      SRC                                  %time %alloc
+COST CENTRE                    MODULE      SRC                                   %time %alloc
 
-childGraphNodes                      DAFSA.Graph src/DAFSA/Graph.hs:(98,1)-(103,48)    38.0   64.0
-childGraphNodes.\                    DAFSA.Graph src/DAFSA/Graph.hs:102:51-65          27.6   20.6
-==                                   DAFSA.Graph src/DAFSA/Graph.hs:32:28-29           12.7    0.0
-childrenEquivalence                  DAFSA.Graph src/DAFSA/Graph.hs:(209,1)-(214,87)    5.3    1.4
-childNodes                           DAFSA.Graph src/DAFSA/Graph.hs:(217,1)-(219,24)    4.1    3.4
-childrenEquivalence.equalTransitions DAFSA.Graph src/DAFSA/Graph.hs:211:13-80           2.9    1.6
-totalEquivalence                     DAFSA.Graph src/DAFSA/Graph.hs:(200,1)-(203,21)    2.2    3.4
-findEquivalentFrozenNode             DAFSA.Graph src/DAFSA/Graph.hs:(190,1)-(197,32)    1.9    2.8
-equivalentState                      DAFSA.Graph src/DAFSA/Graph.hs:206:1-80            1.9    0.8
-nodeId                               DAFSA.Graph src/DAFSA/Graph.hs:45:9-14             1.4    0.6
+addSuffix                      DAFSA.Graph src/DAFSA/Graph.hs:(129,1)-(157,75)    28.7   48.7
+compare                        DAFSA.Graph src/DAFSA/Graph.hs:33:32-34            21.6    0.0
+compare                        DAFSA.Graph src/DAFSA/Graph.hs:50:21-23            10.5   23.0
+findEquivalentFrozenNode       DAFSA.Graph src/DAFSA/Graph.hs:(204,1)-(212,48)     8.6   10.4
+swapChildState                 DAFSA.Graph src/DAFSA/Graph.hs:(173,1)-(201,46)     5.7    0.0
+findEquivalentFrozenNode.index DAFSA.Graph src/DAFSA/Graph.hs:207:13-39            5.0    0.0
+main.textWords                 Main        app/Main.hs:9:9-59                      4.3    4.5
+walkPrefix.go                  DAFSA.Graph src/DAFSA/Graph.hs:(242,9)-(247,78)     3.1    1.5
+getLastChild                   DAFSA.Graph src/DAFSA/Graph.hs:(262,1)-(266,74)     2.5    4.3
+toFinalGraph                   DAFSA.Graph src/DAFSA/Graph.hs:(93,1)-(98,90)       2.2    1.5
+replaceOrRegister              DAFSA.Graph src/DAFSA/Graph.hs:(160,1)-(166,82)     1.6    1.2
+toFinalGraph.m                 DAFSA.Graph src/DAFSA/Graph.hs:97:13-114            1.2    1.3
+addSuffix.changedLastNode      DAFSA.Graph src/DAFSA/Graph.hs:(146,29)-(151,29)    0.9    1.3
 
 
-                                                                                                                              individual      inherited
-COST CENTRE                                     MODULE                SRC                                  no.     entries  %time %alloc   %time %alloc
+                                                                                                                       individual      inherited
+COST CENTRE                            MODULE                  SRC                                  no.     entries  %time %alloc   %time %alloc
 
-MAIN                                            MAIN                  <built-in>                           250           0    0.0    0.0   100.0  100.0
- CAF                                            GHC.Conc.Signal       <entire-module>                      351           0    0.0    0.0     0.0    0.0
- CAF                                            GHC.IO.Encoding       <entire-module>                      332           0    0.0    0.0     0.0    0.0
- CAF                                            GHC.IO.Encoding.Iconv <entire-module>                      330           0    0.0    0.0     0.0    0.0
- CAF                                            GHC.IO.FD             <entire-module>                      323           0    0.0    0.0     0.0    0.0
- CAF                                            GHC.IO.Handle.FD      <entire-module>                      321           0    0.0    0.0     0.0    0.0
- CAF                                            GHC.IO.Handle.Text    <entire-module>                      319           0    0.0    0.0     0.0    0.0
- CAF                                            GHC.Show              <entire-module>                      301           0    0.0    0.0     0.0    0.0
- CAF                                            GHC.Event.Poll        <entire-module>                      268           0    0.0    0.0     0.0    0.0
- CAF                                            GHC.Event.Thread      <entire-module>                      267           0    0.0    0.0     0.0    0.0
- CAF:$fEqGraphNode1                             DAFSA.Graph           <no location info>                   468           0    0.0    0.0     0.0    0.0
-  ==                                            DAFSA.Graph           src/DAFSA/Graph.hs:32:28-29          538           1    0.0    0.0     0.0    0.0
- CAF:$fEqID1                                    DAFSA.Graph           <no location info>                   469           0    0.0    0.0     0.0    0.0
-  /=                                            DAFSA.Graph           src/DAFSA/Graph.hs:32:28-29          566           1    0.0    0.0     0.0    0.0
- CAF:$fOrdID7                                   DAFSA.Graph           <no location info>                   466           0    0.0    0.0     0.0    0.0
-  compare                                       DAFSA.Graph           src/DAFSA/Graph.hs:32:32-34          532           1    0.0    0.0     0.0    0.0
- CAF:emptyGraph2                                DAFSA.Graph           <no location info>                   394           0    0.0    0.0     0.0    0.0
-  initialState                                  DAFSA.Graph           src/DAFSA/Graph.hs:(118,1)-(123,23)  505           1    0.0    0.0     0.0    0.0
- CAF:emptyGraph4                                DAFSA.Graph           <no location info>                   393           0    0.0    0.0     0.0    0.0
-  initialState                                  DAFSA.Graph           src/DAFSA/Graph.hs:(118,1)-(123,23)  517           0    0.0    0.0     0.0    0.0
-   mkNewNode                                    DAFSA.Graph           src/DAFSA/Graph.hs:(242,1)-(246,9)   518           1    0.0    0.0     0.0    0.0
- CAF:getLastChild2                              DAFSA.Graph           <no location info>                   416           0    0.0    0.0     0.0    0.0
-  nodeHasChildren                               DAFSA.Graph           src/DAFSA/Graph.hs:249:1-60          519           1    0.0    0.0     0.0    0.0
- CAF:main1                                      Main                  <no location info>                   498           0    0.0    0.0     0.0    0.0
-  main                                          Main                  app/Main.hs:(7,1)-(11,46)            500           1    0.0    0.0     0.0    0.0
- CAF:main3                                      Main                  <no location info>                   496           0    0.0    0.0     0.0    0.0
- CAF:main_w                                     Main                  <no location info>                   497           0    0.0    0.0     0.0    0.0
- main                                           Main                  app/Main.hs:(7,1)-(11,46)            501           0    0.0    0.0   100.0  100.0
-  graphContains                                 DAFSA.Graph           src/DAFSA/Graph.hs:(106,1)-(108,24)  670           1    0.0    0.0     0.0    0.0
-   lookupInGraph                                DAFSA.Graph           src/DAFSA/Graph.hs:(111,1)-(114,38)  671           1    0.0    0.0     0.0    0.0
-    lookupInGraph.foldlMT                       DAFSA.Graph           src/DAFSA/Graph.hs:(113,9)-(114,38)  672           1    0.0    0.0     0.0    0.0
-     lookupInGraph.foldlMT.f'                   DAFSA.Graph           src/DAFSA/Graph.hs:114:17-38         673           1    0.0    0.0     0.0    0.0
-      lookupInGraph.\                           DAFSA.Graph           src/DAFSA/Graph.hs:111:51-78         674           1    0.0    0.0     0.0    0.0
-  main.dafsa                                    Main                  app/Main.hs:10:9-50                  503           1    0.0    0.0    99.8   99.9
-   fromWords                                    DAFSA.Graph           src/DAFSA/Graph.hs:(73,1)-(86,33)    504           1    0.0    0.0    99.8   99.9
-    fromWords.\                                 DAFSA.Graph           src/DAFSA/Graph.hs:(78,37)-(83,61)   510         101    0.0    0.0    99.5   99.6
-     addSuffix                                  DAFSA.Graph           src/DAFSA/Graph.hs:(126,1)-(153,75)  522         801    0.2    0.2     0.2    0.2
-      nodeId                                    DAFSA.Graph           src/DAFSA/Graph.hs:45:9-14           530        3802    0.0    0.0     0.0    0.0
-      maxId                                     DAFSA.Graph           src/DAFSA/Graph.hs:57:17-21          526        1400    0.0    0.0     0.0    0.0
-      nodes                                     DAFSA.Graph           src/DAFSA/Graph.hs:56:17-21          524        1400    0.0    0.0     0.0    0.0
-      transitions                               DAFSA.Graph           src/DAFSA/Graph.hs:58:17-27          523        1400    0.0    0.0     0.0    0.0
-      rootNode                                  DAFSA.Graph           src/DAFSA/Graph.hs:59:17-24          525         701    0.0    0.0     0.0    0.0
-      addSuffix.changedLastNode                 DAFSA.Graph           src/DAFSA/Graph.hs:(143,29)-(147,29) 534         700    0.0    0.0     0.0    0.0
-       nodeChildTransitions                     DAFSA.Graph           src/DAFSA/Graph.hs:47:9-28           537         700    0.0    0.0     0.0    0.0
-       nodeId                                   DAFSA.Graph           src/DAFSA/Graph.hs:45:9-14           535         700    0.0    0.0     0.0    0.0
-       nodeType                                 DAFSA.Graph           src/DAFSA/Graph.hs:46:9-16           536         700    0.0    0.0     0.0    0.0
-      addSuffix.newId                           DAFSA.Graph           src/DAFSA/Graph.hs:141:29-48         527         700    0.0    0.0     0.0    0.0
-      addSuffix.newNode                         DAFSA.Graph           src/DAFSA/Graph.hs:142:29-62         528         700    0.0    0.0     0.0    0.0
-       mkNewNode                                DAFSA.Graph           src/DAFSA/Graph.hs:(242,1)-(246,9)   529         700    0.0    0.0     0.0    0.0
-      addSuffix.terminationNode                 DAFSA.Graph           src/DAFSA/Graph.hs:127:13-118        541         101    0.0    0.0     0.0    0.0
-       nodeId                                   DAFSA.Graph           src/DAFSA/Graph.hs:45:9-14           542         101    0.0    0.0     0.0    0.0
-      addSuffix.\                               DAFSA.Graph           src/DAFSA/Graph.hs:151:117-176       540           1    0.0    0.0     0.0    0.0
-     replaceOrRegister                          DAFSA.Graph           src/DAFSA/Graph.hs:(156,1)-(162,125) 546         696    0.0    0.0    99.3   99.4
-      getLastChild                              DAFSA.Graph           src/DAFSA/Graph.hs:(253,1)-(262,25)  547         696    0.0    0.0     0.0    0.0
-       getLastChild.lastChildTransition         DAFSA.Graph           src/DAFSA/Graph.hs:257:17-73         550         696    0.0    0.0     0.0    0.0
-        nodeChildTransitions                    DAFSA.Graph           src/DAFSA/Graph.hs:47:9-28           551         696    0.0    0.0     0.0    0.0
-       getLastChild.nextNodeId                  DAFSA.Graph           src/DAFSA/Graph.hs:260:17-93         552         696    0.0    0.0     0.0    0.0
-        nodeId                                  DAFSA.Graph           src/DAFSA/Graph.hs:45:9-14           554         696    0.0    0.0     0.0    0.0
-       nodeHasChildren                          DAFSA.Graph           src/DAFSA/Graph.hs:249:1-60          548           0    0.0    0.0     0.0    0.0
-        nodeChildTransitions                    DAFSA.Graph           src/DAFSA/Graph.hs:47:9-28           549         696    0.0    0.0     0.0    0.0
-      graphContainsFrozenState                  DAFSA.Graph           src/DAFSA/Graph.hs:(181,1)-(187,29)  558         696    0.0    0.0    92.1   90.9
-       findEquivalentFrozenNode                 DAFSA.Graph           src/DAFSA/Graph.hs:(190,1)-(197,32)  559         696    1.2    2.1    92.1   90.9
-        findEquivalentFrozenNode.\              DAFSA.Graph           src/DAFSA/Graph.hs:192:33-54         560      185153    0.7    0.7    90.9   88.8
-         totalEquivalence                       DAFSA.Graph           src/DAFSA/Graph.hs:(200,1)-(203,21)  561      185153    1.7    2.6    90.1   88.1
-          childrenEquivalence                   DAFSA.Graph           src/DAFSA/Graph.hs:(209,1)-(214,87)  563      185153    4.8    1.1    86.1   84.2
-           childNodes                           DAFSA.Graph           src/DAFSA/Graph.hs:(217,1)-(219,24)  564      370306    3.4    2.6    77.9   81.6
-            childGraphNodes                     DAFSA.Graph           src/DAFSA/Graph.hs:(98,1)-(103,48)   565      370306   36.5   59.7    74.5   79.1
-             childGraphNodes.\                  DAFSA.Graph           src/DAFSA/Graph.hs:102:51-65         577     6887264   25.2   19.4    38.0   19.4
-              nodeId                            DAFSA.Graph           src/DAFSA/Graph.hs:45:9-14           579     6887264    0.5    0.0     0.5    0.0
-              ==                                DAFSA.Graph           src/DAFSA/Graph.hs:32:28-29          578           0   12.3    0.0    12.3    0.0
-             childGraphNodes.\                  DAFSA.Graph           src/DAFSA/Graph.hs:101:42-51         605       14938    0.0    0.0     0.0    0.0
-           childrenEquivalence.equalSizes       DAFSA.Graph           src/DAFSA/Graph.hs:210:13-92         573      134583    0.2    0.0     0.2    0.0
-            nodeChildTransitions                DAFSA.Graph           src/DAFSA/Graph.hs:47:9-28           574      269166    0.0    0.0     0.0    0.0
-           childrenEquivalence.equalTransitions DAFSA.Graph           src/DAFSA/Graph.hs:211:13-80         575      115818    2.9    1.5     3.1    1.5
-            nodeChildTransitions                DAFSA.Graph           src/DAFSA/Graph.hs:47:9-28           576      231636    0.2    0.0     0.2    0.0
-          equivalentState                       DAFSA.Graph           src/DAFSA/Graph.hs:206:1-80          562      185153    1.4    0.8     2.4    1.3
-           nodeId                               DAFSA.Graph           src/DAFSA/Graph.hs:45:9-14           568      272132    0.7    0.5     0.7    0.5
-           nodeType                             DAFSA.Graph           src/DAFSA/Graph.hs:46:9-16           569      272132    0.0    0.0     0.0    0.0
-           ==                                   DAFSA.Graph           src/DAFSA/Graph.hs:36:56-57          570      136066    0.2    0.0     0.2    0.0
-        compare                                 DAFSA.Graph           src/DAFSA/Graph.hs:48:25-27          571        4836    0.0    0.0     0.0    0.0
-      swapChildState                            DAFSA.Graph           src/DAFSA/Graph.hs:(165,1)-(177,122) 580         189    0.0    0.0     7.2    8.5
-       nodeId                                   DAFSA.Graph           src/DAFSA/Graph.hs:45:9-14           600         567    0.0    0.0     0.0    0.0
-       findEquivalentFrozenNode                 DAFSA.Graph           src/DAFSA/Graph.hs:(190,1)-(197,32)  581         189    0.7    0.6     7.2    8.4
-        findEquivalentFrozenNode.\              DAFSA.Graph           src/DAFSA/Graph.hs:192:33-54         582       56882    0.0    0.2     6.5    7.8
-         totalEquivalence                       DAFSA.Graph           src/DAFSA/Graph.hs:(200,1)-(203,21)  583       56882    0.5    0.8     6.5    7.6
-          childrenEquivalence                   DAFSA.Graph           src/DAFSA/Graph.hs:(209,1)-(214,87)  585       56882    0.5    0.3     5.8    6.7
-           childNodes                           DAFSA.Graph           src/DAFSA/Graph.hs:(217,1)-(219,24)  586      113764    0.7    0.8     5.3    6.3
-            childGraphNodes                     DAFSA.Graph           src/DAFSA/Graph.hs:(98,1)-(103,48)   587      113764    1.4    4.3     4.6    5.5
-             childGraphNodes.\                  DAFSA.Graph           src/DAFSA/Graph.hs:102:51-65         596      453410    2.4    1.3     3.1    1.3
-              nodeId                            DAFSA.Graph           src/DAFSA/Graph.hs:45:9-14           598      453410    0.2    0.0     0.2    0.0
-              ==                                DAFSA.Graph           src/DAFSA/Graph.hs:32:28-29          597           0    0.5    0.0     0.5    0.0
-             childGraphNodes.\                  DAFSA.Graph           src/DAFSA/Graph.hs:101:42-51         607         760    0.0    0.0     0.0    0.0
-           childrenEquivalence.equalSizes       DAFSA.Graph           src/DAFSA/Graph.hs:210:13-92         592        7322    0.0    0.0     0.0    0.0
-            nodeChildTransitions                DAFSA.Graph           src/DAFSA/Graph.hs:47:9-28           593       14644    0.0    0.0     0.0    0.0
-           childrenEquivalence.equalTransitions DAFSA.Graph           src/DAFSA/Graph.hs:211:13-80         594        6750    0.0    0.1     0.0    0.1
-            nodeChildTransitions                DAFSA.Graph           src/DAFSA/Graph.hs:47:9-28           595       13500    0.0    0.0     0.0    0.0
-          equivalentState                       DAFSA.Graph           src/DAFSA/Graph.hs:206:1-80          584       56882    0.2    0.0     0.2    0.1
-           nodeId                               DAFSA.Graph           src/DAFSA/Graph.hs:45:9-14           589       15590    0.0    0.0     0.0    0.0
-           nodeType                             DAFSA.Graph           src/DAFSA/Graph.hs:46:9-16           590       15590    0.0    0.0     0.0    0.0
-           ==                                   DAFSA.Graph           src/DAFSA/Graph.hs:36:56-57          591        7795    0.0    0.0     0.0    0.0
-       nodeChildTransitions                     DAFSA.Graph           src/DAFSA/Graph.hs:47:9-28           603         189    0.0    0.0     0.0    0.0
-       nodes                                    DAFSA.Graph           src/DAFSA/Graph.hs:56:17-21          599         189    0.0    0.0     0.0    0.0
-       transitions                              DAFSA.Graph           src/DAFSA/Graph.hs:58:17-27          602         189    0.0    0.0     0.0    0.0
-      nodeHasChildren                           DAFSA.Graph           src/DAFSA/Graph.hs:249:1-60          556           0    0.0    0.0     0.0    0.0
-       nodeChildTransitions                     DAFSA.Graph           src/DAFSA/Graph.hs:47:9-28           557         696    0.0    0.0     0.0    0.0
-     fromWords.\.currentSuffix                  DAFSA.Graph           src/DAFSA/Graph.hs:80:21-68          514         101    0.0    0.0     0.0    0.0
-     lastState                                  DAFSA.Graph           src/DAFSA/Graph.hs:(222,1)-(226,61)  515         101    0.0    0.0     0.0    0.0
-      rootNode                                  DAFSA.Graph           src/DAFSA/Graph.hs:59:17-24          516           1    0.0    0.0     0.0    0.0
-     walkPrefix                                 DAFSA.Graph           src/DAFSA/Graph.hs:(229,1)-(239,78)  511         101    0.0    0.0     0.0    0.0
-      walkPrefix.go                             DAFSA.Graph           src/DAFSA/Graph.hs:(234,9)-(239,78)  513         350    0.0    0.0     0.0    0.0
-      rootNode                                  DAFSA.Graph           src/DAFSA/Graph.hs:59:17-24          512         101    0.0    0.0     0.0    0.0
-      nodeId                                    DAFSA.Graph           src/DAFSA/Graph.hs:45:9-14           544         100    0.0    0.0     0.0    0.0
-     nodeHasChildren                            DAFSA.Graph           src/DAFSA/Graph.hs:249:1-60          520           0    0.0    0.0     0.0    0.0
-      nodeChildTransitions                      DAFSA.Graph           src/DAFSA/Graph.hs:47:9-28           521         101    0.0    0.0     0.0    0.0
-    replaceOrRegister                           DAFSA.Graph           src/DAFSA/Graph.hs:(156,1)-(162,125) 610           4    0.0    0.0     0.2    0.2
-     getLastChild                               DAFSA.Graph           src/DAFSA/Graph.hs:(253,1)-(262,25)  611           4    0.0    0.0     0.0    0.0
-      getLastChild.lastChildTransition          DAFSA.Graph           src/DAFSA/Graph.hs:257:17-73         614           4    0.0    0.0     0.0    0.0
-       nodeChildTransitions                     DAFSA.Graph           src/DAFSA/Graph.hs:47:9-28           615           4    0.0    0.0     0.0    0.0
-      getLastChild.nextNodeId                   DAFSA.Graph           src/DAFSA/Graph.hs:260:17-93         616           4    0.0    0.0     0.0    0.0
-       nodeId                                   DAFSA.Graph           src/DAFSA/Graph.hs:45:9-14           618           4    0.0    0.0     0.0    0.0
-      nodeHasChildren                           DAFSA.Graph           src/DAFSA/Graph.hs:249:1-60          612           0    0.0    0.0     0.0    0.0
-       nodeChildTransitions                     DAFSA.Graph           src/DAFSA/Graph.hs:47:9-28           613           4    0.0    0.0     0.0    0.0
-     graphContainsFrozenState                   DAFSA.Graph           src/DAFSA/Graph.hs:(181,1)-(187,29)  622           4    0.0    0.0     0.2    0.1
-      findEquivalentFrozenNode                  DAFSA.Graph           src/DAFSA/Graph.hs:(190,1)-(197,32)  623           4    0.0    0.0     0.2    0.1
-       findEquivalentFrozenNode.\               DAFSA.Graph           src/DAFSA/Graph.hs:192:33-54         624        2031    0.0    0.0     0.2    0.1
-        totalEquivalence                        DAFSA.Graph           src/DAFSA/Graph.hs:(200,1)-(203,21)  625        2031    0.0    0.0     0.2    0.1
-         childrenEquivalence                    DAFSA.Graph           src/DAFSA/Graph.hs:(209,1)-(214,87)  627        2031    0.0    0.0     0.0    0.1
-          childNodes                            DAFSA.Graph           src/DAFSA/Graph.hs:(217,1)-(219,24)  628        4062    0.0    0.0     0.0    0.1
-           childGraphNodes                      DAFSA.Graph           src/DAFSA/Graph.hs:(98,1)-(103,48)   629        4062    0.0    0.0     0.0    0.0
-            childGraphNodes.\                   DAFSA.Graph           src/DAFSA/Graph.hs:102:51-65         638        1400    0.0    0.0     0.0    0.0
-             nodeId                             DAFSA.Graph           src/DAFSA/Graph.hs:45:9-14           640        1400    0.0    0.0     0.0    0.0
-          childrenEquivalence.equalSizes        DAFSA.Graph           src/DAFSA/Graph.hs:210:13-92         634        1519    0.0    0.0     0.0    0.0
-           nodeChildTransitions                 DAFSA.Graph           src/DAFSA/Graph.hs:47:9-28           635        3038    0.0    0.0     0.0    0.0
-          childrenEquivalence.equalTransitions  DAFSA.Graph           src/DAFSA/Graph.hs:211:13-80         636           9    0.0    0.0     0.0    0.0
-           nodeChildTransitions                 DAFSA.Graph           src/DAFSA/Graph.hs:47:9-28           637          18    0.0    0.0     0.0    0.0
-         equivalentState                        DAFSA.Graph           src/DAFSA/Graph.hs:206:1-80          626        2031    0.2    0.0     0.2    0.0
-          nodeId                                DAFSA.Graph           src/DAFSA/Graph.hs:45:9-14           631        3058    0.0    0.0     0.0    0.0
-          nodeType                              DAFSA.Graph           src/DAFSA/Graph.hs:46:9-16           632        3058    0.0    0.0     0.0    0.0
-          ==                                    DAFSA.Graph           src/DAFSA/Graph.hs:36:56-57          633        1529    0.0    0.0     0.0    0.0
-       compare                                  DAFSA.Graph           src/DAFSA/Graph.hs:48:25-27          665          32    0.0    0.0     0.0    0.0
-     swapChildState                             DAFSA.Graph           src/DAFSA/Graph.hs:(165,1)-(177,122) 641           1    0.0    0.0     0.0    0.0
-      nodeId                                    DAFSA.Graph           src/DAFSA/Graph.hs:45:9-14           661           3    0.0    0.0     0.0    0.0
-      findEquivalentFrozenNode                  DAFSA.Graph           src/DAFSA/Graph.hs:(190,1)-(197,32)  642           1    0.0    0.0     0.0    0.0
-       findEquivalentFrozenNode.\               DAFSA.Graph           src/DAFSA/Graph.hs:192:33-54         643         507    0.0    0.0     0.0    0.0
-        totalEquivalence                        DAFSA.Graph           src/DAFSA/Graph.hs:(200,1)-(203,21)  644         507    0.0    0.0     0.0    0.0
-         childrenEquivalence                    DAFSA.Graph           src/DAFSA/Graph.hs:(209,1)-(214,87)  646         507    0.0    0.0     0.0    0.0
-          childNodes                            DAFSA.Graph           src/DAFSA/Graph.hs:(217,1)-(219,24)  647        1014    0.0    0.0     0.0    0.0
-           childGraphNodes                      DAFSA.Graph           src/DAFSA/Graph.hs:(98,1)-(103,48)   648        1014    0.0    0.0     0.0    0.0
-            childGraphNodes.\                   DAFSA.Graph           src/DAFSA/Graph.hs:102:51-65         657        1400    0.0    0.0     0.0    0.0
-             nodeId                             DAFSA.Graph           src/DAFSA/Graph.hs:45:9-14           659        1400    0.0    0.0     0.0    0.0
-          childrenEquivalence.equalSizes        DAFSA.Graph           src/DAFSA/Graph.hs:210:13-92         653           1    0.0    0.0     0.0    0.0
-           nodeChildTransitions                 DAFSA.Graph           src/DAFSA/Graph.hs:47:9-28           654           2    0.0    0.0     0.0    0.0
-          childrenEquivalence.equalTransitions  DAFSA.Graph           src/DAFSA/Graph.hs:211:13-80         655           1    0.0    0.0     0.0    0.0
-           nodeChildTransitions                 DAFSA.Graph           src/DAFSA/Graph.hs:47:9-28           656           2    0.0    0.0     0.0    0.0
-         equivalentState                        DAFSA.Graph           src/DAFSA/Graph.hs:206:1-80          645         507    0.0    0.0     0.0    0.0
-          nodeId                                DAFSA.Graph           src/DAFSA/Graph.hs:45:9-14           650          10    0.0    0.0     0.0    0.0
-          nodeType                              DAFSA.Graph           src/DAFSA/Graph.hs:46:9-16           651          10    0.0    0.0     0.0    0.0
-          ==                                    DAFSA.Graph           src/DAFSA/Graph.hs:36:56-57          652           5    0.0    0.0     0.0    0.0
-      nodeChildTransitions                      DAFSA.Graph           src/DAFSA/Graph.hs:47:9-28           664           1    0.0    0.0     0.0    0.0
-      nodes                                     DAFSA.Graph           src/DAFSA/Graph.hs:56:17-21          660           1    0.0    0.0     0.0    0.0
-      transitions                               DAFSA.Graph           src/DAFSA/Graph.hs:58:17-27          663           1    0.0    0.0     0.0    0.0
-     nodeHasChildren                            DAFSA.Graph           src/DAFSA/Graph.hs:249:1-60          620           0    0.0    0.0     0.0    0.0
-      nodeChildTransitions                      DAFSA.Graph           src/DAFSA/Graph.hs:47:9-28           621           4    0.0    0.0     0.0    0.0
-    fromWords.sortedWords                       DAFSA.Graph           src/DAFSA/Graph.hs:74:13-37          508           1    0.0    0.0     0.0    0.0
-    rootNode                                    DAFSA.Graph           src/DAFSA/Graph.hs:59:17-24          609           1    0.0    0.0     0.0    0.0
-    toFinalGraph                                DAFSA.Graph           src/DAFSA/Graph.hs:(89,1)-(94,90)    667           1    0.0    0.0     0.0    0.0
-     toFinalGraph.m                             DAFSA.Graph           src/DAFSA/Graph.hs:93:13-114         668           1    0.0    0.0     0.0    0.0
-      toFinalGraph.m.\                          DAFSA.Graph           src/DAFSA/Graph.hs:93:45-89          669         700    0.0    0.0     0.0    0.0
-    initialState                                DAFSA.Graph           src/DAFSA/Graph.hs:(118,1)-(123,23)  506           0    0.0    0.0     0.0    0.0
-     initialState.\                             DAFSA.Graph           src/DAFSA/Graph.hs:120:48-84         507           1    0.0    0.0     0.0    0.0
-      nodeId                                    DAFSA.Graph           src/DAFSA/Graph.hs:45:9-14           531           1    0.0    0.0     0.0    0.0
-   slice                                        Main                  app/Main.hs:14:1-53                  509           1    0.0    0.0     0.0    0.0
-  main.textWords                                Main                  app/Main.hs:9:9-59                   502           1    0.2    0.1     0.2    0.1
+MAIN                                   MAIN                    <built-in>                           257           0    0.0    0.0   100.0  100.0
+ CAF                                   GHC.Conc.Signal         <entire-module>                      358           0    0.0    0.0     0.0    0.0
+ CAF                                   GHC.IO.Encoding         <entire-module>                      339           0    0.0    0.0     0.0    0.0
+ CAF                                   GHC.IO.Encoding.Iconv   <entire-module>                      337           0    0.0    0.0     0.0    0.0
+ CAF                                   GHC.IO.Exception        <entire-module>                      331           0    0.0    0.0     0.0    0.0
+ CAF                                   GHC.IO.FD               <entire-module>                      330           0    0.0    0.0     0.0    0.0
+ CAF                                   GHC.IO.Handle.FD        <entire-module>                      328           0    0.0    0.0     0.0    0.0
+ CAF                                   GHC.IO.Handle.Internals <entire-module>                      327           0    0.0    0.0     0.0    0.0
+ CAF                                   GHC.IO.Handle.Text      <entire-module>                      326           0    0.0    0.0     0.0    0.0
+ CAF                                   GHC.Show                <entire-module>                      308           0    0.0    0.0     0.0    0.0
+ CAF                                   GHC.Event.Poll          <entire-module>                      275           0    0.0    0.0     0.0    0.0
+ CAF                                   GHC.Event.Thread        <entire-module>                      274           0    0.0    0.0     0.0    0.0
+ CAF:$fEqID1                           DAFSA.Graph             <no location info>                   477           0    0.0    0.0     0.0    0.0
+  /=                                   DAFSA.Graph             src/DAFSA/Graph.hs:33:28-29          563           1    0.0    0.0     0.0    0.0
+ CAF:$fEqID2                           DAFSA.Graph             <no location info>                   476           0    0.0    0.0     0.0    0.0
+  ==                                   DAFSA.Graph             src/DAFSA/Graph.hs:33:28-29          551           1    0.0    0.0     0.0    0.0
+ CAF:$fOrdID7                          DAFSA.Graph             <no location info>                   466           0    0.0    0.0     0.0    0.0
+  compare                              DAFSA.Graph             src/DAFSA/Graph.hs:33:32-34          545           1    0.0    0.0     0.0    0.0
+ CAF:emptyGraph2                       DAFSA.Graph             <no location info>                   401           0    0.0    0.0     0.0    0.0
+  initialState                         DAFSA.Graph             src/DAFSA/Graph.hs:(121,1)-(126,23)  519           1    0.0    0.0     0.0    0.0
+ CAF:emptyGraph3                       DAFSA.Graph             <no location info>                   400           0    0.0    0.0     0.0    0.0
+  initialState                         DAFSA.Graph             src/DAFSA/Graph.hs:(121,1)-(126,23)  530           0    0.0    0.0     0.0    0.0
+   mkNewNode                           DAFSA.Graph             src/DAFSA/Graph.hs:(250,1)-(255,9)   531           1    0.0    0.0     0.0    0.0
+ CAF:main1                             Main                    <no location info>                   512           0    0.0    0.0     0.0    0.0
+  main                                 Main                    app/Main.hs:(7,1)-(11,46)            514           1    0.0    0.0     0.0    0.0
+ CAF:main3                             Main                    <no location info>                   510           0    0.0    0.0     0.0    0.0
+ CAF:main_w                            Main                    <no location info>                   511           0    0.0    0.0     0.0    0.0
+ CAF:nodeHasChildren1                  DAFSA.Graph             <no location info>                   424           0    0.0    0.0     0.0    0.0
+  nodeHasChildren                      DAFSA.Graph             src/DAFSA/Graph.hs:258:1-60          532           1    0.0    0.0     0.0    0.0
+ main                                  Main                    app/Main.hs:(7,1)-(11,46)            515           0    0.4    0.7   100.0  100.0
+  graphContains                        DAFSA.Graph             src/DAFSA/Graph.hs:(109,1)-(111,24)  596           1    0.0    0.0     0.0    0.0
+   fgFinalStates                       DAFSA.Graph             src/DAFSA/Graph.hs:69:7-19           601           1    0.0    0.0     0.0    0.0
+   lookupInGraph                       DAFSA.Graph             src/DAFSA/Graph.hs:(114,1)-(117,38)  597           1    0.0    0.0     0.0    0.0
+    lookupInGraph.foldlMT              DAFSA.Graph             src/DAFSA/Graph.hs:(116,9)-(117,38)  598           1    0.0    0.0     0.0    0.0
+     lookupInGraph.foldlMT.f'          DAFSA.Graph             src/DAFSA/Graph.hs:117:17-38         599          12    0.0    0.0     0.0    0.0
+      lookupInGraph.\                  DAFSA.Graph             src/DAFSA/Graph.hs:114:51-78         600          12    0.0    0.0     0.0    0.0
+  main.dafsa                           Main                    app/Main.hs:10:9-36                  517           1    0.0    0.0    95.3   94.8
+   fromWords                           DAFSA.Graph             src/DAFSA/Graph.hs:(77,1)-(90,33)    518           1    0.2    0.0    95.3   94.8
+    fromWords.\                        DAFSA.Graph             src/DAFSA/Graph.hs:(82,37)-(87,61)   523      100001    0.4    0.1    90.6   91.4
+     addSuffix                         DAFSA.Graph             src/DAFSA/Graph.hs:(129,1)-(157,75)  535      744363   28.7   48.7    40.4   50.4
+      nodeId                           DAFSA.Graph             src/DAFSA/Graph.hs:46:9-14           543     3521812    0.3    0.3     0.3    0.3
+      maxId                            DAFSA.Graph             src/DAFSA/Graph.hs:61:17-21          539     1288724    0.0    0.0     0.0    0.0
+      nodes                            DAFSA.Graph             src/DAFSA/Graph.hs:60:17-21          537     1288724    0.0    0.0     0.0    0.0
+      transitions                      DAFSA.Graph             src/DAFSA/Graph.hs:62:17-27          536     1288724    0.0    0.0     0.0    0.0
+      rootNode                         DAFSA.Graph             src/DAFSA/Graph.hs:63:17-24          538      644544    0.0    0.0     0.0    0.0
+      addSuffix.changedLastNode        DAFSA.Graph             src/DAFSA/Graph.hs:(146,29)-(151,29) 547      644362    0.9    1.3     0.9    1.3
+       nodeChildTransitions            DAFSA.Graph             src/DAFSA/Graph.hs:48:9-28           550      644362    0.0    0.0     0.0    0.0
+       nodeId                          DAFSA.Graph             src/DAFSA/Graph.hs:46:9-14           548      644362    0.0    0.0     0.0    0.0
+       nodeType                        DAFSA.Graph             src/DAFSA/Graph.hs:47:9-16           549      644362    0.0    0.0     0.0    0.0
+      addSuffix.newId                  DAFSA.Graph             src/DAFSA/Graph.hs:144:29-48         540      644362    0.0    0.0     0.0    0.0
+      addSuffix.newNode                DAFSA.Graph             src/DAFSA/Graph.hs:145:29-62         541      644362    0.1    0.0     0.1    0.0
+       mkNewNode                       DAFSA.Graph             src/DAFSA/Graph.hs:(250,1)-(255,9)   542      644362    0.0    0.0     0.0    0.0
+      addSuffix.terminationNode        DAFSA.Graph             src/DAFSA/Graph.hs:130:13-143        554      100001    0.0    0.0     0.0    0.0
+       nodeId                          DAFSA.Graph             src/DAFSA/Graph.hs:46:9-14           555      100001    0.0    0.0     0.0    0.0
+      addSuffix.\                      DAFSA.Graph             src/DAFSA/Graph.hs:155:117-232       553         182    0.0    0.0     0.0    0.0
+      ==                               DAFSA.Graph             src/DAFSA/Graph.hs:33:28-29          552           0    0.4    0.0     0.4    0.0
+      compare                          DAFSA.Graph             src/DAFSA/Graph.hs:33:32-34          546           0   10.1    0.0    10.1    0.0
+     replaceOrRegister                 DAFSA.Graph             src/DAFSA/Graph.hs:(160,1)-(166,82)  559      741562    1.6    1.2    43.3   39.2
+      nodeId                           DAFSA.Graph             src/DAFSA/Graph.hs:46:9-14           565     1483124    0.3    0.3     0.3    0.3
+      getLastChild                     DAFSA.Graph             src/DAFSA/Graph.hs:(262,1)-(266,74)  560      741562    2.5    4.3     5.1    4.3
+       nodeLastChild                   DAFSA.Graph             src/DAFSA/Graph.hs:49:9-21           561      741562    0.0    0.0     0.0    0.0
+       compare                         DAFSA.Graph             src/DAFSA/Graph.hs:33:32-34          562           0    2.6    0.0     2.6    0.0
+      swapChildState                   DAFSA.Graph             src/DAFSA/Graph.hs:(173,1)-(201,46)  566      644345    5.7    0.0    36.0   33.4
+       compare                         DAFSA.Graph             src/DAFSA/Graph.hs:50:21-23          569    15782633    5.0    8.4     7.2    8.4
+        compare                        DAFSA.Graph             src/DAFSA/Graph.hs:37:60-62          571      644345    0.0    0.0     0.0    0.0
+        compare                        DAFSA.Graph             src/DAFSA/Graph.hs:33:32-34          570           0    2.2    0.0     2.2    0.0
+       findEquivalentFrozenNode        DAFSA.Graph             src/DAFSA/Graph.hs:(204,1)-(212,48)  567      644345    8.6   10.4    23.1   25.1
+        compare                        DAFSA.Graph             src/DAFSA/Graph.hs:50:21-23          574    15839590    2.5    7.3     4.5    7.3
+         compare                       DAFSA.Graph             src/DAFSA/Graph.hs:33:32-34          575           0    1.9    0.0     1.9    0.0
+        findEquivalentFrozenNode.index DAFSA.Graph             src/DAFSA/Graph.hs:207:13-39         568      644345    5.0    0.0    10.1    7.3
+         compare                       DAFSA.Graph             src/DAFSA/Graph.hs:50:21-23          572    15839590    2.9    7.3     5.0    7.3
+          compare                      DAFSA.Graph             src/DAFSA/Graph.hs:33:32-34          573           0    2.1    0.0     2.1    0.0
+      /=                               DAFSA.Graph             src/DAFSA/Graph.hs:33:28-29          564           0    0.3    0.0     0.3    0.0
+     fromWords.\.currentSuffix         DAFSA.Graph             src/DAFSA/Graph.hs:84:21-68          527      100001    0.1    0.0     0.1    0.0
+     lastState                         DAFSA.Graph             src/DAFSA/Graph.hs:(230,1)-(234,61)  528      100001    0.5    0.1     0.9    0.1
+      rootNode                         DAFSA.Graph             src/DAFSA/Graph.hs:63:17-24          529         182    0.0    0.0     0.0    0.0
+      compare                          DAFSA.Graph             src/DAFSA/Graph.hs:33:32-34          558           0    0.4    0.0     0.4    0.0
+     walkPrefix                        DAFSA.Graph             src/DAFSA/Graph.hs:(237,1)-(247,78)  524      100001    0.1    0.1     5.6    1.6
+      walkPrefix.go                    DAFSA.Graph             src/DAFSA/Graph.hs:(242,9)-(247,78)  526      556760    3.1    1.5     5.4    1.5
+       compare                         DAFSA.Graph             src/DAFSA/Graph.hs:33:32-34          556           0    2.4    0.0     2.4    0.0
+      rootNode                         DAFSA.Graph             src/DAFSA/Graph.hs:63:17-24          525      100001    0.0    0.0     0.0    0.0
+      nodeId                           DAFSA.Graph             src/DAFSA/Graph.hs:46:9-14           557      100000    0.0    0.0     0.0    0.0
+     nodeHasChildren                   DAFSA.Graph             src/DAFSA/Graph.hs:258:1-60          533           0    0.0    0.0     0.0    0.0
+      nodeChildTransitions             DAFSA.Graph             src/DAFSA/Graph.hs:48:9-28           534      100001    0.0    0.0     0.0    0.0
+    replaceOrRegister                  DAFSA.Graph             src/DAFSA/Graph.hs:(160,1)-(166,82)  577          18    0.0    0.0     0.0    0.0
+     nodeId                            DAFSA.Graph             src/DAFSA/Graph.hs:46:9-14           582          36    0.0    0.0     0.0    0.0
+     getLastChild                      DAFSA.Graph             src/DAFSA/Graph.hs:(262,1)-(266,74)  578          18    0.0    0.0     0.0    0.0
+      nodeLastChild                    DAFSA.Graph             src/DAFSA/Graph.hs:49:9-21           579          18    0.0    0.0     0.0    0.0
+     swapChildState                    DAFSA.Graph             src/DAFSA/Graph.hs:(173,1)-(201,46)  583          17    0.0    0.0     0.0    0.0
+      compare                          DAFSA.Graph             src/DAFSA/Graph.hs:50:21-23          590         486    0.0    0.0     0.0    0.0
+       compare                         DAFSA.Graph             src/DAFSA/Graph.hs:37:60-62          592          17    0.0    0.0     0.0    0.0
+      findEquivalentFrozenNode         DAFSA.Graph             src/DAFSA/Graph.hs:(204,1)-(212,48)  584          17    0.0    0.0     0.0    0.0
+       compare                         DAFSA.Graph             src/DAFSA/Graph.hs:50:21-23          588         486    0.0    0.0     0.0    0.0
+       findEquivalentFrozenNode.index  DAFSA.Graph             src/DAFSA/Graph.hs:207:13-39         585          17    0.0    0.0     0.0    0.0
+        compare                        DAFSA.Graph             src/DAFSA/Graph.hs:50:21-23          586         486    0.0    0.0     0.0    0.0
+    fromWords.sortedWords              DAFSA.Graph             src/DAFSA/Graph.hs:78:13-37          522           1    0.4    0.1     0.4    0.1
+    rootNode                           DAFSA.Graph             src/DAFSA/Graph.hs:63:17-24          576           1    0.0    0.0     0.0    0.0
+    toFinalGraph                       DAFSA.Graph             src/DAFSA/Graph.hs:(93,1)-(98,90)    593           1    2.2    1.5     4.1    3.3
+     toFinalGraph.m                    DAFSA.Graph             src/DAFSA/Graph.hs:97:13-114         594           1    1.2    1.3     1.2    1.3
+      toFinalGraph.m.\                 DAFSA.Graph             src/DAFSA/Graph.hs:97:45-89          595      644362    0.0    0.0     0.0    0.0
+     toFinalGraph.z                    DAFSA.Graph             src/DAFSA/Graph.hs:96:13-110         602           1    0.3    0.5     0.8    0.5
+      toFinalGraph.z.\                 DAFSA.Graph             src/DAFSA/Graph.hs:96:56-80          603      644363    0.2    0.0     0.4    0.0
+       ==                              DAFSA.Graph             src/DAFSA/Graph.hs:37:56-57          605      644363    0.0    0.0     0.0    0.0
+       nodeType                        DAFSA.Graph             src/DAFSA/Graph.hs:47:9-16           604      644363    0.3    0.0     0.3    0.0
+    initialState                       DAFSA.Graph             src/DAFSA/Graph.hs:(121,1)-(126,23)  520           0    0.0    0.0     0.0    0.0
+     initialState.\                    DAFSA.Graph             src/DAFSA/Graph.hs:123:48-84         521           1    0.0    0.0     0.0    0.0
+      nodeId                           DAFSA.Graph             src/DAFSA/Graph.hs:46:9-14           544           1    0.0    0.0     0.0    0.0
+  main.textWords                       Main                    app/Main.hs:9:9-59                   516           1    4.3    4.5     4.3    4.5
