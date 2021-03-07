@@ -11,7 +11,7 @@ main =
     defaultMain [
         env setupEnvConstructText $ \ ~(_words, _moreWords) -> bgroup "construction hs-dawg" [
             bench "10.000"  $ whnf fromWords _words
-            -- bench "100.000"  $ whnf fromList  _moreWords
+            -- , bench "100.000" $ whnf fromWords  _moreWords
             ]
     ]
 

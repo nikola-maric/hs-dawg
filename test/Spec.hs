@@ -14,18 +14,27 @@ main :: IO ()
 main = hspec $ do
         describe "fstContains" $ do
             modifyMaxSuccess (const 2000) $
-                it "FST contains all strings inserted" $ hedgehog $ do
-                    words <- forAll (randomStrings 200 (Gen.string (Range.linear 0 20) Gen.unicode))
+                it "FST contains all strings inserted, small strings" $ hedgehog $ do
+                    words <- forAll (randomStrings 200 (Gen.string (Range.linear 0 10) Gen.unicode))
                     let dafsa = fromWords words
                     forM_ words (\s -> graphContains s dafsa === True)
+            modifyMaxSuccess (const 1000) $
+                it "FST contains all strings inserted, large strings" $ hedgehog $ do
+                        words <- forAll (randomStrings 200 (Gen.string (Range.linear 0 50) Gen.unicode))
+                        let dafsa = fromWords words
+                        forM_ words (\s -> graphContains s dafsa === True)
             modifyMaxSuccess (const 1) $
                 it "empty FST contains nothing" $ hedgehog $ do
                     words <- forAll (randomStrings 100 (Gen.string (Range.linear 0 5) Gen.unicode))
                     let dafsa = emptyGraph
                     forM_ words (\s -> graphContains s dafsa === False)
+            modifyMaxSuccess (const 1) $
+                it "FST can contain only empty string" $ hedgehog $ do
+                    let dafsa = fromWords [""]
+                    graphContains "" dafsa === True
             modifyMaxSuccess (const 1000) $
                 it "FST should not contain prefixes of words" $ hedgehog $ do
-                    -- each string generated will have at leas length 10, so DAFSA should not contain any ot their prefixes
+                    -- each string generated will have at least length 10, so DAFSA should not contain any ot their prefixes
                     words <- forAll (randomStrings 200 (Gen.string (Range.linear 10 20) Gen.unicode))
                     let prefixes = take 9 <$> words
                     let dafsa = fromWords words
