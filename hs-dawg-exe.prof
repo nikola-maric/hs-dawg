@@ -1,135 +1,652 @@
-	Sun Mar  7 17:49 2021 Time and Allocation Profiling Report  (Final)
+	Tue Mar  9 23:17 2021 Time and Allocation Profiling Report  (Final)
 
 	   hs-dawg-exe +RTS -N -p -RTS
 
-	total time  =        1.04 secs   (3867 ticks @ 1000 us, 8 processors)
-	total alloc = 6,906,406,720 bytes  (excludes profiling overheads)
+	total time  =        1.48 secs   (5486 ticks @ 1000 us, 8 processors)
+	total alloc = 7,454,286,640 bytes  (excludes profiling overheads)
 
-COST CENTRE                    MODULE      SRC                                   %time %alloc
+COST CENTRE               MODULE                        SRC                                               %time %alloc
 
-addSuffix                      DAFSA.Graph src/DAFSA/Graph.hs:(129,1)-(157,75)    28.7   48.7
-compare                        DAFSA.Graph src/DAFSA/Graph.hs:33:32-34            21.6    0.0
-compare                        DAFSA.Graph src/DAFSA/Graph.hs:50:21-23            10.5   23.0
-findEquivalentFrozenNode       DAFSA.Graph src/DAFSA/Graph.hs:(204,1)-(212,48)     8.6   10.4
-swapChildState                 DAFSA.Graph src/DAFSA/Graph.hs:(173,1)-(201,46)     5.7    0.0
-findEquivalentFrozenNode.index DAFSA.Graph src/DAFSA/Graph.hs:207:13-39            5.0    0.0
-main.textWords                 Main        app/Main.hs:9:9-59                      4.3    4.5
-walkPrefix.go                  DAFSA.Graph src/DAFSA/Graph.hs:(242,9)-(247,78)     3.1    1.5
-getLastChild                   DAFSA.Graph src/DAFSA/Graph.hs:(262,1)-(266,74)     2.5    4.3
-toFinalGraph                   DAFSA.Graph src/DAFSA/Graph.hs:(93,1)-(98,90)       2.2    1.5
-replaceOrRegister              DAFSA.Graph src/DAFSA/Graph.hs:(160,1)-(166,82)     1.6    1.2
-toFinalGraph.m                 DAFSA.Graph src/DAFSA/Graph.hs:97:13-114            1.2    1.3
-addSuffix.changedLastNode      DAFSA.Graph src/DAFSA/Graph.hs:(146,29)-(151,29)    0.9    1.3
+addSuffix                 DAFSA.Graph                   src/DAFSA/Graph.hs:(142,1)-(170,75)                24.6   43.0
+swapChildState            DAFSA.Graph                   src/DAFSA/Graph.hs:(186,1)-(209,46)                15.0   23.9
+compare                   DAFSA.Graph                   src/DAFSA/Graph.hs:36:32-34                        13.1    0.0
+primitive                 Control.Monad.Primitive       Control/Monad/Primitive.hs:210:3-16                 3.7    0.3
+walkPrefix.go             DAFSA.Graph                   src/DAFSA/Graph.hs:(257,9)-(262,78)                 3.0    1.4
+growTable/rehash          Data.HashTable.ST.Basic       src/Data/HashTable/ST/Basic.hs:(488,60)-(495,28)    2.9    0.2
+hashWithSalt              DAFSA.Graph                   src/DAFSA/Graph.hs:61:9-122                         2.7    2.5
+main.textWords            Main                          app/Main.hs:9:9-59                                  2.7    4.2
+defaultHashWithSalt       Data.Hashable.Class           Data/Hashable/Class.hs:290:1-50                     2.3    0.0
+readArray                 Data.HashTable.Internal.Array src/Data/HashTable/Internal/Array.hs:40:1-23        2.3    3.3
+lookup/go                 Data.HashTable.ST.Basic       src/Data/HashTable/ST/Basic.hs:(253,53)-(284,54)    2.0    0.2
+getLastChild              DAFSA.Graph                   src/DAFSA/Graph.hs:(277,1)-(281,74)                 2.0    3.7
+insertRecord/probe        Data.HashTable.ST.Basic       src/Data/HashTable/ST/Basic.hs:(443,49)-(449,39)    1.9    0.0
+findEquivalentFrozenNode  DAFSA.Graph                   src/DAFSA/Graph.hs:(212,1)-(227,33)                 1.5    0.8
+==                        DAFSA.Graph                   src/DAFSA/Graph.hs:59:87-88                         1.2    0.5
+nodeId                    DAFSA.Graph                   src/DAFSA/Graph.hs:50:9-14                          1.2    0.8
+replaceOrRegister         DAFSA.Graph                   src/DAFSA/Graph.hs:(173,1)-(179,82)                 1.1    1.1
+addSuffix.changedLastNode DAFSA.Graph                   src/DAFSA/Graph.hs:(159,29)-(164,29)                0.8    1.2
+liftHashWithSalt2         Data.Hashable.Class           Data/Hashable/Class.hs:529:5-58                     0.7    1.0
+combine                   Data.Hashable.Class           Data/Hashable/Class.hs:780:1-40                     0.7    1.2
+toFinalGraph.m            DAFSA.Graph                   src/DAFSA/Graph.hs:110:13-114                       0.3    1.2
 
 
-                                                                                                                       individual      inherited
-COST CENTRE                            MODULE                  SRC                                  no.     entries  %time %alloc   %time %alloc
+                                                                                                                                                           individual      inherited
+COST CENTRE                                 MODULE                            SRC                                                      no.      entries  %time %alloc   %time %alloc
 
-MAIN                                   MAIN                    <built-in>                           257           0    0.0    0.0   100.0  100.0
- CAF                                   GHC.Conc.Signal         <entire-module>                      358           0    0.0    0.0     0.0    0.0
- CAF                                   GHC.IO.Encoding         <entire-module>                      339           0    0.0    0.0     0.0    0.0
- CAF                                   GHC.IO.Encoding.Iconv   <entire-module>                      337           0    0.0    0.0     0.0    0.0
- CAF                                   GHC.IO.Exception        <entire-module>                      331           0    0.0    0.0     0.0    0.0
- CAF                                   GHC.IO.FD               <entire-module>                      330           0    0.0    0.0     0.0    0.0
- CAF                                   GHC.IO.Handle.FD        <entire-module>                      328           0    0.0    0.0     0.0    0.0
- CAF                                   GHC.IO.Handle.Internals <entire-module>                      327           0    0.0    0.0     0.0    0.0
- CAF                                   GHC.IO.Handle.Text      <entire-module>                      326           0    0.0    0.0     0.0    0.0
- CAF                                   GHC.Show                <entire-module>                      308           0    0.0    0.0     0.0    0.0
- CAF                                   GHC.Event.Poll          <entire-module>                      275           0    0.0    0.0     0.0    0.0
- CAF                                   GHC.Event.Thread        <entire-module>                      274           0    0.0    0.0     0.0    0.0
- CAF:$fEqID1                           DAFSA.Graph             <no location info>                   477           0    0.0    0.0     0.0    0.0
-  /=                                   DAFSA.Graph             src/DAFSA/Graph.hs:33:28-29          563           1    0.0    0.0     0.0    0.0
- CAF:$fEqID2                           DAFSA.Graph             <no location info>                   476           0    0.0    0.0     0.0    0.0
-  ==                                   DAFSA.Graph             src/DAFSA/Graph.hs:33:28-29          551           1    0.0    0.0     0.0    0.0
- CAF:$fOrdID7                          DAFSA.Graph             <no location info>                   466           0    0.0    0.0     0.0    0.0
-  compare                              DAFSA.Graph             src/DAFSA/Graph.hs:33:32-34          545           1    0.0    0.0     0.0    0.0
- CAF:emptyGraph2                       DAFSA.Graph             <no location info>                   401           0    0.0    0.0     0.0    0.0
-  initialState                         DAFSA.Graph             src/DAFSA/Graph.hs:(121,1)-(126,23)  519           1    0.0    0.0     0.0    0.0
- CAF:emptyGraph3                       DAFSA.Graph             <no location info>                   400           0    0.0    0.0     0.0    0.0
-  initialState                         DAFSA.Graph             src/DAFSA/Graph.hs:(121,1)-(126,23)  530           0    0.0    0.0     0.0    0.0
-   mkNewNode                           DAFSA.Graph             src/DAFSA/Graph.hs:(250,1)-(255,9)   531           1    0.0    0.0     0.0    0.0
- CAF:main1                             Main                    <no location info>                   512           0    0.0    0.0     0.0    0.0
-  main                                 Main                    app/Main.hs:(7,1)-(11,46)            514           1    0.0    0.0     0.0    0.0
- CAF:main3                             Main                    <no location info>                   510           0    0.0    0.0     0.0    0.0
- CAF:main_w                            Main                    <no location info>                   511           0    0.0    0.0     0.0    0.0
- CAF:nodeHasChildren1                  DAFSA.Graph             <no location info>                   424           0    0.0    0.0     0.0    0.0
-  nodeHasChildren                      DAFSA.Graph             src/DAFSA/Graph.hs:258:1-60          532           1    0.0    0.0     0.0    0.0
- main                                  Main                    app/Main.hs:(7,1)-(11,46)            515           0    0.4    0.7   100.0  100.0
-  graphContains                        DAFSA.Graph             src/DAFSA/Graph.hs:(109,1)-(111,24)  596           1    0.0    0.0     0.0    0.0
-   fgFinalStates                       DAFSA.Graph             src/DAFSA/Graph.hs:69:7-19           601           1    0.0    0.0     0.0    0.0
-   lookupInGraph                       DAFSA.Graph             src/DAFSA/Graph.hs:(114,1)-(117,38)  597           1    0.0    0.0     0.0    0.0
-    lookupInGraph.foldlMT              DAFSA.Graph             src/DAFSA/Graph.hs:(116,9)-(117,38)  598           1    0.0    0.0     0.0    0.0
-     lookupInGraph.foldlMT.f'          DAFSA.Graph             src/DAFSA/Graph.hs:117:17-38         599          12    0.0    0.0     0.0    0.0
-      lookupInGraph.\                  DAFSA.Graph             src/DAFSA/Graph.hs:114:51-78         600          12    0.0    0.0     0.0    0.0
-  main.dafsa                           Main                    app/Main.hs:10:9-36                  517           1    0.0    0.0    95.3   94.8
-   fromWords                           DAFSA.Graph             src/DAFSA/Graph.hs:(77,1)-(90,33)    518           1    0.2    0.0    95.3   94.8
-    fromWords.\                        DAFSA.Graph             src/DAFSA/Graph.hs:(82,37)-(87,61)   523      100001    0.4    0.1    90.6   91.4
-     addSuffix                         DAFSA.Graph             src/DAFSA/Graph.hs:(129,1)-(157,75)  535      744363   28.7   48.7    40.4   50.4
-      nodeId                           DAFSA.Graph             src/DAFSA/Graph.hs:46:9-14           543     3521812    0.3    0.3     0.3    0.3
-      maxId                            DAFSA.Graph             src/DAFSA/Graph.hs:61:17-21          539     1288724    0.0    0.0     0.0    0.0
-      nodes                            DAFSA.Graph             src/DAFSA/Graph.hs:60:17-21          537     1288724    0.0    0.0     0.0    0.0
-      transitions                      DAFSA.Graph             src/DAFSA/Graph.hs:62:17-27          536     1288724    0.0    0.0     0.0    0.0
-      rootNode                         DAFSA.Graph             src/DAFSA/Graph.hs:63:17-24          538      644544    0.0    0.0     0.0    0.0
-      addSuffix.changedLastNode        DAFSA.Graph             src/DAFSA/Graph.hs:(146,29)-(151,29) 547      644362    0.9    1.3     0.9    1.3
-       nodeChildTransitions            DAFSA.Graph             src/DAFSA/Graph.hs:48:9-28           550      644362    0.0    0.0     0.0    0.0
-       nodeId                          DAFSA.Graph             src/DAFSA/Graph.hs:46:9-14           548      644362    0.0    0.0     0.0    0.0
-       nodeType                        DAFSA.Graph             src/DAFSA/Graph.hs:47:9-16           549      644362    0.0    0.0     0.0    0.0
-      addSuffix.newId                  DAFSA.Graph             src/DAFSA/Graph.hs:144:29-48         540      644362    0.0    0.0     0.0    0.0
-      addSuffix.newNode                DAFSA.Graph             src/DAFSA/Graph.hs:145:29-62         541      644362    0.1    0.0     0.1    0.0
-       mkNewNode                       DAFSA.Graph             src/DAFSA/Graph.hs:(250,1)-(255,9)   542      644362    0.0    0.0     0.0    0.0
-      addSuffix.terminationNode        DAFSA.Graph             src/DAFSA/Graph.hs:130:13-143        554      100001    0.0    0.0     0.0    0.0
-       nodeId                          DAFSA.Graph             src/DAFSA/Graph.hs:46:9-14           555      100001    0.0    0.0     0.0    0.0
-      addSuffix.\                      DAFSA.Graph             src/DAFSA/Graph.hs:155:117-232       553         182    0.0    0.0     0.0    0.0
-      ==                               DAFSA.Graph             src/DAFSA/Graph.hs:33:28-29          552           0    0.4    0.0     0.4    0.0
-      compare                          DAFSA.Graph             src/DAFSA/Graph.hs:33:32-34          546           0   10.1    0.0    10.1    0.0
-     replaceOrRegister                 DAFSA.Graph             src/DAFSA/Graph.hs:(160,1)-(166,82)  559      741562    1.6    1.2    43.3   39.2
-      nodeId                           DAFSA.Graph             src/DAFSA/Graph.hs:46:9-14           565     1483124    0.3    0.3     0.3    0.3
-      getLastChild                     DAFSA.Graph             src/DAFSA/Graph.hs:(262,1)-(266,74)  560      741562    2.5    4.3     5.1    4.3
-       nodeLastChild                   DAFSA.Graph             src/DAFSA/Graph.hs:49:9-21           561      741562    0.0    0.0     0.0    0.0
-       compare                         DAFSA.Graph             src/DAFSA/Graph.hs:33:32-34          562           0    2.6    0.0     2.6    0.0
-      swapChildState                   DAFSA.Graph             src/DAFSA/Graph.hs:(173,1)-(201,46)  566      644345    5.7    0.0    36.0   33.4
-       compare                         DAFSA.Graph             src/DAFSA/Graph.hs:50:21-23          569    15782633    5.0    8.4     7.2    8.4
-        compare                        DAFSA.Graph             src/DAFSA/Graph.hs:37:60-62          571      644345    0.0    0.0     0.0    0.0
-        compare                        DAFSA.Graph             src/DAFSA/Graph.hs:33:32-34          570           0    2.2    0.0     2.2    0.0
-       findEquivalentFrozenNode        DAFSA.Graph             src/DAFSA/Graph.hs:(204,1)-(212,48)  567      644345    8.6   10.4    23.1   25.1
-        compare                        DAFSA.Graph             src/DAFSA/Graph.hs:50:21-23          574    15839590    2.5    7.3     4.5    7.3
-         compare                       DAFSA.Graph             src/DAFSA/Graph.hs:33:32-34          575           0    1.9    0.0     1.9    0.0
-        findEquivalentFrozenNode.index DAFSA.Graph             src/DAFSA/Graph.hs:207:13-39         568      644345    5.0    0.0    10.1    7.3
-         compare                       DAFSA.Graph             src/DAFSA/Graph.hs:50:21-23          572    15839590    2.9    7.3     5.0    7.3
-          compare                      DAFSA.Graph             src/DAFSA/Graph.hs:33:32-34          573           0    2.1    0.0     2.1    0.0
-      /=                               DAFSA.Graph             src/DAFSA/Graph.hs:33:28-29          564           0    0.3    0.0     0.3    0.0
-     fromWords.\.currentSuffix         DAFSA.Graph             src/DAFSA/Graph.hs:84:21-68          527      100001    0.1    0.0     0.1    0.0
-     lastState                         DAFSA.Graph             src/DAFSA/Graph.hs:(230,1)-(234,61)  528      100001    0.5    0.1     0.9    0.1
-      rootNode                         DAFSA.Graph             src/DAFSA/Graph.hs:63:17-24          529         182    0.0    0.0     0.0    0.0
-      compare                          DAFSA.Graph             src/DAFSA/Graph.hs:33:32-34          558           0    0.4    0.0     0.4    0.0
-     walkPrefix                        DAFSA.Graph             src/DAFSA/Graph.hs:(237,1)-(247,78)  524      100001    0.1    0.1     5.6    1.6
-      walkPrefix.go                    DAFSA.Graph             src/DAFSA/Graph.hs:(242,9)-(247,78)  526      556760    3.1    1.5     5.4    1.5
-       compare                         DAFSA.Graph             src/DAFSA/Graph.hs:33:32-34          556           0    2.4    0.0     2.4    0.0
-      rootNode                         DAFSA.Graph             src/DAFSA/Graph.hs:63:17-24          525      100001    0.0    0.0     0.0    0.0
-      nodeId                           DAFSA.Graph             src/DAFSA/Graph.hs:46:9-14           557      100000    0.0    0.0     0.0    0.0
-     nodeHasChildren                   DAFSA.Graph             src/DAFSA/Graph.hs:258:1-60          533           0    0.0    0.0     0.0    0.0
-      nodeChildTransitions             DAFSA.Graph             src/DAFSA/Graph.hs:48:9-28           534      100001    0.0    0.0     0.0    0.0
-    replaceOrRegister                  DAFSA.Graph             src/DAFSA/Graph.hs:(160,1)-(166,82)  577          18    0.0    0.0     0.0    0.0
-     nodeId                            DAFSA.Graph             src/DAFSA/Graph.hs:46:9-14           582          36    0.0    0.0     0.0    0.0
-     getLastChild                      DAFSA.Graph             src/DAFSA/Graph.hs:(262,1)-(266,74)  578          18    0.0    0.0     0.0    0.0
-      nodeLastChild                    DAFSA.Graph             src/DAFSA/Graph.hs:49:9-21           579          18    0.0    0.0     0.0    0.0
-     swapChildState                    DAFSA.Graph             src/DAFSA/Graph.hs:(173,1)-(201,46)  583          17    0.0    0.0     0.0    0.0
-      compare                          DAFSA.Graph             src/DAFSA/Graph.hs:50:21-23          590         486    0.0    0.0     0.0    0.0
-       compare                         DAFSA.Graph             src/DAFSA/Graph.hs:37:60-62          592          17    0.0    0.0     0.0    0.0
-      findEquivalentFrozenNode         DAFSA.Graph             src/DAFSA/Graph.hs:(204,1)-(212,48)  584          17    0.0    0.0     0.0    0.0
-       compare                         DAFSA.Graph             src/DAFSA/Graph.hs:50:21-23          588         486    0.0    0.0     0.0    0.0
-       findEquivalentFrozenNode.index  DAFSA.Graph             src/DAFSA/Graph.hs:207:13-39         585          17    0.0    0.0     0.0    0.0
-        compare                        DAFSA.Graph             src/DAFSA/Graph.hs:50:21-23          586         486    0.0    0.0     0.0    0.0
-    fromWords.sortedWords              DAFSA.Graph             src/DAFSA/Graph.hs:78:13-37          522           1    0.4    0.1     0.4    0.1
-    rootNode                           DAFSA.Graph             src/DAFSA/Graph.hs:63:17-24          576           1    0.0    0.0     0.0    0.0
-    toFinalGraph                       DAFSA.Graph             src/DAFSA/Graph.hs:(93,1)-(98,90)    593           1    2.2    1.5     4.1    3.3
-     toFinalGraph.m                    DAFSA.Graph             src/DAFSA/Graph.hs:97:13-114         594           1    1.2    1.3     1.2    1.3
-      toFinalGraph.m.\                 DAFSA.Graph             src/DAFSA/Graph.hs:97:45-89          595      644362    0.0    0.0     0.0    0.0
-     toFinalGraph.z                    DAFSA.Graph             src/DAFSA/Graph.hs:96:13-110         602           1    0.3    0.5     0.8    0.5
-      toFinalGraph.z.\                 DAFSA.Graph             src/DAFSA/Graph.hs:96:56-80          603      644363    0.2    0.0     0.4    0.0
-       ==                              DAFSA.Graph             src/DAFSA/Graph.hs:37:56-57          605      644363    0.0    0.0     0.0    0.0
-       nodeType                        DAFSA.Graph             src/DAFSA/Graph.hs:47:9-16           604      644363    0.3    0.0     0.3    0.0
-    initialState                       DAFSA.Graph             src/DAFSA/Graph.hs:(121,1)-(126,23)  520           0    0.0    0.0     0.0    0.0
-     initialState.\                    DAFSA.Graph             src/DAFSA/Graph.hs:123:48-84         521           1    0.0    0.0     0.0    0.0
-      nodeId                           DAFSA.Graph             src/DAFSA/Graph.hs:46:9-14           544           1    0.0    0.0     0.0    0.0
-  main.textWords                       Main                    app/Main.hs:9:9-59                   516           1    4.3    4.5     4.3    4.5
+MAIN                                        MAIN                              <built-in>                                               1556           0    0.1    0.0   100.0  100.0
+ CAF                                        GHC.Conc.Signal                   <entire-module>                                          1659           0    0.0    0.0     0.0    0.0
+ CAF                                        GHC.IO.Encoding                   <entire-module>                                          1640           0    0.0    0.0     0.0    0.0
+ CAF                                        GHC.IO.Encoding.Iconv             <entire-module>                                          1638           0    0.0    0.0     0.0    0.0
+ CAF                                        GHC.IO.Exception                  <entire-module>                                          1632           0    0.0    0.0     0.0    0.0
+ CAF                                        GHC.IO.FD                         <entire-module>                                          1631           0    0.0    0.0     0.0    0.0
+ CAF                                        GHC.IO.Handle.FD                  <entire-module>                                          1629           0    0.0    0.0     0.0    0.0
+ CAF                                        GHC.IO.Handle.Internals           <entire-module>                                          1628           0    0.0    0.0     0.0    0.0
+ CAF                                        GHC.IO.Handle.Text                <entire-module>                                          1627           0    0.0    0.0     0.0    0.0
+ CAF                                        GHC.Show                          <entire-module>                                          1609           0    0.0    0.0     0.0    0.0
+ CAF                                        GHC.Event.Poll                    <entire-module>                                          1574           0    0.0    0.0     0.0    0.0
+ CAF                                        GHC.Event.Thread                  <entire-module>                                          1573           0    0.0    0.0     0.0    0.0
+ CAF:$fApplicativeId4                       Data.Vector.Fusion.Util           <no location info>                                       2901           0    0.0    0.0     0.0    0.0
+  pure                                      Data.Vector.Fusion.Util           Data/Vector/Fusion/Util.hs:31:3-11                       3136           1    0.0    0.0     0.0    0.0
+ CAF:$fEqID1                                DAFSA.Graph                       <no location info>                                       3063           0    0.0    0.0     0.0    0.0
+  /=                                        DAFSA.Graph                       src/DAFSA/Graph.hs:36:28-29                              3245           1    0.0    0.0     0.0    0.0
+ CAF:$fEqID2                                DAFSA.Graph                       <no location info>                                       3062           0    0.0    0.0     0.0    0.0
+  ==                                        DAFSA.Graph                       src/DAFSA/Graph.hs:36:28-29                              3233           1    0.0    0.0     0.0    0.0
+ CAF:$fGSumarityM2                          Data.Hashable.Generic.Instances   <no location info>                                       1715           0    0.0    0.0     0.0    0.0
+  sumSize                                   Data.Hashable.Generic.Instances   Data/Hashable/Generic/Instances.hs:121:5-22              3365           1    0.0    0.0     0.0    0.0
+ CAF:$fHashTableHashTable7                  Data.HashTable.ST.Basic           <no location info>                                       2970           0    0.0    0.0     0.0    0.0
+  new                                       Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:167:5-25                  3120           1    0.0    0.0     0.0    0.0
+ CAF:$fHashTableHashTable8                  Data.HashTable.ST.Basic           <no location info>                                       2969           0    0.0    0.0     0.0    0.0
+ CAF:$fHashable()_$chash                    Data.Hashable.Class               Data/Hashable/Class.hs:366:5-8                           1718           0    0.0    0.0     0.0    0.0
+  hash                                      Data.Hashable.Class               Data/Hashable/Class.hs:366:5-19                          3270           1    0.0    0.0     0.0    0.0
+ CAF:$fHashable()_$chashWithSalt            Data.Hashable.Class               Data/Hashable/Class.hs:367:5-16                          1752           0    0.0    0.0     0.0    0.0
+  hashWithSalt                              Data.Hashable.Class               Data/Hashable/Class.hs:367:5-38                          3267           1    0.0    0.0     0.0    0.0
+ CAF:$fHashable1Fixed_$chash                Data.Hashable.Class               Data/Hashable/Class.hs:313:5-8                           1717           0    0.0    0.0     0.0    0.0
+  hash                                      Data.Hashable.Class               Data/Hashable/Class.hs:313:5-13                          3276           1    0.0    0.0     0.0    0.0
+ CAF:$fHashable1Fixed_$chashWithSalt1       Data.Hashable.Class               Data/Hashable/Class.hs:314:5-16                          1762           0    0.0    0.0     0.0    0.0
+  hashWithSalt                              Data.Hashable.Class               Data/Hashable/Class.hs:314:5-38                          3273           1    0.0    0.0     0.0    0.0
+ CAF:$fHashableChar_$chash                  Data.Hashable.Class               Data/Hashable/Class.hs:378:5-8                           1721           0    0.0    0.0     0.0    0.0
+  hash                                      Data.Hashable.Class               Data/Hashable/Class.hs:378:5-19                          3394           1    0.0    0.0     0.0    0.0
+ CAF:$fHashableChar_$chashWithSalt          Data.Hashable.Class               Data/Hashable/Class.hs:379:5-16                          1749           0    0.0    0.0     0.0    0.0
+  hashWithSalt                              Data.Hashable.Class               Data/Hashable/Class.hs:379:5-38                          3391           1    0.0    0.0     0.0    0.0
+ CAF:$fHashableGraphNodeIdentifier1         DAFSA.Graph                       <no location info>                                       3074           0    0.0    0.0     0.0    0.0
+  hash                                      Data.Hashable.Class               Data/Hashable/Class.hs:224:5-35                          3357           0    0.0    0.0     0.0    0.0
+   hashWithSalt                             DAFSA.Graph                       src/DAFSA/Graph.hs:61:9-122                              3358           0    0.0    0.0     0.0    0.0
+    hashWithSalt                            Data.Hashable.Class               Data/Hashable/Class.hs:227:5-38                          3359           0    0.0    0.0     0.0    0.0
+     ghashWithSalt                          Data.Hashable.Generic.Instances   Data/Hashable/Generic/Instances.hs:36:5-62               3360           0    0.0    0.0     0.0    0.0
+      ghashWithSalt                         Data.Hashable.Generic.Instances   Data/Hashable/Generic/Instances.hs:97:5-53               3361           1    0.0    0.0     0.0    0.0
+       hashSum                              Data.Hashable.Generic.Instances   Data/Hashable/Generic/Instances.hs:(100,5)-(104,46)      3362           1    0.0    0.0     0.0    0.0
+        hashSum                             Data.Hashable.Generic.Instances   Data/Hashable/Generic/Instances.hs:108:5-89              3366           1    0.0    0.0     0.0    0.0
+         ghashWithSalt                      Data.Hashable.Generic.Instances   Data/Hashable/Generic/Instances.hs:28:5-50               3367           1    0.0    0.0     0.0    0.0
+          hashWithSalt                      Data.Hashable.Class               Data/Hashable/Class.hs:367:5-38                          3368           0    0.0    0.0     0.0    0.0
+           defaultHashWithSalt              Data.Hashable.Class               Data/Hashable/Class.hs:290:1-50                          3369           1    0.0    0.0     0.0    0.0
+            combine                         Data.Hashable.Class               Data/Hashable/Class.hs:780:1-40                          3371           1    0.0    0.0     0.0    0.0
+         hashWithSalt                       Data.Hashable.Class               Data/Hashable/Class.hs:314:5-38                          3372           0    0.0    0.0     0.0    0.0
+          defaultHashWithSalt               Data.Hashable.Class               Data/Hashable/Class.hs:290:1-50                          3373           1    0.0    0.0     0.0    0.0
+           combine                          Data.Hashable.Class               Data/Hashable/Class.hs:780:1-40                          3374           1    0.0    0.0     0.0    0.0
+        hashSum.sizeL                       Data.Hashable.Generic.Instances   Data/Hashable/Generic/Instances.hs:104:9-46              3363           1    0.0    0.0     0.0    0.0
+         unTagged                           Data.Hashable.Generic.Instances   Data/Hashable/Generic/Instances.hs:114:40-47             3364           1    0.0    0.0     0.0    0.0
+ CAF:$fHashableGraphNodeIdentifier3         DAFSA.Graph                       <no location info>                                       3073           0    0.0    0.0     0.0    0.0
+  hash                                      Data.Hashable.Class               Data/Hashable/Class.hs:224:5-35                          3259           0    0.0    0.0     0.0    0.0
+   hashWithSalt                             DAFSA.Graph                       src/DAFSA/Graph.hs:61:9-122                              3260           0    0.0    0.0     0.0    0.0
+    hashWithSalt                            Data.Hashable.Class               Data/Hashable/Class.hs:227:5-38                          3261           0    0.0    0.0     0.0    0.0
+     ghashWithSalt                          Data.Hashable.Generic.Instances   Data/Hashable/Generic/Instances.hs:36:5-62               3262           0    0.0    0.0     0.0    0.0
+      ghashWithSalt                         Data.Hashable.Generic.Instances   Data/Hashable/Generic/Instances.hs:97:5-53               3263           1    0.0    0.0     0.0    0.0
+       hashSum                              Data.Hashable.Generic.Instances   Data/Hashable/Generic/Instances.hs:(100,5)-(104,46)      3264           1    0.0    0.0     0.0    0.0
+        hashSum                             Data.Hashable.Generic.Instances   Data/Hashable/Generic/Instances.hs:108:5-89              3265           1    0.0    0.0     0.0    0.0
+         ghashWithSalt                      Data.Hashable.Generic.Instances   Data/Hashable/Generic/Instances.hs:28:5-50               3266           1    0.0    0.0     0.0    0.0
+          hashWithSalt                      Data.Hashable.Class               Data/Hashable/Class.hs:367:5-38                          3268           0    0.0    0.0     0.0    0.0
+           defaultHashWithSalt              Data.Hashable.Class               Data/Hashable/Class.hs:290:1-50                          3269           1    0.0    0.0     0.0    0.0
+            combine                         Data.Hashable.Class               Data/Hashable/Class.hs:780:1-40                          3272           1    0.0    0.0     0.0    0.0
+         hashWithSalt                       Data.Hashable.Class               Data/Hashable/Class.hs:314:5-38                          3274           0    0.0    0.0     0.0    0.0
+          defaultHashWithSalt               Data.Hashable.Class               Data/Hashable/Class.hs:290:1-50                          3275           1    0.0    0.0     0.0    0.0
+           combine                          Data.Hashable.Class               Data/Hashable/Class.hs:780:1-40                          3277           1    0.0    0.0     0.0    0.0
+ CAF:$fHashableGraphNodeIdentifier5         DAFSA.Graph                       <no location info>                                       3072           0    0.0    0.0     0.0    0.0
+  hashWithSalt                              DAFSA.Graph                       src/DAFSA/Graph.hs:61:9-122                              3376           0    0.0    0.0     0.0    0.0
+   hashWithSalt                             Data.Hashable.Class               Data/Hashable/Class.hs:619:5-32                          3377           0    0.0    0.0     0.0    0.0
+    hashWithSalt1                           Data.Hashable.Class               Data/Hashable/Class.hs:271:1-45                          3378           1    0.0    0.0     0.0    0.0
+     hashWithSalt                           Data.Hashable.Class               Data/Hashable/Class.hs:523:5-32                          3380           1    0.0    0.0     0.0    0.0
+     liftHashWithSalt                       Data.Hashable.Class               Data/Hashable/Class.hs:526:5-46                          3379           1    0.0    0.0     0.0    0.0
+      defaultLiftHashWithSalt               Data.Hashable.Class               Data/Hashable/Class.hs:283:1-60                          3381           1    0.0    0.0     0.0    0.0
+ CAF:$fHashableGraphNodeIdentifier_$chash   DAFSA.Graph                       src/DAFSA/Graph.hs:60:10-37                              3075           0    0.0    0.0     0.0    0.0
+  hash                                      Data.Hashable.Class               Data/Hashable/Class.hs:224:5-35                          3252           1    0.0    0.0     0.0    0.0
+ CAF:$fHashableID2                          DAFSA.Graph                       <no location info>                                       3070           0    0.0    0.0     0.0    0.0
+  hashWithSalt                              DAFSA.Graph                       src/DAFSA/Graph.hs:36:81-88                              3385           1    0.0    0.0     0.0    0.0
+ CAF:$fMonadId1                             Data.Vector.Fusion.Util           <no location info>                                       2903           0    0.0    0.0     0.0    0.0
+  return                                    Data.Vector.Fusion.Util           Data/Vector/Fusion/Util.hs:35:3-15                       3135           1    0.0    0.0     0.0    0.0
+ CAF:$fMonoidSlot1                          Data.HashTable.ST.Basic           <no location info>                                       2943           0    0.0    0.0     0.0    0.0
+  mempty                                    Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:518:5-26                  3312           1    0.0    0.0     0.0    0.0
+ CAF:$fOrdID7                               DAFSA.Graph                       <no location info>                                       3048           0    0.0    0.0     0.0    0.0
+  compare                                   DAFSA.Graph                       src/DAFSA/Graph.hs:36:32-34                              3227           1    0.0    0.0     0.0    0.0
+ CAF:$fPrimCBool6                           Data.Primitive.Types              <no location info>                                       1940           0    0.0    0.0     0.0    0.0
+  liberate#                                 Data.Primitive.Types              Data/Primitive/Types.hs:255:1-25                         3186           1    0.0    0.0     0.0    0.0
+ CAF:$fPrimMonadST1_r3mv                    Control.Monad.Primitive           <no location info>                                       2444           0    0.0    0.0     0.0    0.0
+  primitive                                 Control.Monad.Primitive           Control/Monad/Primitive.hs:210:3-16                      3152           1    0.0    0.0     0.0    0.0
+ CAF:cacheLineSize                          Data.HashTable.Internal.IntArray  src/Data/HashTable/Internal/IntArray.hs:82:1-13          2933           0    0.0    0.0     0.0    0.0
+  cacheLineSize                             Data.HashTable.Internal.IntArray  src/Data/HashTable/Internal/IntArray.hs:82:1-18          3176           1    0.0    0.0     0.0    0.0
+ CAF:cacheLineSize                          Data.HashTable.Internal.Utils     src/Data/HashTable/Internal/Utils.hs:48:1-13             2922           0    0.0    0.0     0.0    0.0
+  cacheLineSize                             Data.HashTable.Internal.Utils     src/Data/HashTable/Internal/Utils.hs:48:1-18             3172           1    0.0    0.0     0.0    0.0
+ CAF:deletedMarker                          Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:693:1-13                  2972           0    0.0    0.0     0.0    0.0
+  deletedMarker                             Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:693:1-17                  3314           1    0.0    0.0     0.0    0.0
+ CAF:doInternalChecks                       Data.Vector.Internal.Check        Data/Vector/Internal/Check.hs:71:1-16                    2908           0    0.0    0.0     0.0    0.0
+  doInternalChecks                          Data.Vector.Internal.Check        Data/Vector/Internal/Check.hs:71:1-24                    3149           1    0.0    0.0     0.0    0.0
+ CAF:doUnsafeChecks                         Data.Vector.Internal.Check        Data/Vector/Internal/Check.hs:64:1-14                    2907           0    0.0    0.0     0.0    0.0
+  doUnsafeChecks                            Data.Vector.Internal.Check        Data/Vector/Internal/Check.hs:64:1-22                    3129           1    0.0    0.0     0.0    0.0
+ CAF:elemMask                               Data.HashTable.Internal.IntArray  src/Data/HashTable/Internal/IntArray.hs:71:1-8           2932           0    0.0    0.0     0.0    0.0
+  elemMask                                  Data.HashTable.Internal.IntArray  src/Data/HashTable/Internal/IntArray.hs:71:1-17          3283           1    0.0    0.0     0.0    0.0
+ CAF:emptyGraph2                            DAFSA.Graph                       <no location info>                                       2983           0    0.0    0.0     0.0    0.0
+  initialState                              DAFSA.Graph                       src/DAFSA/Graph.hs:(134,1)-(139,23)                      3117           1    0.0    0.0     0.0    0.0
+ CAF:emptyGraph4                            DAFSA.Graph                       <no location info>                                       2982           0    0.0    0.0     0.0    0.0
+  initialState                              DAFSA.Graph                       src/DAFSA/Graph.hs:(134,1)-(139,23)                      3212           0    0.0    0.0     0.0    0.0
+   mkNewNode                                DAFSA.Graph                       src/DAFSA/Graph.hs:(265,1)-(270,9)                       3213           1    0.0    0.0     0.0    0.0
+ CAF:emptyMarker                            Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:688:1-11                  2973           0    0.0    0.0     0.0    0.0
+  emptyMarker                               Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:688:1-15                  3288           1    0.0    0.0     0.0    0.0
+ CAF:intSz                                  Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:133:1-5                   2959           0    0.0    0.0     0.0    0.0
+  intSz                                     Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:133:1-40                  3194           1    0.0    0.0     0.0    0.0
+ CAF:lvl280_rgwB                            Data.HashTable.Internal.Utils     <no location info>                                       2928           0    0.0    0.0     0.0    0.0
+  nextBestPrime                             Data.HashTable.Internal.Utils     src/Data/HashTable/Internal/Utils.hs:(239,1)-(243,38)    3124           0    0.0    0.0     0.0    0.0
+   nextBestPrime.idx                        Data.HashTable.Internal.Utils     src/Data/HashTable/Internal/Utils.hs:242:5-36            3125           0    0.0    0.0     0.0    0.0
+    basicLength                             Data.Vector                       Data/Vector.hs:284:3-32                                  3159           1    0.0    0.0     0.0    0.0
+ CAF:main1                                  Main                              <no location info>                                       3110           0    0.0    0.0     0.0    0.0
+  main                                      Main                              app/Main.hs:(7,1)-(11,46)                                3112           1    0.0    0.0     0.0    0.0
+ CAF:main3                                  Main                              <no location info>                                       3108           0    0.0    0.0     0.0    0.0
+ CAF:main_w                                 Main                              <no location info>                                       3109           0    0.0    0.0     0.0    0.0
+ CAF:maxLoad                                Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:683:1-7                   2957           0    0.0    0.0     0.0    0.0
+  maxLoad                                   Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:683:1-14                  3163           1    0.0    0.0     0.0    0.0
+ CAF:newArray1                              Data.HashTable.Internal.Array     <no location info>                                       2936           0    0.0    0.0     0.0    0.0
+  newArray                                  Data.HashTable.Internal.Array     src/Data/HashTable/Internal/Array.hs:37:1-21             3187           1    0.0    0.0     0.0    0.0
+ CAF:newArray_ds1                           Data.HashTable.Internal.IntArray  <no location info>                                       2935           0    0.0    0.0     0.0    0.0
+  newArray                                  Data.HashTable.Internal.IntArray  src/Data/HashTable/Internal/IntArray.hs:(87,1)-(91,20)   3182           0    0.0    0.0     0.0    0.0
+   setByteArray#                            Data.Primitive.Types              Data/Primitive/Types.hs:273:208-406                      3183           0    0.0    0.0     0.0    0.0
+    setByteArray#.i                         Data.Primitive.Types              Data/Primitive/Types.hs:273:254-277                      3184           1    0.0    0.0     0.0    0.0
+ CAF:newSized2                              Data.HashTable.ST.Basic           <no location info>                                       2962           0    0.0    0.0     0.0    0.0
+  newSizeRefs                               Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:(148,1)-(152,12)          3190           1    0.0    0.0     0.0    0.0
+ CAF:newSized_asz                           Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:149:9-11                  2960           0    0.0    0.0     0.0    0.0
+  newSizeRefs                               Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:(148,1)-(152,12)          3192           0    0.0    0.0     0.0    0.0
+   newSizeRefs.asz                          Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:149:9-23                  3193           1    0.0    0.0     0.0    0.0
+ CAF:newSized_ds1                           Data.HashTable.ST.Basic           <no location info>                                       2961           0    0.0    0.0     0.0    0.0
+  newSizeRefs                               Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:(148,1)-(152,12)          3200           0    0.0    0.0     0.0    0.0
+   setByteArray#                            Data.Primitive.Types              Data/Primitive/Types.hs:273:208-406                      3201           0    0.0    0.0     0.0    0.0
+    setByteArray#.i                         Data.Primitive.Types              Data/Primitive/Types.hs:273:254-277                      3202           1    0.0    0.0     0.0    0.0
+ CAF:nodeHasChildren1                       DAFSA.Graph                       <no location info>                                       3006           0    0.0    0.0     0.0    0.0
+  nodeHasChildren                           DAFSA.Graph                       src/DAFSA/Graph.hs:273:1-60                              3214           1    0.0    0.0     0.0    0.0
+ CAF:numElemsInCacheLine                    Data.HashTable.Internal.Utils     src/Data/HashTable/Internal/Utils.hs:52:1-19             2923           0    0.0    0.0     0.0    0.0
+  numElemsInCacheLine                       Data.HashTable.Internal.Utils     src/Data/HashTable/Internal/Utils.hs:(52,1)-(54,62)      3170           1    0.0    0.0     0.0    0.0
+   numElemsInCacheLine.z                    Data.HashTable.Internal.Utils     src/Data/HashTable/Internal/Utils.hs:54:5-62             3171           1    0.0    0.0     0.0    0.0
+ CAF:primWordToElem                         Data.HashTable.Internal.IntArray  src/Data/HashTable/Internal/IntArray.hs:55:1-14          2931           0    0.0    0.0     0.0    0.0
+  primWordToElem                            Data.HashTable.Internal.IntArray  src/Data/HashTable/Internal/IntArray.hs:55:1-21          3285           1    0.0    0.0     0.0    0.0
+ CAF:primeSizes_rcwk                        Data.HashTable.Internal.Utils     src/Data/HashTable/Internal/Utils.hs:114:1-10            2926           0    0.0    0.0     0.0    0.0
+  primeSizes                                Data.HashTable.Internal.Utils     src/Data/HashTable/Internal/Utils.hs:(114,1)-(234,40)    3126           1    0.0    0.0     0.0    0.0
+   basicLength                              Data.Vector.Mutable               Data/Vector/Mutable.hs:88:3-33                           3138         129    0.0    0.0     0.0    0.0
+   >>=                                      Data.Vector.Fusion.Util           Data/Vector/Fusion/Util.hs:36:3-18                       3134         122    0.0    0.0     0.0    0.0
+    fmap                                    Data.Vector.Fusion.Stream.Monadic Data/Vector/Fusion/Stream/Monadic.hs:(133,3)-(135,20)    3137         122    0.0    0.0     0.0    0.0
+     basicUnsafeWrite                       Data.Vector.Mutable               Data/Vector/Mutable.hs:120:3-65                          3150         121    0.0    0.0     0.0    0.0
+      primitive                             Control.Monad.Primitive           Control/Monad/Primitive.hs:210:3-16                      3153           0    0.0    0.0     0.0    0.0
+       marray#                              Data.Primitive.Array              Data/Primitive/Array.hs:104:5-11                         3154         121    0.0    0.0     0.0    0.0
+   basicUnsafeSlice                         Data.Vector.Mutable               Data/Vector/Mutable.hs:91:3-62                           3151         122    0.0    0.0     0.0    0.0
+   unId                                     Data.Vector.Fusion.Util           Data/Vector/Fusion/Util.hs:25:21-24                      3133         122    0.0    0.0     0.0    0.0
+   basicUnsafeGrow                          Data.Vector.Generic.Mutable.Base  Data/Vector/Generic/Mutable/Base.hs:(140,3)-(146,23)     3141           8    0.0    0.0     0.0    0.0
+    basicUnsafeCopy                         Data.Vector.Mutable               Data/Vector/Mutable.hs:(123,3)-(124,36)                  3147           8    0.0    0.0     0.0    0.0
+     primitive                              Control.Monad.Primitive           Control/Monad/Primitive.hs:210:3-16                      3148           8    0.0    0.0     0.0    0.0
+    basicUnsafeGrow.n                       Data.Vector.Generic.Mutable.Base  Data/Vector/Generic/Mutable/Base.hs:146:7-23             3143           8    0.0    0.0     0.0    0.0
+     basicLength                            Data.Vector.Mutable               Data/Vector/Mutable.hs:88:3-33                           3144           8    0.0    0.0     0.0    0.0
+    basicUnsafeNew                          Data.Vector.Mutable               Data/Vector/Mutable.hs:(101,3)-(104,32)                  3142           8    0.0    0.0     0.0    0.0
+     primitive                              Control.Monad.Primitive           Control/Monad/Primitive.hs:210:3-16                      3145           8    0.0    0.0     0.0    0.0
+    basicUnsafeSlice                        Data.Vector.Mutable               Data/Vector/Mutable.hs:91:3-62                           3146           8    0.0    0.0     0.0    0.0
+   enlarge_delta                            Data.Vector.Generic.Mutable       Data/Vector/Generic/Mutable.hs:642:1-34                  3139           8    0.0    0.0     0.0    0.0
+    basicLength                             Data.Vector.Mutable               Data/Vector/Mutable.hs:88:3-33                           3140           8    0.0    0.0     0.0    0.0
+   basicUnsafeFreeze                        Data.Vector                       Data/Vector.hs:(276,3)-(277,47)                          3156           1    0.0    0.0     0.0    0.0
+    primitive                               Control.Monad.Primitive           Control/Monad/Primitive.hs:210:3-16                      3157           1    0.0    0.0     0.0    0.0
+     marray#                                Data.Primitive.Array              Data/Primitive/Array.hs:104:5-11                         3158           1    0.0    0.0     0.0    0.0
+   basicUnsafeNew                           Data.Vector.Mutable               Data/Vector/Mutable.hs:(101,3)-(104,32)                  3130           1    0.0    0.0     0.0    0.0
+    primitive                               Control.Monad.Primitive           Control/Monad/Primitive.hs:210:3-16                      3131           1    0.0    0.0     0.0    0.0
+   sChunks                                  Data.Vector.Fusion.Bundle.Monadic Data/Vector/Fusion/Bundle/Monadic.hs:122:30-36           3132           1    0.0    0.0     0.0    0.0
+   sSize                                    Data.Vector.Fusion.Bundle.Monadic Data/Vector/Fusion/Bundle/Monadic.hs:124:30-34           3128           1    0.0    0.0     0.0    0.0
+   upperBound                               Data.Vector.Fusion.Bundle.Size    Data/Vector/Fusion/Bundle/Size.hs:(126,1)-(128,30)       3127           1    0.0    0.0     0.0    0.0
+ CAF:readArray1                             Data.HashTable.Internal.Array     <no location info>                                       2938           0    0.0    0.0     0.0    0.0
+  readArray                                 Data.HashTable.Internal.Array     src/Data/HashTable/Internal/Array.hs:40:1-23             3410           1    0.0    0.0     0.0    0.0
+ CAF:readDelLoad                            Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:142:1-11                  2955           0    0.0    0.0     0.0    0.0
+  readDelLoad                               Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:142:1-36                  3327           1    0.0    0.0     0.0    0.0
+ CAF:readLoad                               Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:136:1-8                   2953           0    0.0    0.0     0.0    0.0
+  readLoad                                  Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:136:1-33                  3335           1    0.0    0.0     0.0    0.0
+ CAF:wordSize                               Data.HashTable.Internal.Utils     src/Data/HashTable/Internal/Utils.hs:44:1-8              2927           0    0.0    0.0     0.0    0.0
+  wordSize                                  Data.HashTable.Internal.Utils     src/Data/HashTable/Internal/Utils.hs:44:1-33             3284           1    0.0    0.0     0.0    0.0
+ CAF:wordSizeInBytes                        Data.HashTable.Internal.IntArray  src/Data/HashTable/Internal/IntArray.hs:76:1-15          2934           0    0.0    0.0     0.0    0.0
+  wordSizeInBytes                           Data.HashTable.Internal.IntArray  src/Data/HashTable/Internal/IntArray.hs:76:1-49          3175           1    0.0    0.0     0.0    0.0
+ CAF:writeArray1                            Data.HashTable.Internal.Array     <no location info>                                       2940           0    0.0    0.0     0.0    0.0
+  writeArray                                Data.HashTable.Internal.Array     src/Data/HashTable/Internal/Array.hs:43:1-25             3346           1    0.0    0.0     0.0    0.0
+ CAF:writeDelLoad                           Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:145:1-12                  2956           0    0.0    0.0     0.0    0.0
+  writeDelLoad                              Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:145:1-38                  3331           1    0.0    0.0     0.0    0.0
+ CAF:writeLoad                              Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:139:1-9                   2954           0    0.0    0.0     0.0    0.0
+  writeLoad                                 Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:139:1-35                  3339           1    0.0    0.0     0.0    0.0
+ main                                       Main                              app/Main.hs:(7,1)-(11,46)                                3113           0    0.2    0.7    99.9  100.0
+  graphContains                             DAFSA.Graph                       src/DAFSA/Graph.hs:(122,1)-(124,24)                      3663           1    0.0    0.0     0.0    0.0
+   fgFinalStates                            DAFSA.Graph                       src/DAFSA/Graph.hs:79:7-19                               3668           1    0.0    0.0     0.0    0.0
+   lookupInGraph                            DAFSA.Graph                       src/DAFSA/Graph.hs:(127,1)-(130,38)                      3664           1    0.0    0.0     0.0    0.0
+    lookupInGraph.foldlMT                   DAFSA.Graph                       src/DAFSA/Graph.hs:(129,9)-(130,38)                      3665           1    0.0    0.0     0.0    0.0
+     lookupInGraph.foldlMT.f'               DAFSA.Graph                       src/DAFSA/Graph.hs:130:17-38                             3666          12    0.0    0.0     0.0    0.0
+      lookupInGraph.\                       DAFSA.Graph                       src/DAFSA/Graph.hs:127:51-78                             3667          12    0.0    0.0     0.0    0.0
+  main.dafsa                                Main                              app/Main.hs:10:9-36                                      3115           1    0.0    0.0    97.0   95.2
+   fromWords                                DAFSA.Graph                       src/DAFSA/Graph.hs:(90,1)-(103,41)                       3116           1    0.1    0.0    97.0   95.2
+    fromWords.\                             DAFSA.Graph                       src/DAFSA/Graph.hs:(95,45)-(100,69)                      3205      100001    0.3    0.1    95.3   92.7
+     addSuffix                              DAFSA.Graph                       src/DAFSA/Graph.hs:(142,1)-(170,75)                      3217      744363   24.6   43.0    33.7   44.5
+      nodeId                                DAFSA.Graph                       src/DAFSA/Graph.hs:50:9-14                               3225     3521812    0.4    0.3     0.4    0.3
+      maxId                                 DAFSA.Graph                       src/DAFSA/Graph.hs:71:17-21                              3221     1288724    0.0    0.0     0.0    0.0
+      nodes                                 DAFSA.Graph                       src/DAFSA/Graph.hs:70:17-21                              3219     1288724    0.0    0.0     0.0    0.0
+      transitions                           DAFSA.Graph                       src/DAFSA/Graph.hs:72:17-27                              3218     1288724    0.0    0.0     0.0    0.0
+      rootNode                              DAFSA.Graph                       src/DAFSA/Graph.hs:73:17-24                              3220      644544    0.0    0.0     0.0    0.0
+      addSuffix.changedLastNode             DAFSA.Graph                       src/DAFSA/Graph.hs:(159,29)-(164,29)                     3229      644362    0.8    1.2     0.8    1.2
+       nodeChildTransitions                 DAFSA.Graph                       src/DAFSA/Graph.hs:52:9-28                               3232      644362    0.0    0.0     0.0    0.0
+       nodeId                               DAFSA.Graph                       src/DAFSA/Graph.hs:50:9-14                               3230      644362    0.0    0.0     0.0    0.0
+       nodeType                             DAFSA.Graph                       src/DAFSA/Graph.hs:51:9-16                               3231      644362    0.0    0.0     0.0    0.0
+      addSuffix.newId                       DAFSA.Graph                       src/DAFSA/Graph.hs:157:29-48                             3222      644362    0.0    0.0     0.0    0.0
+      addSuffix.newNode                     DAFSA.Graph                       src/DAFSA/Graph.hs:158:29-62                             3223      644362    0.0    0.0     0.0    0.0
+       mkNewNode                            DAFSA.Graph                       src/DAFSA/Graph.hs:(265,1)-(270,9)                       3224      644362    0.0    0.0     0.0    0.0
+      addSuffix.terminationNode             DAFSA.Graph                       src/DAFSA/Graph.hs:143:13-143                            3236      100001    0.0    0.0     0.0    0.0
+       nodeId                               DAFSA.Graph                       src/DAFSA/Graph.hs:50:9-14                               3237      100001    0.0    0.0     0.0    0.0
+      addSuffix.\                           DAFSA.Graph                       src/DAFSA/Graph.hs:168:117-232                           3235         182    0.0    0.0     0.0    0.0
+      ==                                    DAFSA.Graph                       src/DAFSA/Graph.hs:36:28-29                              3234           0    0.5    0.0     0.5    0.0
+      compare                               DAFSA.Graph                       src/DAFSA/Graph.hs:36:32-34                              3228           0    7.5    0.0     7.5    0.0
+     replaceOrRegister                      DAFSA.Graph                       src/DAFSA/Graph.hs:(173,1)-(179,82)                      3241      741562    1.1    1.1    56.0   46.5
+      nodeId                                DAFSA.Graph                       src/DAFSA/Graph.hs:50:9-14                               3247     1483124    0.3    0.3     0.3    0.3
+      getLastChild                          DAFSA.Graph                       src/DAFSA/Graph.hs:(277,1)-(281,74)                      3242      741562    2.0    3.7     3.2    3.7
+       nodeLastChild                        DAFSA.Graph                       src/DAFSA/Graph.hs:53:9-21                               3243      741562    0.0    0.0     0.0    0.0
+       compare                              DAFSA.Graph                       src/DAFSA/Graph.hs:36:32-34                              3244           0    1.2    0.0     1.2    0.0
+      swapChildState                        DAFSA.Graph                       src/DAFSA/Graph.hs:(186,1)-(209,46)                      3248      644345   15.0   23.9    50.9   41.4
+       nodeId                               DAFSA.Graph                       src/DAFSA/Graph.hs:50:9-14                               3417     1626540    0.4    0.1     0.4    0.1
+       nodes                                DAFSA.Graph                       src/DAFSA/Graph.hs:70:17-21                              3416      813270    0.0    0.0     0.0    0.0
+       findEquivalentFrozenNode             DAFSA.Graph                       src/DAFSA/Graph.hs:(212,1)-(227,33)                      3249      644345    1.5    0.8    11.8    5.6
+        lookup/go                           Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:(253,53)-(284,54)         3287      644358    2.0    0.2     5.4    2.1
+         fI                                 Data.HashTable.Internal.CacheLine src/Data/HashTable/Internal/CacheLine.hs:80:1-17         3290     2577432    0.0    0.0     0.0    0.0
+         readArray                          Data.HashTable.Internal.IntArray  src/Data/HashTable/Internal/IntArray.hs:(96,1)-(98,25)   3291      644358    0.1    0.2     0.4    0.3
+          primitive                         Control.Monad.Primitive           Control/Monad/Primitive.hs:210:3-16                      3292      644358    0.3    0.0     0.3    0.1
+           readByteArray#                   Data.Primitive.Types              Data/Primitive/Types.hs:276:30-134                       3293      644358    0.0    0.1     0.0    0.1
+         toPtr                              Data.HashTable.Internal.IntArray  src/Data/HashTable/Internal/IntArray.hs:(115,1)-(118,45) 3289      644358    0.0    0.0     0.0    0.0
+         ==                                 DAFSA.Graph                       src/DAFSA/Graph.hs:59:87-88                              3414      406648    1.2    0.5     1.3    0.5
+          ==                                DAFSA.Graph                       src/DAFSA/Graph.hs:40:62-63                              3415      406648    0.0    0.0     0.0    0.0
+          ==                                DAFSA.Graph                       src/DAFSA/Graph.hs:36:28-29                              3525           0    0.1    0.0     0.1    0.0
+         readArray                          Data.HashTable.Internal.Array     src/Data/HashTable/Internal/Array.hs:40:1-23             3411           0    0.9    1.1     1.7    1.1
+          marray#                           Data.Primitive.Array              Data/Primitive/Array.hs:104:5-11                         3413      813283    0.0    0.0     0.0    0.0
+          primitive                         Control.Monad.Primitive           Control/Monad/Primitive.hs:210:3-16                      3412           0    0.7    0.0     0.7    0.0
+        graphNodeIdentifier                 DAFSA.Graph                       src/DAFSA/Graph.hs:83:1-85                               3251      644345    0.0    0.0     0.0    0.0
+        lookup                              Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:171:5-28                  3250      644345    0.0    0.0     0.0    0.0
+        hash                                Data.Hashable.Class               Data/Hashable/Class.hs:224:5-35                          3253           0    0.1    0.0     4.7    2.5
+         hashWithSalt                       DAFSA.Graph                       src/DAFSA/Graph.hs:61:9-122                              3254      644345    0.8    0.9     4.5    2.5
+          hashWithSalt                      Data.Hashable.Class               Data/Hashable/Class.hs:227:5-38                          3257      644345    0.3    0.0     0.3    0.0
+           ghashWithSalt                    Data.Hashable.Generic.Instances   Data/Hashable/Generic/Instances.hs:36:5-62               3258      644345    0.0    0.0     0.0    0.0
+          hashWithSalt                      Data.Hashable.Class               Data/Hashable/Class.hs:619:5-32                          3255      644345    0.1    0.0     3.5    1.6
+           hashWithSalt1                    Data.Hashable.Class               Data/Hashable/Class.hs:271:1-45                          3256      644345    0.5    0.3     3.4    1.6
+            liftHashWithSalt                Data.Hashable.Class               Data/Hashable/Class.hs:(622,5)-(625,46)                  3278      644345    0.3    0.0     1.0    0.6
+             liftHashWithSalt.finalise      Data.Hashable.Class               Data/Hashable/Class.hs:624:9-44                          3279      644345    0.1    0.3     0.5    0.4
+              hashWithSalt                  Data.Hashable.Class               Data/Hashable/Class.hs:314:5-38                          3280           0    0.0    0.0     0.4    0.1
+               defaultHashWithSalt          Data.Hashable.Class               Data/Hashable/Class.hs:290:1-50                          3281      644345    0.3    0.0     0.4    0.1
+                combine                     Data.Hashable.Class               Data/Hashable/Class.hs:780:1-40                          3282      644345    0.1    0.1     0.1    0.1
+             liftHashWithSalt.step          Data.Hashable.Class               Data/Hashable/Class.hs:625:9-46                          3375      644164    0.1    0.1     0.1    0.1
+            hashWithSalt                    DAFSA.Graph                       src/DAFSA/Graph.hs:36:81-88                              3387           0    0.2    0.0     0.6    0.1
+             hashWithSalt                   Data.Hashable.Class               Data/Hashable/Class.hs:314:5-38                          3388           0    0.1    0.0     0.4    0.1
+              defaultHashWithSalt           Data.Hashable.Class               Data/Hashable/Class.hs:290:1-50                          3389      644128    0.3    0.0     0.4    0.1
+               combine                      Data.Hashable.Class               Data/Hashable/Class.hs:780:1-40                          3390      644128    0.1    0.1     0.1    0.1
+            liftHashWithSalt                Data.Hashable.Class               Data/Hashable/Class.hs:526:5-46                          3382           0    0.2    0.0     1.3    0.6
+             defaultLiftHashWithSalt        Data.Hashable.Class               Data/Hashable/Class.hs:283:1-60                          3383           0    0.6    0.0     1.2    0.6
+              liftHashWithSalt2             Data.Hashable.Class               Data/Hashable/Class.hs:529:5-58                          3384      644164    0.2    0.3     0.2    0.3
+               hashWithSalt                 DAFSA.Graph                       src/DAFSA/Graph.hs:36:81-88                              3428           0    0.0    0.0     0.0    0.0
+                hashWithSalt                Data.Hashable.Class               Data/Hashable/Class.hs:314:5-38                          3429           0    0.0    0.0     0.0    0.0
+                 defaultHashWithSalt        Data.Hashable.Class               Data/Hashable/Class.hs:290:1-50                          3430          36    0.0    0.0     0.0    0.0
+                  combine                   Data.Hashable.Class               Data/Hashable/Class.hs:780:1-40                          3431          36    0.0    0.0     0.0    0.0
+              hashWithSalt                  Data.Hashable.Class               Data/Hashable/Class.hs:379:5-38                          3392           0    0.1    0.0     0.4    0.3
+               defaultHashWithSalt          Data.Hashable.Class               Data/Hashable/Class.hs:290:1-50                          3393      644164    0.1    0.0     0.3    0.3
+                combine                     Data.Hashable.Class               Data/Hashable/Class.hs:780:1-40                          3396      644164    0.1    0.1     0.1    0.1
+                hash                        Data.Hashable.Class               Data/Hashable/Class.hs:378:5-19                          3395           0    0.2    0.1     0.2    0.1
+        primWordToElem                      Data.HashTable.Internal.IntArray  src/Data/HashTable/Internal/IntArray.hs:55:1-21          3286           0    0.3    0.1     0.3    0.1
+       nodeLastChild                        DAFSA.Graph                       src/DAFSA/Graph.hs:53:9-21                               3426      406635    0.0    0.0     0.0    0.0
+       swapChildState.(...)                 DAFSA.Graph                       src/DAFSA/Graph.hs:198:29-94                             3419      406635    0.2    0.0     0.2    0.0
+        nodeChildTransitions                DAFSA.Graph                       src/DAFSA/Graph.hs:52:9-28                               3420      406635    0.0    0.0     0.0    0.0
+       swapChildState.changedParentNode     DAFSA.Graph                       src/DAFSA/Graph.hs:(200,29)-(205,29)                     3422      406635    0.6    1.0     0.7    1.0
+        nodeId                              DAFSA.Graph                       src/DAFSA/Graph.hs:50:9-14                               3423      773292    0.1    0.1     0.1    0.1
+        nodeType                            DAFSA.Graph                       src/DAFSA/Graph.hs:51:9-16                               3424      406635    0.0    0.0     0.0    0.0
+       swapChildState.newSet                DAFSA.Graph                       src/DAFSA/Graph.hs:198:29-94                             3421      406635    0.0    0.0     0.0    0.0
+       swapChildState.oldTransition         DAFSA.Graph                       src/DAFSA/Graph.hs:198:29-94                             3427      406635    0.0    0.0     0.0    0.0
+       transitions                          DAFSA.Graph                       src/DAFSA/Graph.hs:72:17-27                              3425      406635    0.0    0.0     0.0    0.0
+       checkOverflow                        Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:(456,1)-(471,20)          3350      237710    0.2    0.2    16.3    8.2
+        growTable                           Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:(500,1)-(502,20)          3432          34    0.0    0.0    15.9    7.8
+         growTable.sz'                      Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:501:9-34                  3433          34    0.0    0.0     0.0    0.0
+          bumpSize                          Data.HashTable.Internal.Utils     src/Data/HashTable/Internal/Utils.hs:248:1-74            3434          34    0.0    0.0     0.0    0.0
+           nextBestPrime                    Data.HashTable.Internal.Utils     src/Data/HashTable/Internal/Utils.hs:(239,1)-(243,38)    3435          34    0.0    0.0     0.0    0.0
+            nextBestPrime.idx               Data.HashTable.Internal.Utils     src/Data/HashTable/Internal/Utils.hs:242:5-36            3436          34    0.0    0.0     0.0    0.0
+             unId                           Data.Vector.Fusion.Util           Data/Vector/Fusion/Util.hs:25:21-24                      3437         269    0.0    0.0     0.0    0.0
+             basicUnsafeIndexM              Data.Vector                       Data/Vector.hs:290:3-62                                  3438         235    0.0    0.0     0.0    0.0
+              array#                        Data.Primitive.Array              Data/Primitive/Array.hs:91:5-10                          3439         235    0.0    0.0     0.0    0.0
+            nextBestPrime.xi                Data.HashTable.Internal.Utils     src/Data/HashTable/Internal/Utils.hs:241:5-18            3440          34    0.0    0.0     0.0    0.0
+            nextBestPrime.yi                Data.HashTable.Internal.Utils     src/Data/HashTable/Internal/Utils.hs:243:5-38            3441          34    0.0    0.0     0.0    0.0
+             basicUnsafeIndexM              Data.Vector                       Data/Vector.hs:290:3-62                                  3443          34    0.0    0.0     0.0    0.0
+              array#                        Data.Primitive.Array              Data/Primitive/Array.hs:91:5-10                          3444          34    0.0    0.0     0.0    0.0
+             unId                           Data.Vector.Fusion.Util           Data/Vector/Fusion/Util.hs:25:21-24                      3442          34    0.0    0.0     0.0    0.0
+         rehashAll                          Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:(476,1)-(495,28)          3445          34    0.0    0.0    15.9    7.8
+          newSizedReal                      Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:(208,1)-(217,34)          3446          34    0.0    0.0     0.0    0.3
+           newArray                         Data.HashTable.Internal.IntArray  src/Data/HashTable/Internal/IntArray.hs:(87,1)-(91,20)   3448          34    0.0    0.0     0.0    0.0
+            primitive                       Control.Monad.Primitive           Control/Monad/Primitive.hs:210:3-16                      3450          68    0.0    0.0     0.0    0.0
+             setByteArray#                  Data.Primitive.Types              Data/Primitive/Types.hs:273:208-406                      3451          34    0.0    0.0     0.0    0.0
+              internal                      Control.Monad.Primitive           Control/Monad/Primitive.hs:101:3-21                      3453          34    0.0    0.0     0.0    0.0
+              setByteArray#.n               Data.Primitive.Types              Data/Primitive/Types.hs:273:281-304                      3452          34    0.0    0.0     0.0    0.0
+              shimmedSetWord8Array#         Data.Primitive.Types              Data/Primitive/Types.hs:257:1-148                        3454          34    0.0    0.0     0.0    0.0
+               shimmedSetWord8Array#.\      Data.Primitive.Types              Data/Primitive/Types.hs:257:57-147                       3455          34    0.0    0.0     0.0    0.0
+            newArray.sz                     Data.HashTable.Internal.IntArray  src/Data/HashTable/Internal/IntArray.hs:88:9-33          3449          34    0.0    0.0     0.0    0.0
+           newSizedReal.m'                  Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:(211,9)-(212,34)          3447          34    0.0    0.0     0.0    0.0
+           newArray                         Data.HashTable.Internal.Array     src/Data/HashTable/Internal/Array.hs:37:1-21             3456           0    0.0    0.0     0.0    0.3
+            primitive                       Control.Monad.Primitive           Control/Monad/Primitive.hs:210:3-16                      3457           0    0.0    0.3     0.0    0.3
+           newSizeRefs                      Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:(148,1)-(152,12)          3458           0    0.0    0.0     0.0    0.0
+            primitive                       Control.Monad.Primitive           Control/Monad/Primitive.hs:210:3-16                      3459          68    0.0    0.0     0.0    0.0
+             setByteArray#                  Data.Primitive.Types              Data/Primitive/Types.hs:273:208-406                      3460          34    0.0    0.0     0.0    0.0
+              internal                      Control.Monad.Primitive           Control/Monad/Primitive.hs:101:3-21                      3462          34    0.0    0.0     0.0    0.0
+              setByteArray#.n               Data.Primitive.Types              Data/Primitive/Types.hs:273:281-304                      3461          34    0.0    0.0     0.0    0.0
+              shimmedSetWord8Array#         Data.Primitive.Types              Data/Primitive/Types.hs:257:1-148                        3463          34    0.0    0.0     0.0    0.0
+               shimmedSetWord8Array#.\      Data.Primitive.Types              Data/Primitive/Types.hs:257:57-147                       3464          34    0.0    0.0     0.0    0.0
+          rehashAll.(...)                   Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:479:9-64                  3470          34    0.0    0.0     0.0    0.0
+          rehashAll.loadRef'                Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:479:9-64                  3469          34    0.0    0.0     0.0    0.0
+          rehashAll.newHashes               Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:479:9-64                  3482          34    0.0    0.0     0.0    0.0
+          rehashAll.newKeys                 Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:479:9-64                  3483          34    0.0    0.0     0.0    0.0
+          rehashAll.newValues               Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:479:9-64                  3484          34    0.0    0.0     0.0    0.0
+          rehashAll.rehash                  Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:(485,5)-(495,28)          3473          34    0.0    0.0    15.9    7.5
+           rehashAll.rehash.go              Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:(487,9)-(495,28)          3474      936754    0.0    0.2    15.9    7.5
+            growTable/rehash                Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:(488,60)-(495,28)         3475      936720    2.9    0.2    15.8    7.3
+             readArray                      Data.HashTable.Internal.IntArray  src/Data/HashTable/Internal/IntArray.hs:(96,1)-(98,25)   3476      936720    0.2    0.3     0.4    0.5
+              primitive                     Control.Monad.Primitive           Control/Monad/Primitive.hs:210:3-16                      3477      936720    0.2    0.0     0.2    0.2
+               readByteArray#               Data.Primitive.Types              Data/Primitive/Types.hs:276:30-134                       3478      936720    0.1    0.2     0.1    0.2
+             insertRecord/probe             Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:(443,49)-(449,39)         3509      768126    1.9    0.0     3.7    1.0
+              fI                            Data.HashTable.Internal.CacheLine src/Data/HashTable/Internal/CacheLine.hs:80:1-17         3511     3072504    0.0    0.0     0.0    0.0
+              toPtr                         Data.HashTable.Internal.IntArray  src/Data/HashTable/Internal/IntArray.hs:(115,1)-(118,45) 3510      768126    0.0    0.0     0.0    0.0
+              writeArray                    Data.HashTable.Internal.IntArray  src/Data/HashTable/Internal/IntArray.hs:(103,1)-(105,30) 3513      768126    0.1    0.3     0.5    0.3
+               primitive                    Control.Monad.Primitive           Control/Monad/Primitive.hs:210:3-16                      3514      768126    0.3    0.0     0.3    0.0
+                writeByteArray#             Data.Primitive.Types              Data/Primitive/Types.hs:276:138-209                      3515      768126    0.1    0.0     0.1    0.0
+              writeArray                    Data.HashTable.Internal.Array     src/Data/HashTable/Internal/Array.hs:43:1-25             3516           0    0.7    0.7     1.4    0.7
+               primitive                    Control.Monad.Primitive           Control/Monad/Primitive.hs:210:3-16                      3517           0    0.7    0.0     0.7    0.0
+                marray#                     Data.Primitive.Array              Data/Primitive/Array.hs:104:5-11                         3518     1536252    0.0    0.0     0.0    0.0
+             hash                           Data.Hashable.Class               Data/Hashable/Class.hs:224:5-35                          3485           0    0.7    0.0     6.6    3.3
+              hashWithSalt                  DAFSA.Graph                       src/DAFSA/Graph.hs:61:9-122                              3486      768126    1.9    1.2     5.9    3.3
+               hashWithSalt                 Data.Hashable.Class               Data/Hashable/Class.hs:227:5-38                          3489      768126    0.2    0.0     0.2    0.0
+                ghashWithSalt               Data.Hashable.Generic.Instances   Data/Hashable/Generic/Instances.hs:36:5-62               3490      768126    0.0    0.0     0.0    0.0
+               hashWithSalt                 Data.Hashable.Class               Data/Hashable/Class.hs:619:5-32                          3487      768126    0.0    0.0     3.8    2.1
+                hashWithSalt1               Data.Hashable.Class               Data/Hashable/Class.hs:271:1-45                          3488      768126    0.3    0.3     3.8    2.1
+                 liftHashWithSalt           Data.Hashable.Class               Data/Hashable/Class.hs:(622,5)-(625,46)                  3491      768126    0.3    0.0     0.8    0.7
+                  liftHashWithSalt.step     Data.Hashable.Class               Data/Hashable/Class.hs:625:9-46                          3492      933503    0.1    0.2     0.1    0.2
+                  liftHashWithSalt.finalise Data.Hashable.Class               Data/Hashable/Class.hs:624:9-44                          3505      768126    0.1    0.3     0.5    0.5
+                   hashWithSalt             Data.Hashable.Class               Data/Hashable/Class.hs:314:5-38                          3506           0    0.0    0.0     0.3    0.2
+                    defaultHashWithSalt     Data.Hashable.Class               Data/Hashable/Class.hs:290:1-50                          3507      768126    0.2    0.0     0.3    0.2
+                     combine                Data.Hashable.Class               Data/Hashable/Class.hs:780:1-40                          3508      768126    0.1    0.2     0.1    0.2
+                 hashWithSalt               DAFSA.Graph                       src/DAFSA/Graph.hs:36:81-88                              3496           0    0.1    0.0     1.2    0.2
+                  hashWithSalt              Data.Hashable.Class               Data/Hashable/Class.hs:314:5-38                          3522           0    0.0    0.0     1.1    0.2
+                   defaultHashWithSalt      Data.Hashable.Class               Data/Hashable/Class.hs:290:1-50                          3523      933425    1.0    0.0     1.1    0.2
+                    combine                 Data.Hashable.Class               Data/Hashable/Class.hs:780:1-40                          3524      933425    0.0    0.2     0.0    0.2
+                 liftHashWithSalt           Data.Hashable.Class               Data/Hashable/Class.hs:526:5-46                          3493           0    0.1    0.0     1.4    0.9
+                  defaultLiftHashWithSalt   Data.Hashable.Class               Data/Hashable/Class.hs:283:1-60                          3494           0    0.2    0.0     1.4    0.9
+                   liftHashWithSalt2        Data.Hashable.Class               Data/Hashable/Class.hs:529:5-58                          3495      933503    0.4    0.5     0.4    0.5
+                    hashWithSalt            DAFSA.Graph                       src/DAFSA/Graph.hs:36:81-88                              3497           0    0.0    0.0     0.0    0.0
+                     hashWithSalt           Data.Hashable.Class               Data/Hashable/Class.hs:314:5-38                          3498           0    0.0    0.0     0.0    0.0
+                      defaultHashWithSalt   Data.Hashable.Class               Data/Hashable/Class.hs:290:1-50                          3499          78    0.0    0.0     0.0    0.0
+                       combine              Data.Hashable.Class               Data/Hashable/Class.hs:780:1-40                          3500          78    0.0    0.0     0.0    0.0
+                   hashWithSalt             Data.Hashable.Class               Data/Hashable/Class.hs:379:5-38                          3501           0    0.1    0.0     0.7    0.4
+                    defaultHashWithSalt     Data.Hashable.Class               Data/Hashable/Class.hs:290:1-50                          3502      933503    0.2    0.0     0.6    0.4
+                     combine                Data.Hashable.Class               Data/Hashable/Class.hs:780:1-40                          3504      933503    0.2    0.2     0.2    0.2
+                     hash                   Data.Hashable.Class               Data/Hashable/Class.hs:378:5-19                          3503           0    0.1    0.2     0.1    0.2
+             primWordToElem                 Data.HashTable.Internal.IntArray  src/Data/HashTable/Internal/IntArray.hs:55:1-21          3512           0    0.2    0.2     0.2    0.2
+             readArray                      Data.HashTable.Internal.Array     src/Data/HashTable/Internal/Array.hs:40:1-23             3479           0    1.4    2.1     2.0    2.1
+              marray#                       Data.Primitive.Array              Data/Primitive/Array.hs:104:5-11                         3481     1536252    0.0    0.0     0.0    0.0
+              primitive                     Control.Monad.Primitive           Control/Monad/Primitive.hs:210:3-16                      3480           0    0.7    0.0     0.7    0.0
+          readLoad                          Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:136:1-33                  3465           0    0.0    0.0     0.0    0.0
+           primitive                        Control.Monad.Primitive           Control/Monad/Primitive.hs:210:3-16                      3466          34    0.0    0.0     0.0    0.0
+            readByteArray#                  Data.Primitive.Types              Data/Primitive/Types.hs:285:27-126                       3467          34    0.0    0.0     0.0    0.0
+          writeLoad                         Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:139:1-35                  3468           0    0.0    0.0     0.0    0.0
+           primitive                        Control.Monad.Primitive           Control/Monad/Primitive.hs:210:3-16                      3471          34    0.0    0.0     0.0    0.0
+            writeByteArray#                 Data.Primitive.Types              Data/Primitive/Types.hs:285:130-196                      3472          34    0.0    0.0     0.0    0.0
+        readDelLoad                         Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:142:1-36                  3354           0    0.1    0.1     0.1    0.1
+         primitive                          Control.Monad.Primitive           Control/Monad/Primitive.hs:210:3-16                      3355      237710    0.1    0.0     0.1    0.1
+          readByteArray#                    Data.Primitive.Types              Data/Primitive/Types.hs:285:27-126                       3356      237710    0.0    0.1     0.0    0.1
+        readLoad                            Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:136:1-33                  3351           0    0.1    0.1     0.1    0.1
+         primitive                          Control.Monad.Primitive           Control/Monad/Primitive.hs:210:3-16                      3352      237710    0.1    0.0     0.1    0.1
+          readByteArray#                    Data.Primitive.Types              Data/Primitive/Types.hs:285:27-126                       3353      237710    0.0    0.1     0.0    0.1
+       findSafeSlots                        Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:(549,1)-(629,48)          3308      237710    0.2    0.3     1.3    0.6
+        findSafeSlots.go                    Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:(570,5)-(629,48)          3313      237721    0.7    0.1     1.0    0.3
+         fI                                 Data.HashTable.Internal.CacheLine src/Data/HashTable/Internal/CacheLine.hs:80:1-17         3316     1188605    0.0    0.0     0.0    0.0
+         _slot                              Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:507:23-27                 3320      475420    0.0    0.0     0.0    0.0
+         readArray                          Data.HashTable.Internal.IntArray  src/Data/HashTable/Internal/IntArray.hs:(96,1)-(98,25)   3317      237721    0.1    0.1     0.1    0.1
+          primitive                         Control.Monad.Primitive           Control/Monad/Primitive.hs:210:3-16                      3318      237721    0.1    0.0     0.1    0.1
+           readByteArray#                   Data.Primitive.Types              Data/Primitive/Types.hs:276:30-134                       3319      237721    0.0    0.1     0.0    0.1
+         toPtr                              Data.HashTable.Internal.IntArray  src/Data/HashTable/Internal/IntArray.hs:(115,1)-(118,45) 3315      237721    0.0    0.0     0.0    0.0
+         findSafeSlots.go.pl                Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:608:23-50                 3321      237710    0.1    0.0     0.2    0.1
+          mappend                           Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:(519,5)-(521,55)          3322      237710    0.1    0.0     0.1    0.1
+           mappend.m                        Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:520:13-33                 3323      237710    0.0    0.1     0.0    0.1
+         ==                                 DAFSA.Graph                       src/DAFSA/Graph.hs:59:87-88                              3531          11    0.0    0.0     0.0    0.0
+          ==                                DAFSA.Graph                       src/DAFSA/Graph.hs:40:62-63                              3532          11    0.0    0.0     0.0    0.0
+         findSafeSlots.go.wrap'             Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:612:21-47                 3526          11    0.0    0.0     0.0    0.0
+          findSafeSlots.haveWrapped         Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:(559,5)-(561,48)          3527          11    0.0    0.0     0.0    0.0
+         readArray                          Data.HashTable.Internal.Array     src/Data/HashTable/Internal/Array.hs:40:1-23             3528           0    0.0    0.0     0.0    0.0
+          marray#                           Data.Primitive.Array              Data/Primitive/Array.hs:104:5-11                         3530          11    0.0    0.0     0.0    0.0
+        findSafeSlots.b0                    Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:558:5-26                  3309      237710    0.0    0.0     0.0    0.0
+        findSafeSlots.he                    Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:557:5-22                  3310      237710    0.0    0.0     0.1    0.1
+         primWordToElem                     Data.HashTable.Internal.IntArray  src/Data/HashTable/Internal/IntArray.hs:55:1-21          3311           0    0.0    0.1     0.0    0.1
+       graphNodeIdentifier                  DAFSA.Graph                       src/DAFSA/Graph.hs:83:1-85                               3295      237710    0.0    0.0     0.0    0.0
+       insert                               Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:169:5-28                  3294      237710    0.0    0.0     0.0    0.0
+       readArray                            Data.HashTable.Internal.IntArray  src/Data/HashTable/Internal/IntArray.hs:(96,1)-(98,25)   3324      237710    0.0    0.1     0.1    0.1
+        primitive                           Control.Monad.Primitive           Control/Monad/Primitive.hs:210:3-16                      3325      237710    0.0    0.0     0.1    0.1
+         readByteArray#                     Data.Primitive.Types              Data/Primitive/Types.hs:276:30-134                       3326      237710    0.0    0.1     0.0    0.1
+       writeArray                           Data.HashTable.Internal.IntArray  src/Data/HashTable/Internal/IntArray.hs:(103,1)-(105,30) 3343      237710    0.0    0.1     0.1    0.1
+        primitive                           Control.Monad.Primitive           Control/Monad/Primitive.hs:210:3-16                      3344      237710    0.0    0.0     0.1    0.0
+         writeByteArray#                    Data.Primitive.Types              Data/Primitive/Types.hs:276:138-209                      3345      237710    0.0    0.0     0.0    0.0
+       compare                              DAFSA.Graph                       src/DAFSA/Graph.hs:36:32-34                              3418           0    2.8    0.0     2.8    0.0
+       hash                                 Data.Hashable.Class               Data/Hashable/Class.hs:224:5-35                          3296           0    0.0    0.0     1.0    1.1
+        hashWithSalt                        DAFSA.Graph                       src/DAFSA/Graph.hs:61:9-122                              3297      237710    0.1    0.4     1.0    1.1
+         hashWithSalt                       Data.Hashable.Class               Data/Hashable/Class.hs:227:5-38                          3300      237710    0.1    0.0     0.1    0.0
+          ghashWithSalt                     Data.Hashable.Generic.Instances   Data/Hashable/Generic/Instances.hs:36:5-62               3301      237710    0.0    0.0     0.0    0.0
+         hashWithSalt                       Data.Hashable.Class               Data/Hashable/Class.hs:619:5-32                          3298      237710    0.0    0.0     0.9    0.7
+          hashWithSalt1                     Data.Hashable.Class               Data/Hashable/Class.hs:271:1-45                          3299      237710    0.1    0.1     0.9    0.7
+           liftHashWithSalt                 Data.Hashable.Class               Data/Hashable/Class.hs:(622,5)-(625,46)                  3302      237710    0.2    0.0     0.3    0.2
+            liftHashWithSalt.step           Data.Hashable.Class               Data/Hashable/Class.hs:625:9-46                          3397      334745    0.0    0.1     0.0    0.1
+            liftHashWithSalt.finalise       Data.Hashable.Class               Data/Hashable/Class.hs:624:9-44                          3303      237710    0.0    0.1     0.1    0.2
+             hashWithSalt                   Data.Hashable.Class               Data/Hashable/Class.hs:314:5-38                          3304           0    0.0    0.0     0.1    0.1
+              defaultHashWithSalt           Data.Hashable.Class               Data/Hashable/Class.hs:290:1-50                          3305      237710    0.0    0.0     0.1    0.1
+               combine                      Data.Hashable.Class               Data/Hashable/Class.hs:780:1-40                          3306      237710    0.0    0.1     0.0    0.1
+           hashWithSalt                     DAFSA.Graph                       src/DAFSA/Graph.hs:36:81-88                              3401           0    0.0    0.0     0.2    0.1
+            hashWithSalt                    Data.Hashable.Class               Data/Hashable/Class.hs:314:5-38                          3519           0    0.1    0.0     0.2    0.1
+             defaultHashWithSalt            Data.Hashable.Class               Data/Hashable/Class.hs:290:1-50                          3520      334708    0.1    0.0     0.1    0.1
+              combine                       Data.Hashable.Class               Data/Hashable/Class.hs:780:1-40                          3521      334708    0.0    0.1     0.0    0.1
+           liftHashWithSalt                 Data.Hashable.Class               Data/Hashable/Class.hs:526:5-46                          3398           0    0.1    0.0     0.4    0.3
+            defaultLiftHashWithSalt         Data.Hashable.Class               Data/Hashable/Class.hs:283:1-60                          3399           0    0.1    0.0     0.3    0.3
+             liftHashWithSalt2              Data.Hashable.Class               Data/Hashable/Class.hs:529:5-58                          3400      334745    0.1    0.2     0.1    0.2
+              hashWithSalt                  DAFSA.Graph                       src/DAFSA/Graph.hs:36:81-88                              3402           0    0.0    0.0     0.0    0.0
+               hashWithSalt                 Data.Hashable.Class               Data/Hashable/Class.hs:314:5-38                          3403           0    0.0    0.0     0.0    0.0
+                defaultHashWithSalt         Data.Hashable.Class               Data/Hashable/Class.hs:290:1-50                          3404          37    0.0    0.0     0.0    0.0
+                 combine                    Data.Hashable.Class               Data/Hashable/Class.hs:780:1-40                          3405          37    0.0    0.0     0.0    0.0
+             hashWithSalt                   Data.Hashable.Class               Data/Hashable/Class.hs:379:5-38                          3406           0    0.0    0.0     0.1    0.1
+              defaultHashWithSalt           Data.Hashable.Class               Data/Hashable/Class.hs:290:1-50                          3407      334745    0.0    0.0     0.1    0.1
+               combine                      Data.Hashable.Class               Data/Hashable/Class.hs:780:1-40                          3409      334745    0.0    0.1     0.0    0.1
+               hash                         Data.Hashable.Class               Data/Hashable/Class.hs:378:5-19                          3408           0    0.1    0.1     0.1    0.1
+       primWordToElem                       Data.HashTable.Internal.IntArray  src/Data/HashTable/Internal/IntArray.hs:55:1-21          3307           0    0.0    0.1     0.0    0.1
+       readDelLoad                          Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:142:1-36                  3328           0    0.0    0.1     0.1    0.1
+        primitive                           Control.Monad.Primitive           Control/Monad/Primitive.hs:210:3-16                      3329      237710    0.1    0.0     0.1    0.1
+         readByteArray#                     Data.Primitive.Types              Data/Primitive/Types.hs:285:27-126                       3330      237710    0.0    0.1     0.0    0.1
+       readLoad                             Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:136:1-33                  3336           0    0.0    0.1     0.1    0.1
+        primitive                           Control.Monad.Primitive           Control/Monad/Primitive.hs:210:3-16                      3337      237710    0.0    0.0     0.0    0.1
+         readByteArray#                     Data.Primitive.Types              Data/Primitive/Types.hs:285:27-126                       3338      237710    0.0    0.1     0.0    0.1
+       writeArray                           Data.HashTable.Internal.Array     src/Data/HashTable/Internal/Array.hs:43:1-25             3347           0    0.3    0.2     0.6    0.2
+        primitive                           Control.Monad.Primitive           Control/Monad/Primitive.hs:210:3-16                      3348           0    0.3    0.0     0.3    0.0
+         marray#                            Data.Primitive.Array              Data/Primitive/Array.hs:104:5-11                         3349      475420    0.0    0.0     0.0    0.0
+       writeDelLoad                         Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:145:1-38                  3332           0    0.1    0.1     0.2    0.1
+        primitive                           Control.Monad.Primitive           Control/Monad/Primitive.hs:210:3-16                      3333      237710    0.1    0.0     0.1    0.0
+         writeByteArray#                    Data.Primitive.Types              Data/Primitive/Types.hs:285:130-196                      3334      237710    0.0    0.0     0.0    0.0
+       writeLoad                            Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:139:1-35                  3340           0    0.0    0.1     0.1    0.1
+        primitive                           Control.Monad.Primitive           Control/Monad/Primitive.hs:210:3-16                      3341      237710    0.1    0.0     0.1    0.0
+         writeByteArray#                    Data.Primitive.Types              Data/Primitive/Types.hs:285:130-196                      3342      237710    0.0    0.0     0.0    0.0
+      /=                                    DAFSA.Graph                       src/DAFSA/Graph.hs:36:28-29                              3246           0    0.4    0.0     0.4    0.0
+     fromWords.\.currentSuffix              DAFSA.Graph                       src/DAFSA/Graph.hs:97:29-76                              3209      100001    0.2    0.0     0.2    0.0
+     lastState                              DAFSA.Graph                       src/DAFSA/Graph.hs:(245,1)-(249,61)                      3210      100001    0.3    0.1     0.6    0.1
+      rootNode                              DAFSA.Graph                       src/DAFSA/Graph.hs:73:17-24                              3211         182    0.0    0.0     0.0    0.0
+      compare                               DAFSA.Graph                       src/DAFSA/Graph.hs:36:32-34                              3240           0    0.3    0.0     0.3    0.0
+     walkPrefix                             DAFSA.Graph                       src/DAFSA/Graph.hs:(252,1)-(262,78)                      3206      100001    0.1    0.1     4.4    1.5
+      walkPrefix.go                         DAFSA.Graph                       src/DAFSA/Graph.hs:(257,9)-(262,78)                      3208      556760    3.0    1.4     4.2    1.4
+       compare                              DAFSA.Graph                       src/DAFSA/Graph.hs:36:32-34                              3238           0    1.2    0.0     1.2    0.0
+      rootNode                              DAFSA.Graph                       src/DAFSA/Graph.hs:73:17-24                              3207      100001    0.0    0.0     0.0    0.0
+      nodeId                                DAFSA.Graph                       src/DAFSA/Graph.hs:50:9-14                               3239      100000    0.1    0.0     0.1    0.0
+     nodeHasChildren                        DAFSA.Graph                       src/DAFSA/Graph.hs:273:1-60                              3215           0    0.0    0.0     0.0    0.0
+      nodeChildTransitions                  DAFSA.Graph                       src/DAFSA/Graph.hs:52:9-28                               3216      100001    0.0    0.0     0.0    0.0
+    replaceOrRegister                       DAFSA.Graph                       src/DAFSA/Graph.hs:(173,1)-(179,82)                      3534          18    0.0    0.0     0.0    0.0
+     nodeId                                 DAFSA.Graph                       src/DAFSA/Graph.hs:50:9-14                               3539          36    0.0    0.0     0.0    0.0
+     getLastChild                           DAFSA.Graph                       src/DAFSA/Graph.hs:(277,1)-(281,74)                      3535          18    0.0    0.0     0.0    0.0
+      nodeLastChild                         DAFSA.Graph                       src/DAFSA/Graph.hs:53:9-21                               3536          18    0.0    0.0     0.0    0.0
+     swapChildState                         DAFSA.Graph                       src/DAFSA/Graph.hs:(186,1)-(209,46)                      3540          17    0.0    0.0     0.0    0.0
+      findEquivalentFrozenNode              DAFSA.Graph                       src/DAFSA/Graph.hs:(212,1)-(227,33)                      3541          17    0.0    0.0     0.0    0.0
+       graphNodeIdentifier                  DAFSA.Graph                       src/DAFSA/Graph.hs:83:1-85                               3543          17    0.0    0.0     0.0    0.0
+       lookup                               Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:171:5-28                  3542          17    0.0    0.0     0.0    0.0
+       lookup/go                            Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:(253,53)-(284,54)         3556          17    0.0    0.0     0.0    0.0
+        fI                                  Data.HashTable.Internal.CacheLine src/Data/HashTable/Internal/CacheLine.hs:80:1-17         3558          68    0.0    0.0     0.0    0.0
+        readArray                           Data.HashTable.Internal.IntArray  src/Data/HashTable/Internal/IntArray.hs:(96,1)-(98,25)   3559          17    0.0    0.0     0.0    0.0
+         primitive                          Control.Monad.Primitive           Control/Monad/Primitive.hs:210:3-16                      3560          17    0.0    0.0     0.0    0.0
+          readByteArray#                    Data.Primitive.Types              Data/Primitive/Types.hs:276:30-134                       3561          17    0.0    0.0     0.0    0.0
+        toPtr                               Data.HashTable.Internal.IntArray  src/Data/HashTable/Internal/IntArray.hs:(115,1)-(118,45) 3557          17    0.0    0.0     0.0    0.0
+        ==                                  DAFSA.Graph                       src/DAFSA/Graph.hs:59:87-88                              3565           3    0.0    0.0     0.0    0.0
+         ==                                 DAFSA.Graph                       src/DAFSA/Graph.hs:40:62-63                              3566           3    0.0    0.0     0.0    0.0
+        readArray                           Data.HashTable.Internal.Array     src/Data/HashTable/Internal/Array.hs:40:1-23             3562           0    0.0    0.0     0.0    0.0
+         marray#                            Data.Primitive.Array              Data/Primitive/Array.hs:104:5-11                         3564           6    0.0    0.0     0.0    0.0
+       hash                                 Data.Hashable.Class               Data/Hashable/Class.hs:224:5-35                          3544           0    0.0    0.0     0.0    0.0
+        hashWithSalt                        DAFSA.Graph                       src/DAFSA/Graph.hs:61:9-122                              3545          17    0.0    0.0     0.0    0.0
+         hashWithSalt                       Data.Hashable.Class               Data/Hashable/Class.hs:227:5-38                          3548          17    0.0    0.0     0.0    0.0
+          ghashWithSalt                     Data.Hashable.Generic.Instances   Data/Hashable/Generic/Instances.hs:36:5-62               3549          17    0.0    0.0     0.0    0.0
+         hashWithSalt                       Data.Hashable.Class               Data/Hashable/Class.hs:619:5-32                          3546          17    0.0    0.0     0.0    0.0
+          hashWithSalt1                     Data.Hashable.Class               Data/Hashable/Class.hs:271:1-45                          3547          17    0.0    0.0     0.0    0.0
+           liftHashWithSalt                 Data.Hashable.Class               Data/Hashable/Class.hs:(622,5)-(625,46)                  3550          17    0.0    0.0     0.0    0.0
+            liftHashWithSalt.finalise       Data.Hashable.Class               Data/Hashable/Class.hs:624:9-44                          3551          17    0.0    0.0     0.0    0.0
+             hashWithSalt                   Data.Hashable.Class               Data/Hashable/Class.hs:314:5-38                          3552           0    0.0    0.0     0.0    0.0
+              defaultHashWithSalt           Data.Hashable.Class               Data/Hashable/Class.hs:290:1-50                          3553          17    0.0    0.0     0.0    0.0
+               combine                      Data.Hashable.Class               Data/Hashable/Class.hs:780:1-40                          3554          17    0.0    0.0     0.0    0.0
+            liftHashWithSalt.step           Data.Hashable.Class               Data/Hashable/Class.hs:625:9-46                          3579          16    0.0    0.0     0.0    0.0
+           hashWithSalt                     DAFSA.Graph                       src/DAFSA/Graph.hs:36:81-88                              3583           0    0.0    0.0     0.0    0.0
+            hashWithSalt                    Data.Hashable.Class               Data/Hashable/Class.hs:314:5-38                          3584           0    0.0    0.0     0.0    0.0
+             defaultHashWithSalt            Data.Hashable.Class               Data/Hashable/Class.hs:290:1-50                          3585          16    0.0    0.0     0.0    0.0
+              combine                       Data.Hashable.Class               Data/Hashable/Class.hs:780:1-40                          3586          16    0.0    0.0     0.0    0.0
+           liftHashWithSalt                 Data.Hashable.Class               Data/Hashable/Class.hs:526:5-46                          3580           0    0.0    0.0     0.0    0.0
+            defaultLiftHashWithSalt         Data.Hashable.Class               Data/Hashable/Class.hs:283:1-60                          3581           0    0.0    0.0     0.0    0.0
+             liftHashWithSalt2              Data.Hashable.Class               Data/Hashable/Class.hs:529:5-58                          3582          16    0.0    0.0     0.0    0.0
+             hashWithSalt                   Data.Hashable.Class               Data/Hashable/Class.hs:379:5-38                          3587           0    0.0    0.0     0.0    0.0
+              defaultHashWithSalt           Data.Hashable.Class               Data/Hashable/Class.hs:290:1-50                          3588          16    0.0    0.0     0.0    0.0
+               combine                      Data.Hashable.Class               Data/Hashable/Class.hs:780:1-40                          3590          16    0.0    0.0     0.0    0.0
+               hash                         Data.Hashable.Class               Data/Hashable/Class.hs:378:5-19                          3589           0    0.0    0.0     0.0    0.0
+       primWordToElem                       Data.HashTable.Internal.IntArray  src/Data/HashTable/Internal/IntArray.hs:55:1-21          3555           0    0.0    0.0     0.0    0.0
+      checkOverflow                         Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:(456,1)-(471,20)          3653          14    0.0    0.0     0.0    0.0
+       readDelLoad                          Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:142:1-36                  3657           0    0.0    0.0     0.0    0.0
+        primitive                           Control.Monad.Primitive           Control/Monad/Primitive.hs:210:3-16                      3658          14    0.0    0.0     0.0    0.0
+         readByteArray#                     Data.Primitive.Types              Data/Primitive/Types.hs:285:27-126                       3659          14    0.0    0.0     0.0    0.0
+       readLoad                             Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:136:1-33                  3654           0    0.0    0.0     0.0    0.0
+        primitive                           Control.Monad.Primitive           Control/Monad/Primitive.hs:210:3-16                      3655          14    0.0    0.0     0.0    0.0
+         readByteArray#                     Data.Primitive.Types              Data/Primitive/Types.hs:285:27-126                       3656          14    0.0    0.0     0.0    0.0
+      findSafeSlots                         Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:(549,1)-(629,48)          3618          14    0.0    0.0     0.0    0.0
+       findSafeSlots.b0                     Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:558:5-26                  3619          14    0.0    0.0     0.0    0.0
+       findSafeSlots.go                     Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:(570,5)-(629,48)          3622          14    0.0    0.0     0.0    0.0
+        fI                                  Data.HashTable.Internal.CacheLine src/Data/HashTable/Internal/CacheLine.hs:80:1-17         3624          70    0.0    0.0     0.0    0.0
+        _slot                               Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:507:23-27                 3628          28    0.0    0.0     0.0    0.0
+        findSafeSlots.go.pl                 Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:608:23-50                 3629          14    0.0    0.0     0.0    0.0
+         mappend                            Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:(519,5)-(521,55)          3630          14    0.0    0.0     0.0    0.0
+          mappend.m                         Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:520:13-33                 3631          14    0.0    0.0     0.0    0.0
+        readArray                           Data.HashTable.Internal.IntArray  src/Data/HashTable/Internal/IntArray.hs:(96,1)-(98,25)   3625          14    0.0    0.0     0.0    0.0
+         primitive                          Control.Monad.Primitive           Control/Monad/Primitive.hs:210:3-16                      3626          14    0.0    0.0     0.0    0.0
+          readByteArray#                    Data.Primitive.Types              Data/Primitive/Types.hs:276:30-134                       3627          14    0.0    0.0     0.0    0.0
+        toPtr                               Data.HashTable.Internal.IntArray  src/Data/HashTable/Internal/IntArray.hs:(115,1)-(118,45) 3623          14    0.0    0.0     0.0    0.0
+       findSafeSlots.he                     Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:557:5-22                  3620          14    0.0    0.0     0.0    0.0
+        primWordToElem                      Data.HashTable.Internal.IntArray  src/Data/HashTable/Internal/IntArray.hs:55:1-21          3621           0    0.0    0.0     0.0    0.0
+      graphNodeIdentifier                   DAFSA.Graph                       src/DAFSA/Graph.hs:83:1-85                               3593          14    0.0    0.0     0.0    0.0
+      insert                                Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:169:5-28                  3592          14    0.0    0.0     0.0    0.0
+      readArray                             Data.HashTable.Internal.IntArray  src/Data/HashTable/Internal/IntArray.hs:(96,1)-(98,25)   3632          14    0.0    0.0     0.0    0.0
+       primitive                            Control.Monad.Primitive           Control/Monad/Primitive.hs:210:3-16                      3633          14    0.0    0.0     0.0    0.0
+        readByteArray#                      Data.Primitive.Types              Data/Primitive/Types.hs:276:30-134                       3634          14    0.0    0.0     0.0    0.0
+      writeArray                            Data.HashTable.Internal.IntArray  src/Data/HashTable/Internal/IntArray.hs:(103,1)-(105,30) 3647          14    0.0    0.0     0.0    0.0
+       primitive                            Control.Monad.Primitive           Control/Monad/Primitive.hs:210:3-16                      3648          14    0.0    0.0     0.0    0.0
+        writeByteArray#                     Data.Primitive.Types              Data/Primitive/Types.hs:276:138-209                      3649          14    0.0    0.0     0.0    0.0
+      nodeId                                DAFSA.Graph                       src/DAFSA/Graph.hs:50:9-14                               3568          12    0.0    0.0     0.0    0.0
+      nodes                                 DAFSA.Graph                       src/DAFSA/Graph.hs:70:17-21                              3567           6    0.0    0.0     0.0    0.0
+      nodeLastChild                         DAFSA.Graph                       src/DAFSA/Graph.hs:53:9-21                               3577           3    0.0    0.0     0.0    0.0
+      swapChildState.(...)                  DAFSA.Graph                       src/DAFSA/Graph.hs:198:29-94                             3570           3    0.0    0.0     0.0    0.0
+       nodeChildTransitions                 DAFSA.Graph                       src/DAFSA/Graph.hs:52:9-28                               3571           3    0.0    0.0     0.0    0.0
+      swapChildState.changedParentNode      DAFSA.Graph                       src/DAFSA/Graph.hs:(200,29)-(205,29)                     3573           3    0.0    0.0     0.0    0.0
+       nodeId                               DAFSA.Graph                       src/DAFSA/Graph.hs:50:9-14                               3574           6    0.0    0.0     0.0    0.0
+       nodeType                             DAFSA.Graph                       src/DAFSA/Graph.hs:51:9-16                               3575           3    0.0    0.0     0.0    0.0
+      swapChildState.newSet                 DAFSA.Graph                       src/DAFSA/Graph.hs:198:29-94                             3572           3    0.0    0.0     0.0    0.0
+      swapChildState.oldTransition          DAFSA.Graph                       src/DAFSA/Graph.hs:198:29-94                             3578           3    0.0    0.0     0.0    0.0
+      transitions                           DAFSA.Graph                       src/DAFSA/Graph.hs:72:17-27                              3576           3    0.0    0.0     0.0    0.0
+      hash                                  Data.Hashable.Class               Data/Hashable/Class.hs:224:5-35                          3594           0    0.0    0.0     0.0    0.0
+       hashWithSalt                         DAFSA.Graph                       src/DAFSA/Graph.hs:61:9-122                              3595          14    0.0    0.0     0.0    0.0
+        hashWithSalt                        Data.Hashable.Class               Data/Hashable/Class.hs:227:5-38                          3598          14    0.0    0.0     0.0    0.0
+         ghashWithSalt                      Data.Hashable.Generic.Instances   Data/Hashable/Generic/Instances.hs:36:5-62               3599          14    0.0    0.0     0.0    0.0
+        hashWithSalt                        Data.Hashable.Class               Data/Hashable/Class.hs:619:5-32                          3596          14    0.0    0.0     0.0    0.0
+         hashWithSalt1                      Data.Hashable.Class               Data/Hashable/Class.hs:271:1-45                          3597          14    0.0    0.0     0.0    0.0
+          liftHashWithSalt                  Data.Hashable.Class               Data/Hashable/Class.hs:(622,5)-(625,46)                  3600          14    0.0    0.0     0.0    0.0
+           liftHashWithSalt.finalise        Data.Hashable.Class               Data/Hashable/Class.hs:624:9-44                          3613          14    0.0    0.0     0.0    0.0
+            hashWithSalt                    Data.Hashable.Class               Data/Hashable/Class.hs:314:5-38                          3614           0    0.0    0.0     0.0    0.0
+             defaultHashWithSalt            Data.Hashable.Class               Data/Hashable/Class.hs:290:1-50                          3615          14    0.0    0.0     0.0    0.0
+              combine                       Data.Hashable.Class               Data/Hashable/Class.hs:780:1-40                          3616          14    0.0    0.0     0.0    0.0
+           liftHashWithSalt.step            Data.Hashable.Class               Data/Hashable/Class.hs:625:9-46                          3601          14    0.0    0.0     0.0    0.0
+          hashWithSalt                      DAFSA.Graph                       src/DAFSA/Graph.hs:36:81-88                              3605           0    0.0    0.0     0.0    0.0
+           hashWithSalt                     Data.Hashable.Class               Data/Hashable/Class.hs:314:5-38                          3606           0    0.0    0.0     0.0    0.0
+            defaultHashWithSalt             Data.Hashable.Class               Data/Hashable/Class.hs:290:1-50                          3607          14    0.0    0.0     0.0    0.0
+             combine                        Data.Hashable.Class               Data/Hashable/Class.hs:780:1-40                          3608          14    0.0    0.0     0.0    0.0
+          liftHashWithSalt                  Data.Hashable.Class               Data/Hashable/Class.hs:526:5-46                          3602           0    0.0    0.0     0.0    0.0
+           defaultLiftHashWithSalt          Data.Hashable.Class               Data/Hashable/Class.hs:283:1-60                          3603           0    0.0    0.0     0.0    0.0
+            liftHashWithSalt2               Data.Hashable.Class               Data/Hashable/Class.hs:529:5-58                          3604          14    0.0    0.0     0.0    0.0
+            hashWithSalt                    Data.Hashable.Class               Data/Hashable/Class.hs:379:5-38                          3609           0    0.0    0.0     0.0    0.0
+             defaultHashWithSalt            Data.Hashable.Class               Data/Hashable/Class.hs:290:1-50                          3610          14    0.0    0.0     0.0    0.0
+              combine                       Data.Hashable.Class               Data/Hashable/Class.hs:780:1-40                          3612          14    0.0    0.0     0.0    0.0
+              hash                          Data.Hashable.Class               Data/Hashable/Class.hs:378:5-19                          3611           0    0.0    0.0     0.0    0.0
+      primWordToElem                        Data.HashTable.Internal.IntArray  src/Data/HashTable/Internal/IntArray.hs:55:1-21          3617           0    0.0    0.0     0.0    0.0
+      readDelLoad                           Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:142:1-36                  3635           0    0.0    0.0     0.0    0.0
+       primitive                            Control.Monad.Primitive           Control/Monad/Primitive.hs:210:3-16                      3636          14    0.0    0.0     0.0    0.0
+        readByteArray#                      Data.Primitive.Types              Data/Primitive/Types.hs:285:27-126                       3637          14    0.0    0.0     0.0    0.0
+      readLoad                              Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:136:1-33                  3641           0    0.0    0.0     0.0    0.0
+       primitive                            Control.Monad.Primitive           Control/Monad/Primitive.hs:210:3-16                      3642          14    0.0    0.0     0.0    0.0
+        readByteArray#                      Data.Primitive.Types              Data/Primitive/Types.hs:285:27-126                       3643          14    0.0    0.0     0.0    0.0
+      writeArray                            Data.HashTable.Internal.Array     src/Data/HashTable/Internal/Array.hs:43:1-25             3650           0    0.0    0.0     0.0    0.0
+       primitive                            Control.Monad.Primitive           Control/Monad/Primitive.hs:210:3-16                      3651           0    0.0    0.0     0.0    0.0
+        marray#                             Data.Primitive.Array              Data/Primitive/Array.hs:104:5-11                         3652          28    0.0    0.0     0.0    0.0
+      writeDelLoad                          Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:145:1-38                  3638           0    0.0    0.0     0.0    0.0
+       primitive                            Control.Monad.Primitive           Control/Monad/Primitive.hs:210:3-16                      3639          14    0.0    0.0     0.0    0.0
+        writeByteArray#                     Data.Primitive.Types              Data/Primitive/Types.hs:285:130-196                      3640          14    0.0    0.0     0.0    0.0
+      writeLoad                             Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:139:1-35                  3644           0    0.0    0.0     0.0    0.0
+       primitive                            Control.Monad.Primitive           Control/Monad/Primitive.hs:210:3-16                      3645          14    0.0    0.0     0.0    0.0
+        writeByteArray#                     Data.Primitive.Types              Data/Primitive/Types.hs:285:130-196                      3646          14    0.0    0.0     0.0    0.0
+    fromWords.sortedWords                   DAFSA.Graph                       src/DAFSA/Graph.hs:91:13-37                              3204           1    0.3    0.1     0.3    0.1
+    newSizedReal                            Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:(208,1)-(217,34)          3168           1    0.0    0.0     0.0    0.0
+     newArray                               Data.HashTable.Internal.IntArray  src/Data/HashTable/Internal/IntArray.hs:(87,1)-(91,20)   3173           1    0.0    0.0     0.0    0.0
+      primitive                             Control.Monad.Primitive           Control/Monad/Primitive.hs:210:3-16                      3177           2    0.0    0.0     0.0    0.0
+       setByteArray#                        Data.Primitive.Types              Data/Primitive/Types.hs:273:208-406                      3178           1    0.0    0.0     0.0    0.0
+        internal                            Control.Monad.Primitive           Control/Monad/Primitive.hs:101:3-21                      3180           1    0.0    0.0     0.0    0.0
+        setByteArray#.n                     Data.Primitive.Types              Data/Primitive/Types.hs:273:281-304                      3179           1    0.0    0.0     0.0    0.0
+        shimmedSetWord8Array#               Data.Primitive.Types              Data/Primitive/Types.hs:257:1-148                        3181           1    0.0    0.0     0.0    0.0
+         shimmedSetWord8Array#.\            Data.Primitive.Types              Data/Primitive/Types.hs:257:57-147                       3185           1    0.0    0.0     0.0    0.0
+      newArray.sz                           Data.HashTable.Internal.IntArray  src/Data/HashTable/Internal/IntArray.hs:88:9-33          3174           1    0.0    0.0     0.0    0.0
+     newSizedReal.m'                        Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:(211,9)-(212,34)          3169           1    0.0    0.0     0.0    0.0
+     newArray                               Data.HashTable.Internal.Array     src/Data/HashTable/Internal/Array.hs:37:1-21             3188           0    0.0    0.0     0.0    0.0
+      primitive                             Control.Monad.Primitive           Control/Monad/Primitive.hs:210:3-16                      3189           0    0.0    0.0     0.0    0.0
+     newSizeRefs                            Data.HashTable.ST.Basic           src/Data/HashTable/ST/Basic.hs:(148,1)-(152,12)          3191           0    0.0    0.0     0.0    0.0
+      primitive                             Control.Monad.Primitive           Control/Monad/Primitive.hs:210:3-16                      3195           2    0.0    0.0     0.0    0.0
+       setByteArray#                        Data.Primitive.Types              Data/Primitive/Types.hs:273:208-406                      3196           1    0.0    0.0     0.0    0.0
+        internal                            Control.Monad.Primitive           Control/Monad/Primitive.hs:101:3-21                      3198           1    0.0    0.0     0.0    0.0
+        setByteArray#.n                     Data.Primitive.Types              Data/Primitive/Types.hs:273:281-304                      3197           1    0.0    0.0     0.0    0.0
+        shimmedSetWord8Array#               Data.Primitive.Types              Data/Primitive/Types.hs:257:1-148                        3199           1    0.0    0.0     0.0    0.0
+         shimmedSetWord8Array#.\            Data.Primitive.Types              Data/Primitive/Types.hs:257:57-147                       3203           1    0.0    0.0     0.0    0.0
+    nextBestPrime                           Data.HashTable.Internal.Utils     src/Data/HashTable/Internal/Utils.hs:(239,1)-(243,38)    3121           1    0.0    0.0     0.0    0.0
+     nextBestPrime.idx                      Data.HashTable.Internal.Utils     src/Data/HashTable/Internal/Utils.hs:242:5-36            3122           1    0.0    0.0     0.0    0.0
+      unId                                  Data.Vector.Fusion.Util           Data/Vector/Fusion/Util.hs:25:21-24                      3123           8    0.0    0.0     0.0    0.0
+      basicUnsafeIndexM                     Data.Vector                       Data/Vector.hs:290:3-62                                  3160           7    0.0    0.0     0.0    0.0
+       array#                               Data.Primitive.Array              Data/Primitive/Array.hs:91:5-10                          3161           7    0.0    0.0     0.0    0.0
+     nextBestPrime.xi                       Data.HashTable.Internal.Utils     src/Data/HashTable/Internal/Utils.hs:241:5-18            3162           1    0.0    0.0     0.0    0.0
+     nextBestPrime.yi                       Data.HashTable.Internal.Utils     src/Data/HashTable/Internal/Utils.hs:243:5-38            3164           1    0.0    0.0     0.0    0.0
+      basicUnsafeIndexM                     Data.Vector                       Data/Vector.hs:290:3-62                                  3166           1    0.0    0.0     0.0    0.0
+       array#                               Data.Primitive.Array              Data/Primitive/Array.hs:91:5-10                          3167           1    0.0    0.0     0.0    0.0
+      unId                                  Data.Vector.Fusion.Util           Data/Vector/Fusion/Util.hs:25:21-24                      3165           1    0.0    0.0     0.0    0.0
+    rootNode                                DAFSA.Graph                       src/DAFSA/Graph.hs:73:17-24                              3533           1    0.0    0.0     0.0    0.0
+    toFinalGraph                            DAFSA.Graph                       src/DAFSA/Graph.hs:(106,1)-(111,90)                      3660           1    0.8    1.0     1.3    2.4
+     toFinalGraph.m                         DAFSA.Graph                       src/DAFSA/Graph.hs:110:13-114                            3661           1    0.3    1.2     0.3    1.2
+      toFinalGraph.m.\                      DAFSA.Graph                       src/DAFSA/Graph.hs:110:45-89                             3662      644362    0.0    0.0     0.0    0.0
+     toFinalGraph.z                         DAFSA.Graph                       src/DAFSA/Graph.hs:109:13-110                            3669           1    0.1    0.2     0.2    0.2
+      toFinalGraph.z.\                      DAFSA.Graph                       src/DAFSA/Graph.hs:109:56-80                             3670      237725    0.0    0.0     0.1    0.0
+       ==                                   DAFSA.Graph                       src/DAFSA/Graph.hs:40:62-63                              3672      237725    0.0    0.0     0.0    0.0
+       nodeType                             DAFSA.Graph                       src/DAFSA/Graph.hs:51:9-16                               3671      237725    0.1    0.0     0.1    0.0
+    initialState                            DAFSA.Graph                       src/DAFSA/Graph.hs:(134,1)-(139,23)                      3118           0    0.0    0.0     0.0    0.0
+     initialState.\                         DAFSA.Graph                       src/DAFSA/Graph.hs:136:48-84                             3119           1    0.0    0.0     0.0    0.0
+      nodeId                                DAFSA.Graph                       src/DAFSA/Graph.hs:50:9-14                               3226           1    0.0    0.0     0.0    0.0
+  main.textWords                            Main                              app/Main.hs:9:9-59                                       3114           1    2.7    4.2     2.7    4.2

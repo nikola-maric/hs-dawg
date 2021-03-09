@@ -11,6 +11,6 @@ main = do
     print (graphContains "alexandriana" dafsa)
 
 slice :: Int -> Int -> [a] -> [a]
-slice from to xs = take (200 - 100 + 1) (drop 100 xs)
+slice from to xs = take (to - from + 1) (drop from xs)
 
 

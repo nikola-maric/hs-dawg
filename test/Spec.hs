@@ -8,7 +8,7 @@ import Hedgehog (MonadGen, property, Property, withTests, Gen)
 import DAFSA.Graph
 import Control.Monad (forM_, forM)
 import Control.Monad.ST (runST)
-import DAFSA.Id (newIDAllocator)
+import qualified Data.IntSet as IS
 
 main :: IO ()
 main = hspec $ do
@@ -39,6 +39,11 @@ main = hspec $ do
                     let prefixes = take 9 <$> words
                     let dafsa = fromWords words
                     forM_ prefixes (\s -> graphContains s dafsa === False)
+        -- describe "DAFSA structure" $ do
+        --         it "checking for predetrmined FST structure" $ example $ do
+        --             let words = ["mon", "thurs", "tues", "zon"]
+        --                 dafsa = fromWords words
+        --             pure (IS.toList (fgFinalStates dafsa)) === [3]
 
                     
 

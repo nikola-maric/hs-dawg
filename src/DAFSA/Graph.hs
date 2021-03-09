@@ -27,14 +27,18 @@ import qualified Data.IntSet as IS
 import Data.Foldable (find)
 import Control.Monad.Cont (filterM)
 import Control.Monad.Trans.Maybe (runMaybeT, MaybeT)
+import qualified Data.HashTable.Class    as HT
+import qualified Data.HashTable.ST.Basic as STH
+import Data.Hashable (Hashable (hashWithSalt))
 
 newtype ID = ID { getID :: Int } 
         deriving stock    (Read, Generic)
-        deriving newtype  (Eq, Ord, Enum, Bounded, Num, Real, Integral, NFData)
+        deriving newtype  (Eq, Ord, Enum, Bounded, Num, Real, Integral, NFData, Hashable)
 instance Show ID where
         show ID{..} = show getID
 
-data NodeType = Terminating | NonTerminating deriving (Eq, Ord, Read, Generic)
+data NodeType = Terminating | NonTerminating deriving stock (Eq, Ord, Read, Generic)
+instance Hashable NodeType
 instance Show NodeType where
         show Terminating = "T"
         show NonTerminating = "NT"
@@ -51,6 +55,12 @@ data GraphNode = GraphNode {
 instance NFData GraphNode
 instance Eq GraphNode where
         gn == gn' = totalEquivalence gn gn'
+
+data GraphNodeIdentifier = GraphNodeIdentifier !NodeType !(S.Set (Char, ID)) deriving Eq
+instance Hashable GraphNodeIdentifier where
+        hashWithSalt s (GraphNodeIdentifier _type _children) = s `hashWithSalt` _type `hashWithSalt` S.toAscList _children       
+
+
 instance Show GraphNode where
         show GraphNode{..} = "{(" <> show nodeId <> "-" <> show nodeType <> ")[" <> show nodeChildTransitions <> "][" <> show nodeLastChild <> "]}"
 
@@ -69,6 +79,9 @@ data FinalGraph = FinalGraph {
       fgFinalStates :: IntSet
 }
 
+graphNodeIdentifier :: GraphNode -> GraphNodeIdentifier
+graphNodeIdentifier GraphNode{..} = GraphNodeIdentifier nodeType nodeChildTransitions
+
 emptyGraph :: FinalGraph
 emptyGraph = runST $ initialState >>= toFinalGraph
 
@@ -77,17 +90,17 @@ fromWords :: [String] -> FinalGraph
 fromWords wrds = 
         let sortedWords = L.sort wrds
         in runST $ do
-        initialGraph <- initialState
-        register <- newSTRef (S.empty :: S.Set GraphNode)
-        for_ sortedWords $ \word -> do
-                !commonPrefix <- walkPrefix word initialGraph
-                let !currentSuffix = drop (length commonPrefix) word
-                !lastNode <- lastState commonPrefix initialGraph
-                whenM (nodeHasChildren lastNode) (replaceOrRegister register initialGraph lastNode >> pure ())
-                addSuffix initialGraph lastNode currentSuffix
-        rNode <- readSTRef (rootNode initialGraph)
-        replaceOrRegister register initialGraph rNode
-        toFinalGraph initialGraph
+                initialGraph <- initialState
+                register <- newSTRef =<< HT.new
+                for_ sortedWords $ \word -> do
+                        !commonPrefix <- walkPrefix word initialGraph
+                        let !currentSuffix = drop (length commonPrefix) word
+                        !lastNode <- lastState commonPrefix initialGraph
+                        whenM (nodeHasChildren lastNode) (replaceOrRegister register initialGraph lastNode >> pure ())
+                        addSuffix initialGraph lastNode currentSuffix
+                rNode <- readSTRef (rootNode initialGraph)
+                replaceOrRegister register initialGraph rNode
+                toFinalGraph initialGraph
 
 toFinalGraph :: Graph s -> ST s FinalGraph
 toFinalGraph Graph{..} = do
@@ -156,7 +169,7 @@ addSuffix g n (x : xs) = do
                         addSuffix g newNode xs
                 Just _id -> addSuffix g (fromJust (M.lookup _id _nodes)) xs
 
-replaceOrRegister :: STRef s (S.Set GraphNode) -> Graph s -> GraphNode -> ST s GraphNode
+replaceOrRegister :: STRef s (STH.HashTable s GraphNodeIdentifier GraphNode) -> Graph s -> GraphNode -> ST s GraphNode
 replaceOrRegister registry g n = do
         !lastChild <- getLastChild n g
         x <- case lastChild of
@@ -169,20 +182,21 @@ replaceOrRegister registry g n = do
         -- swapChildState g registry n c'
         
 
-swapChildState :: Graph s -> STRef s (S.Set GraphNode) -> GraphNode -> GraphNode -> ST s GraphNode
+swapChildState :: Graph s -> STRef s (STH.HashTable s GraphNodeIdentifier GraphNode) -> GraphNode -> GraphNode -> ST s GraphNode
 swapChildState g registry n childNode = do
         equivalentNode <- findEquivalentFrozenNode childNode registry
+        reg <- readSTRef registry
         -- traceM ("swapChildState : swapping : " <> show childNode <> ", parent is : " <> show n <> ", equivalentNode is " <> show equivalentNode)
         case equivalentNode of
                 Nothing -> do
                         -- traceM ("swapChildState : adding is " <> show childNode <> " to register ")
-                        modifySTRef' registry (S.insert childNode)
+                        HT.insert reg (graphNodeIdentifier childNode) childNode
                         pure n
                 Just n' -> do
                         -- traceM ("swapChildState : making " <> show (nodeChildTransitions n) <> " transition from node " <> show (nodeId n) <>" point to : " <> show n')
                         -- traceM ("swapChildState : deleting " <> show childNode <> " from graph")
                         let (oldTransition, newSet) = S.deleteFindMax (nodeChildTransitions n)
-                        _reg <- readSTRef registry
+                        -- _reg <- readSTRef registry
                         let changedParentNode = GraphNode {
                                 nodeId = nodeId n,
                                 nodeType = nodeType n,
@@ -191,31 +205,32 @@ swapChildState g registry n childNode = do
                             }
                         modifySTRef' (nodes g) (M.delete (nodeId childNode)) -- deleting child with equivalent state
                         modifySTRef' (nodes g) (M.insert (nodeId changedParentNode) changedParentNode) -- updating parent node in list of all nodes
-                        -- whenM (pure (S.member changedParentNode _reg)) (modifySTRef' registry (S.insert changedParentNode))
-                        -- unlessM (pure (S.null (nodeChildTransitions n))) (modifySTRef' (transitions g) (M.insert (nodeId n, S.findMax (nodeChildTransitions n)) (nodeId n')))
                         modifySTRef' (transitions g) (M.insert (nodeId changedParentNode, fst (fromJust (nodeLastChild changedParentNode))) (nodeId n'))
-                        -- _n <- readSTRef (nodes g)
-                        -- traceM ("swapChildState: nodes are now " <> show _n)
-                        -- _reg <- readSTRef registry
-                        -- traceM ("swapChildState: registry is now " <> show _reg)
                         pure changedParentNode
 
-findEquivalentFrozenNode :: GraphNode -> STRef s (S.Set GraphNode) -> ST s (Maybe GraphNode)
+findEquivalentFrozenNode :: GraphNode -> STRef s (STH.HashTable s GraphNodeIdentifier GraphNode) -> ST s (Maybe GraphNode)
 findEquivalentFrozenNode n registry = do
-        -- traceM ("findEquivalentFrozenNode of " <> show n )
+        -- reg <- readSTRef registry
+        -- traceM ("findEquivalentFrozenNode of " <> show n <> ", registry is " <> show reg)
+        -- let index = S.lookupIndex n reg
+        -- case index of
+        --   Nothing -> do
+        --         modifySTRef' registry (S.insert n)
+        --         trace "not found!" pure Nothing
+        --   Just i -> trace "found!" pure (Just (S.elemAt i reg))
         reg <- readSTRef registry
-        let index = S.lookupIndex n reg
-        case index of
+        same <- HT.lookup reg (graphNodeIdentifier n)
+        case same of
           Nothing -> do
-                modifySTRef' registry (S.insert n)
+                -- modifySTRef' registry (S.insert n)
                 pure Nothing
-          Just i -> pure (Just (S.elemAt i reg))
+          Just x -> pure (Just x)
 
 totalEquivalence :: GraphNode -> GraphNode -> Bool
 totalEquivalence n n'= equivalentState n n' && childrenEquivalence n n'
 
 equivalentState :: GraphNode -> GraphNode -> Bool
-equivalentState n n' = nodeId n /= nodeId n' && nodeType n == nodeType n'
+equivalentState n n' = nodeType n == nodeType n'
 
 childrenEquivalence :: GraphNode -> GraphNode -> Bool
 childrenEquivalence n n' = do

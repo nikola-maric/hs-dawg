@@ -3,12 +3,12 @@
 
 module DAFSA.Id (
   -- * State IDs
-  ID(..),
+  -- ID(..),
   -- * Allocating fresh IDs
-  IDAllocator(..),
-  newIDAllocator,
-  freshID,
-  deleteID
+  -- IDAllocator(..),
+  -- newIDAllocator,
+  -- freshID,
+  -- deleteID
 ) where
 
 import GHC.Generics
@@ -23,26 +23,26 @@ import qualified Data.IntSet as S
 import Control.Monad.ST.Strict
 import Data.STRef.Strict
 
-newtype ID = ID { getID :: Int }
-           deriving stock    (Show, Read, Generic)
-           deriving newtype  (Eq, Ord, Enum, Bounded, Num, Real, Integral, Hashable)
-           deriving anyclass (NFData)
+-- newtype ID = ID { getID :: Int }
+--            deriving stock    (Show, Read, Generic)
+--            deriving newtype  (Eq, Ord, Enum, Bounded, Num, Real, Integral, Hashable)
+--            deriving anyclass (NFData)
 
-data IDAllocator s = IDAllocator { nextID   :: !(STRef s ID)
-                                 , freeList :: !(STRef s IntSet) }
-                   deriving (Eq, Generic, NFData)
+-- data IDAllocator s = IDAllocator { nextID   :: !(STRef s ID)
+--                                  , freeList :: !(STRef s IntSet) }
+--                    deriving (Eq, Generic, NFData)
 
-newIDAllocator :: ST s (IDAllocator s)
-newIDAllocator = do
-  nextID   <- newSTRef 0
-  freeList <- newSTRef S.empty
-  pure IDAllocator{..}
+-- newIDAllocator :: ST s (IDAllocator s)
+-- newIDAllocator = do
+--   nextID   <- newSTRef 0
+--   freeList <- newSTRef S.empty
+--   pure IDAllocator{..}
 
-freshID :: IDAllocator s -> ST s ID
-freshID IDAllocator{..} =
-  readSTRef freeList >>= (\case
-    Just (fresh, freeList') -> ID fresh <$ writeSTRef freeList freeList'
-    Nothing                 -> readSTRef nextID <* modifySTRef' nextID (+1)) . S.minView
+-- freshID :: IDAllocator s -> ST s ID
+-- freshID IDAllocator{..} =
+--   readSTRef freeList >>= (\case
+--     Just (fresh, freeList') -> ID fresh <$ writeSTRef freeList freeList'
+--     Nothing                 -> readSTRef nextID <* modifySTRef' nextID (+1)) . S.minView
 
-deleteID :: IDAllocator s -> ID -> ST s ()
-deleteID IDAllocator{..} = modifySTRef' freeList . coerce S.insert
+-- deleteID :: IDAllocator s -> ID -> ST s ()
+-- deleteID IDAllocator{..} = modifySTRef' freeList . coerce S.insert

@@ -70,6 +70,7 @@ tests:
     - hedgehog
     - hspec-hedgehog
     - text
+    - containers
 
 benchmarks:
   hs-dawg-benchmark:

@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: b952e4514f0e09ad31df25779ba7017ccb1ca8a47ed045736e4e2aaf6baab013
+-- hash: 1805cf0489f80a393a0301314ffd4ea578c7043622bb00a4ddf2509154df5210
 
 name:           hs-dawg
 version:        0.1.0.0
@@ -73,6 +73,7 @@ test-suite hs-dawg-test
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
+    , containers
     , hedgehog
     , hs-dawg
     , hspec

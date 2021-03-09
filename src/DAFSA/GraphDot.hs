@@ -41,5 +41,6 @@ runExampleGraph :: IO ()
 runExampleGraph = do
     let !g = fromWords ["mon", "thurs", "tues", "zon"]
     -- let !g = fromWords [ "\NUL\1034845" , "\SOH\1034845\NUL" ]
+    -- let !g = fromWords ["nikola", "bakola", "dukola", "zontan", "siklama", "sikl"]
     let !dottedShow = showDot (toDotGraph g)
     writeFile "graph" dottedShow
