@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 1805cf0489f80a393a0301314ffd4ea578c7043622bb00a4ddf2509154df5210
+-- hash: 1b23039832b50bdc4f7591dfbe1cab1912ce2e7a94c6ed7300980979b16f623c
 
 name:           hs-dawg
 version:        0.1.0.0
@@ -29,9 +29,8 @@ library
   exposed-modules:
       DAFSA.Graph
       DAFSA.GraphDot
-      DAFSA.Id
-      DAFSA.Inspect
-      DAFSA.Node
+      DAFSA.Internal.GraphBuilder
+      DAFSA.MonadUtil
   other-modules:
       Paths_hs_dawg
   hs-source-dirs:
@@ -44,11 +43,7 @@ library
     , dotgen
     , hashable
     , hashtables
-    , mtl
     , text
-    , transformers
-    , unordered-containers
-    , vector
   default-language: Haskell2010
 
 executable hs-dawg-exe

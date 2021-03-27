@@ -25,11 +25,7 @@ dependencies:
 library:
   source-dirs: src
   dependencies:
-    - vector
-    - unordered-containers
     - text
-    - transformers
-    - mtl
     - containers
     - hashtables
     - hashable

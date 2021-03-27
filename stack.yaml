@@ -35,9 +35,10 @@ packages:
 # forks / in-progress versions pinned to a git hash. For example:
 #
 extra-deps:
-- location :
+- location:
   git: /Users/nikola/git_clones/text-set
   commit: ee8bf0ce907a89beee8fe5564ba4b1a34b1b639a
+  
 #
 # extra-deps:
 # - git: https://github.com/antalsz/text-set.git
