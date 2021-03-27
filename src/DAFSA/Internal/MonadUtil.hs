@@ -1,4 +1,4 @@
-module DAFSA.MonadUtil where
+module DAFSA.Internal.MonadUtil where
 
 import Data.Bool (bool)
 
@@ -9,7 +9,3 @@ whenM c t = ifM c t (pure ())
 ifM :: Monad m => m Bool -> m a -> m a -> m a
 ifM c t f = c >>= bool f t
 {-# INLINE ifM #-}
-
-unlessM :: Monad m => m Bool -> m () -> m ()
-unlessM c f = ifM c (pure ()) f
-{-# INLINE unlessM #-}

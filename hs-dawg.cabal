@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 1b23039832b50bdc4f7591dfbe1cab1912ce2e7a94c6ed7300980979b16f623c
+-- hash: fa23d67474cb0fe4c99b2de1d945c660a7b919173c5b3ab94052066a53d68327
 
 name:           hs-dawg
 version:        0.1.0.0
@@ -30,7 +30,7 @@ library
       DAFSA.Graph
       DAFSA.GraphDot
       DAFSA.Internal.GraphBuilder
-      DAFSA.MonadUtil
+      DAFSA.Internal.MonadUtil
   other-modules:
       Paths_hs_dawg
   hs-source-dirs:

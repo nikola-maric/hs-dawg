@@ -18,7 +18,7 @@ import Data.STRef (modifySTRef')
 import qualified Data.HashTable.Class    as HT
 import qualified Data.HashTable.ST.Basic as STH
 import Data.Hashable (Hashable (hashWithSalt))
-import DAFSA.MonadUtil ( whenM, ifM )
+import DAFSA.Internal.MonadUtil ( whenM, ifM )
 
 newtype ID = ID { getID :: Int } 
         deriving stock    (Read, Generic)
