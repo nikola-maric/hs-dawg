@@ -27,11 +27,9 @@ library:
   dependencies:
     - text
     - containers
-    - hashtables
     - hashable
     - deepseq
     - dotgen
-    - nothunks
     - unordered-containers
   ghc-options:
     - -Wall
@@ -47,9 +45,10 @@ executables:
     main:                Main.hs
     source-dirs:         app
     ghc-options:
+    - -O2
+    - -threaded
     - -rtsopts
     - -with-rtsopts=-N
-    - -O2
     dependencies:
     - hs-dawg
     - text-set

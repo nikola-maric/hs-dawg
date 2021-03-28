@@ -3,3 +3,8 @@
 *~
 *.o
 *.hi
+*.dump-simpl
+*.prof
+*.html
+*.hp
+*.svg

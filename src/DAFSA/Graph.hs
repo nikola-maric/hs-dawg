@@ -21,6 +21,7 @@ module DAFSA.Graph (Graph, fromWords, fromWordsAst, contains)  where
 
 import Control.DeepSeq (NFData, force)
 import qualified Data.Map.Strict as M
+
 import qualified Data.IntSet as IS
 import GHC.Generics (Generic)
 import Data.Bits (Bits(unsafeShiftL, (.|.), clearBit, setBit, testBit))
@@ -30,7 +31,8 @@ import DAFSA.Internal.GraphBuilder (GraphBuilder(..), NodeType(..), GraphNode(..
 import Data.STRef.Strict (readSTRef)
 import Data.Coerce (coerce)
 import qualified Data.List as L
-import Data.List (foldl')
+
+{-# SPECIALISE M.lookup :: Int -> M.Map Int Int -> Maybe Int #-}
 
 data Graph = Graph { graphTransitions :: !(M.Map Int Int), graphRootNode :: !Int } deriving stock (Eq, Show, Generic)
 
@@ -43,12 +45,15 @@ fromWordsAst :: [String] -> Graph
 fromWordsAst wrds = runST $ Builder.build wrds >>= toGraph
 
 contains :: String -> Graph -> Bool
-contains w g = maybe False (`testBit` 31) (foldl' (\nextId c -> handleTransition c nextId g) (Just (graphRootNode g)) w)
+contains w g = go w (Just (graphRootNode g)) where
+                go :: String -> Maybe Int -> Bool
+                go _ Nothing = False 
+                go [] (Just node) = testBit node 31
+                go (chr : chrs) (Just node) = go chrs (handleTransition g node chr)
+                --maybe False (`testBit` 31) (foldl' (handleTransition g) (Just (graphRootNode g)) w)
 
-handleTransition :: Char -> Maybe Int -> Graph -> Maybe Int
-handleTransition c currentId g = do
-    _id <- currentId
-    M.lookup (toTransition c _id) (graphTransitions g)
+handleTransition :: Graph -> Int -> Char -> Maybe Int
+handleTransition g currentId c = M.lookup (toTransition c currentId) (graphTransitions g)   
 {-# INLINABLE handleTransition #-}
 
 -- Storing character transition + termination info + nodeId in one 64-bit int
@@ -64,7 +69,7 @@ toGraph GraphBuilder{..} = do
     _nodes <- readSTRef nodes
     rootNodeId <- nodeId <$> readSTRef rootNode
     let !terminations = IS.fromList (coerce (fmap fst (filter (\(_id, n) -> nodeType n == Terminating) (M.assocs _nodes))) :: [Int])
-        !m = force (fmap (\((pId, chr), cId) -> (toTransition chr (packNodeId pId terminations), packNodeId cId terminations)) (M.assocs _transitions))
+        !m = force (fmap (\((chr, pId), cId) -> (toTransition chr (packNodeId pId terminations), packNodeId cId terminations)) (M.assocs _transitions))
     pure Graph { graphTransitions = M.fromList m, graphRootNode = packNodeId rootNodeId terminations}
 
 
