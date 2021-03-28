@@ -2,7 +2,8 @@
 {-# LANGUAGE BangPatterns #-}
 module DAFSA.GraphDot where
 
--- import DAFSA.Graph
+-- import qualified DAFSA.Internal.GraphBuilder as Builder
+-- import DAFSA.Internal.GraphBuilder (GraphBuilder(..))
 -- import Text.Dot ( attribute, edge, node, showDot, Dot, NodeId, userNode, userNodeId )
 -- import Data.Coerce (coerce)
 -- import qualified Data.Set as Set
@@ -11,20 +12,21 @@ module DAFSA.GraphDot where
 -- import Data.IntSet ( IntSet )
 -- import Data.Bool (bool)
 -- import qualified Data.Map.Strict as M
+-- import qualified Data.List as L
 
--- toDotGraph :: FinalGraph2 -> Dot (Set (Int, Int, Char))
--- toDotGraph g@FinalGraph2{..} = do
+-- toDotGraph :: GraphBuilder -> Dot (Set (Int, Int, Char))
+-- toDotGraph g@GraphBuilder{..} = do
 --     attribute ("rankdir", "LR")
 --     rootDotNode <- node [("label", show 0), shapeOf 0 fgFinalStates]
 --     let children = childNodesOf 0 g
 --         edges = Set.empty 
 --     childrenToDotGraph g 0 rootDotNode edges children
 
--- childNodesOf :: Int -> FinalGraph2 -> [(Char, Int)]
+-- childNodesOf :: Int -> GraphBuilder -> [(Char, Int)]
 -- childNodesOf parentId g = (\((_, chr), cId) -> (chr, cId)) <$> filter (\((_id, _), _) -> parentId == _id) (M.toList (fgTransitions g))
 
 
--- childrenToDotGraph :: FinalGraph2 -> Int -> NodeId -> Set (Int, Int, Char) -> [(Char, Int)] -> Dot (Set (Int, Int, Char)) 
+-- childrenToDotGraph :: GraphBuilder -> Int -> NodeId -> Set (Int, Int, Char) -> [(Char, Int)] -> Dot (Set (Int, Int, Char)) 
 -- childrenToDotGraph _ _ _ edges [] = return edges
 -- childrenToDotGraph g parentId parentDotNode edges ((transition, childId) : rest) = do
 --     userNode (userNodeId childId) [("label", show childId), shapeOf childId (fgFinalStates g)]
@@ -39,7 +41,7 @@ module DAFSA.GraphDot where
 
 -- runExampleGraph :: IO ()
 -- runExampleGraph = do
---     let !g = fromWords ["mon", "thurs", "tues", "zon"]
+--     let !g = runST (Builder.fromWords (L.sort ["mon", "thurs", "tues", "zon"]))
 --     -- let !g = fromWords [ "\NUL\1034845" , "\SOH\1034845\NUL" ]
 --     -- let !g = fromWords ["nikola", "bakola", "dukola", "zontan", "siklama", "sikl"]
 --     let !dottedShow = showDot (toDotGraph g)

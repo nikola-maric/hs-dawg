@@ -37,7 +37,8 @@ packages:
 extra-deps:
 - location:
   git: /Users/nikola/git_clones/text-set
-  commit: ee8bf0ce907a89beee8fe5564ba4b1a34b1b639a
+  commit: 15bc8bb58fd39dcee3bace25f094e75de0d81fee
+- nothunks-0.1.2@sha256:ec366664bb611ba8ce3a48aee626804039ea53517de7788b8705c76be0dcfa72,2235
   
 #
 # extra-deps:

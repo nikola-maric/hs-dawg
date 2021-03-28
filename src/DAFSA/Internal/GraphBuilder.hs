@@ -57,14 +57,14 @@ data GraphBuilder s = GraphBuilder {
                 maxId :: !(STRef s Int),
                 transitions :: !(STRef s (M.Map (ID, Char) ID)),
                 rootNode :: !(STRef s GraphNode)
-        } deriving (Eq, Generic)
+        } deriving stock (Eq, Generic)
 instance NFData (GraphBuilder s)
 
 graphNodeIdentifier :: GraphNode -> GraphNodeIdentifier
 graphNodeIdentifier GraphNode{..} = GraphNodeIdentifier nodeType nodeChildTransitions
 
-fromWords :: [String] -> ST s (GraphBuilder s)
-fromWords wrds = do
+build :: [String] -> ST s (GraphBuilder s)
+build wrds = do
         initialGraph <- initialState
         register <- newSTRef =<< HT.new
         for_ wrds $ \word -> do
@@ -82,39 +82,41 @@ childGraphNodes n = S.toAscList (nodeChildTransitions n)
 
 initialState :: ST s (GraphBuilder s)
 initialState = do
-        rootNode <- newSTRef (mkNewNode 0)
+        rootNode <- newSTRef (mkNewNode 1)
         nodes <- readSTRef rootNode >>= \rn -> newSTRef (M.singleton (nodeId rn) rn)
         transitions <- newSTRef mempty
-        maxId <- newSTRef 0
+        maxId <- newSTRef 1
         pure GraphBuilder {..}
 
 addSuffix :: GraphBuilder s -> GraphNode -> [Char] -> ST s (GraphBuilder s)
 addSuffix GraphBuilder{..} n [] = do
-        let terminationNode = GraphNode { nodeId = nodeId n, nodeType = Terminating, nodeChildTransitions = S.empty, nodeLastChild = Nothing  }
-        modifySTRef' nodes (M.insert (nodeId n) terminationNode)
+        let !_nodeId = nodeId n
+            terminationNode = GraphNode { nodeId = _nodeId, nodeType = Terminating, nodeChildTransitions = S.empty, nodeLastChild = Nothing  }
+        modifySTRef' nodes (M.insert _nodeId terminationNode)
         rNode <- readSTRef rootNode
-        whenM (pure (nodeId n == nodeId rNode)) $ do
+        whenM (pure (_nodeId == nodeId rNode)) $ do
                 modifySTRef' rootNode (const terminationNode {nodeChildTransitions = nodeChildTransitions n} )
         pure GraphBuilder { .. }
 addSuffix g n (x : xs) = do
         _transitions <- readSTRef (transitions g)
         _nodes <- readSTRef (nodes g)
         _rootNode <- readSTRef (rootNode g)
-        case M.lookup (nodeId n, x) _transitions of
+        let !_nodeId = nodeId n
+        case M.lookup (_nodeId, x) _transitions of
                 Nothing -> do
                         oldMaxId <- readSTRef (maxId g)
-                        let newId = oldMaxId + 1
-                            newNode = mkNewNode (coerce newId)
-                            changedLastNode = GraphNode {
-                                nodeId = nodeId n,
+                        let !newId = oldMaxId + 1
+                            !newNode = mkNewNode (coerce newId)
+                            !changedLastNode = GraphNode {
+                                nodeId = _nodeId,
                                 nodeType = nodeType n,
                                 nodeChildTransitions = S.insert (x, coerce newId) (nodeChildTransitions n),
                                 nodeLastChild = Just (x, coerce newId)
                             }
                         writeSTRef (maxId g) newId
-                        modifySTRef' (nodes g) (M.insert (nodeId n) changedLastNode . M.insert (coerce newId) newNode)
-                        modifySTRef' (transitions g) (M.insert (nodeId n, x) (coerce newId))
-                        whenM (pure (nodeId n == nodeId _rootNode)) (modifySTRef' (rootNode g) (\r@GraphNode{..} -> r { nodeChildTransitions = S.insert (x, coerce newId) nodeChildTransitions, nodeLastChild = Just (x, coerce newId) }))
+                        modifySTRef' (nodes g) (M.insert _nodeId changedLastNode . M.insert (coerce newId) newNode)
+                        modifySTRef' (transitions g) (M.insert (_nodeId, x) (coerce newId))
+                        whenM (pure (_nodeId == nodeId _rootNode)) (modifySTRef' (rootNode g) (\r@GraphNode{..} -> r { nodeChildTransitions = S.insert (x, coerce newId) nodeChildTransitions, nodeLastChild = Just (x, coerce newId) }))
                         addSuffix g newNode xs
                 Just _id -> addSuffix g (fromJust (M.lookup _id _nodes)) xs
 
@@ -130,21 +132,23 @@ swapChildState :: GraphBuilder s -> STRef s (STH.HashTable s GraphNodeIdentifier
 swapChildState g registry n childNode = do
         equivalentNode <- findEquivalentFrozenNode childNode registry
         reg <- readSTRef registry
+        let !_nodeId = nodeId n
         case equivalentNode of
                 Nothing -> do
                         HT.insert reg (graphNodeIdentifier childNode) childNode
                         pure n
                 Just n' -> do
                         let (oldTransition, newSet) = S.deleteFindMax (nodeChildTransitions n)
-                        let changedParentNode = GraphNode {
-                                nodeId = nodeId n,
+                            !_nodeId' = nodeId n'
+                        let !changedParentNode = GraphNode {
+                                nodeId = _nodeId,
                                 nodeType = nodeType n,
-                                nodeChildTransitions = S.insert (fst oldTransition, nodeId n') newSet,
-                                nodeLastChild = Just (fst oldTransition, nodeId n')
+                                nodeChildTransitions = S.insert (fst oldTransition, _nodeId') newSet,
+                                nodeLastChild = Just (fst oldTransition, _nodeId')
                             }
                         modifySTRef' (nodes g) (M.delete (nodeId childNode)) -- deleting child with equivalent state
                         modifySTRef' (nodes g) (M.insert (nodeId changedParentNode) changedParentNode) -- updating parent node in list of all nodes
-                        modifySTRef' (transitions g) (M.insert (nodeId changedParentNode, fst (fromJust (nodeLastChild changedParentNode))) (nodeId n'))
+                        modifySTRef' (transitions g) (M.insert (nodeId changedParentNode, fst (fromJust (nodeLastChild changedParentNode))) _nodeId')
                         pure changedParentNode
 
 findEquivalentFrozenNode :: GraphNode -> STRef s (STH.HashTable s GraphNodeIdentifier GraphNode) -> ST s (Maybe GraphNode)

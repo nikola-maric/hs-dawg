@@ -31,6 +31,8 @@ library:
     - hashable
     - deepseq
     - dotgen
+    - nothunks
+    - unordered-containers
   ghc-options:
     - -Wall
     - -Wcompat
@@ -45,12 +47,13 @@ executables:
     main:                Main.hs
     source-dirs:         app
     ghc-options:
-    - -threaded
     - -rtsopts
     - -with-rtsopts=-N
     - -O2
     dependencies:
     - hs-dawg
+    - text-set
+    - text
 
 tests:
   hs-dawg-test:
@@ -70,11 +73,20 @@ tests:
 
 benchmarks:
   hs-dawg-benchmark:
-    main:                Benchmark.hs
+    main:                Main.hs
     source-dirs:         benchmark
     dependencies:
     - hs-dawg
     - criterion
+    - text-set
+    - containers
+    - text
+  hs-dawg-benchmark-weigh:
+    main:                Main.hs
+    source-dirs:         benchmark_memory
+    dependencies:
+    - hs-dawg
+    - weigh
     - text-set
     - containers
     - text

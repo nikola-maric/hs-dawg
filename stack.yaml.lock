@@ -6,15 +6,22 @@
 packages:
 - completed:
     name: text-set
-    version: 0.1.0.0
+    version: 0.0.0.0
     git: /Users/nikola/git_clones/text-set
     pantry-tree:
-      size: 1540
-      sha256: 8bdf67fc22ad9bfcc604fa27a8748ce14006d53838d19ef9b751cdfffa844bb2
-    commit: ee8bf0ce907a89beee8fe5564ba4b1a34b1b639a
+      size: 1072
+      sha256: 910208c53be4bbf7b0bb632a1d5ab50a8728064130fb4b4746746b9c809bc04b
+    commit: 15bc8bb58fd39dcee3bace25f094e75de0d81fee
   original:
     git: /Users/nikola/git_clones/text-set
-    commit: ee8bf0ce907a89beee8fe5564ba4b1a34b1b639a
+    commit: 15bc8bb58fd39dcee3bace25f094e75de0d81fee
+- completed:
+    hackage: nothunks-0.1.2@sha256:ec366664bb611ba8ce3a48aee626804039ea53517de7788b8705c76be0dcfa72,2235
+    pantry-tree:
+      size: 342
+      sha256: 14422b7789f33fd838bfec9c1c7af152dc211c9633db22d310ac579e84e4afb3
+  original:
+    hackage: nothunks-0.1.2@sha256:ec366664bb611ba8ce3a48aee626804039ea53517de7788b8705c76be0dcfa72,2235
 snapshots:
 - completed:
     size: 563100

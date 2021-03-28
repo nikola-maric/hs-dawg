@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: fa23d67474cb0fe4c99b2de1d945c660a7b919173c5b3ab94052066a53d68327
+-- hash: 6a40e3f78e6df43919f4da17a0b8939443af875944d4ebb291a46b4e3f5dc7c2
 
 name:           hs-dawg
 version:        0.1.0.0
@@ -43,7 +43,9 @@ library
     , dotgen
     , hashable
     , hashtables
+    , nothunks
     , text
+    , unordered-containers
   default-language: Haskell2010
 
 executable hs-dawg-exe
@@ -52,10 +54,12 @@ executable hs-dawg-exe
       Paths_hs_dawg
   hs-source-dirs:
       app
-  ghc-options: -threaded -rtsopts -with-rtsopts=-N -O2
+  ghc-options: -rtsopts -with-rtsopts=-N -O2
   build-depends:
       base >=4.7 && <5
     , hs-dawg
+    , text
+    , text-set
   default-language: Haskell2010
 
 test-suite hs-dawg-test
@@ -78,7 +82,7 @@ test-suite hs-dawg-test
 
 benchmark hs-dawg-benchmark
   type: exitcode-stdio-1.0
-  main-is: Benchmark.hs
+  main-is: Main.hs
   other-modules:
       Paths_hs_dawg
   hs-source-dirs:
@@ -90,4 +94,20 @@ benchmark hs-dawg-benchmark
     , hs-dawg
     , text
     , text-set
+  default-language: Haskell2010
+
+benchmark hs-dawg-benchmark-weigh
+  type: exitcode-stdio-1.0
+  main-is: Main.hs
+  other-modules:
+      Paths_hs_dawg
+  hs-source-dirs:
+      benchmark_memory
+  build-depends:
+      base >=4.7 && <5
+    , containers
+    , hs-dawg
+    , text
+    , text-set
+    , weigh
   default-language: Haskell2010
