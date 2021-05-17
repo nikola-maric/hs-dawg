@@ -6,7 +6,7 @@ Also, some parts of code take inspiration from https://github.com/antalsz/text-s
 
 ### Important note
 
-Build just for fun, see benchmark results at the end.
+Built just for fun, see benchmark results at the end.
 
 ### Implementation bits
 
@@ -83,7 +83,7 @@ Construction Benchmark
   ```
 Lot more GCs than TextSet, lot more allocations, but in the end less maximum memory in use by the RTS. Agan, Data.Set laughs and continues to drink its beer.
 
-There is simplifer output in this repo for `Graph` module in [link](https://github.com/nikola-maric/hs-dawg/src/DAFSA/Graph.dump-simpl) and I suspect it could be made faster if I reduce number of packing/unpacking in `contains` method, but when I tried I didnt get anywhere.
+There is simplifer output in this repo for `Graph` module in [link](https://github.com/nikola-maric/hs-dawg/blob/master/src/DAFSA/Graph.dump-simpl) and I suspect it could be made faster if I reduce number of packing/unpacking in `contains` method, but when I tried I didnt get anywhere.
 
 From memory side, most of allocations happen in `addNodeToGraph`/`replaceOrRegister`/`swapChildState`. Im including ouptuts of running app with `stack --profile run hs-dawg-exe --rts-options -p` and also output of [profiteur tool](https://hackage.haskell.org/package/profiteur)
 
