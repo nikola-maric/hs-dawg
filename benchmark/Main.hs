@@ -16,19 +16,19 @@ import Text.Set (TextSet)
 main :: IO ()
 main = 
     defaultMain [
-        env setupEnvConstruct $ \ ~(_words, _wordsText) -> bgroup "construction" [
-              bench "Construction 10.000 hs-dawg"  $ whnf DAFSA.fromWordsAst _words,
-              bench "Construction 10.000 Set"  $ whnf S.fromAscList _words--,
-              --bench "Construction 10.000 TextSet"  $ whnf TS.fromAsc _wordsText
-            ],
+        -- env setupEnvConstruct $ \ ~(_words, _wordsText) -> bgroup "construction" [
+        --       bench "Construction 10.000 hs-dawg"  $ nf DAFSA.fromWordsAst _words,
+        --       bench "Construction 10.000 Set"  $ nf S.fromAscList _words,
+        --       bench "Construction 10.000 TextSet"  $ whnf TS.fromAsc _wordsText
+        --     ],
         env setupEnvLookup $ \ ~(graph) -> bgroup "lookup hs-dawg" [
-            bench "10.000"  $ whnf (DAFSA.contains "alexandriana") graph
+            bench "10.000"  $ nf (DAFSA.contains "alexandriana") graph
             ],
         env setupEnvLookupSet $ \ ~m -> bgroup "lookup Set" [
-            bench "10.000"  $ whnf (S.member "alexandriana") m
+            bench "10.000"  $ nf (S.member "alexandriana") m
             ],
         env setupEnvLookupTextSet $ \ ~(textSet, textToSearch) -> bgroup "lookup TextSet" [
-            bench "10.000"  $ whnf (TS.member textToSearch) textSet
+            bench "10.000"  $ nf (TS.member textToSearch) textSet
             ]
     ]
 

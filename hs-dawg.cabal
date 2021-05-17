@@ -4,16 +4,16 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 18a4480c369399bb81219a2d842cd09c79965053ad46cc18d62ea2207d4d5988
+-- hash: c47c6c630cd429a7e265e7e26fbc47842e8dd9b83601bd1326eac3db1c6557bd
 
 name:           hs-dawg
 version:        0.1.0.0
 description:    Please see the README on GitHub at <https://github.com/githubuser/hs-dawg#readme>
-homepage:       https://github.com/githubuser/hs-dawg#readme
-bug-reports:    https://github.com/githubuser/hs-dawg/issues
-author:         Author name here
-maintainer:     example@example.com
-copyright:      2020 Author name here
+homepage:       https://github.com/nikola-maric/hs-dawg#readme
+bug-reports:    https://github.com/nikola-maric/hs-dawg/issues
+author:         Nikola Marić
+maintainer:     nkl.maric@gmail.com
+copyright:      2021 Nikola Marić
 license:        BSD3
 license-file:   LICENSE
 build-type:     Simple
@@ -23,7 +23,7 @@ extra-source-files:
 
 source-repository head
   type: git
-  location: https://github.com/githubuser/hs-dawg
+  location: https://github.com/nikola-maric/hs-dawg
 
 library
   exposed-modules:

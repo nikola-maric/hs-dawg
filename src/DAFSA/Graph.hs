@@ -7,16 +7,6 @@
 {-# LANGUAGE MagicHash #-}
 {-# LANGUAGE DeriveAnyClass #-}
 
-{-# OPTIONS_GHC
-    -ddump-simpl
-    -dsuppress-idinfo
-    -dsuppress-coercions
-    -dsuppress-type-applications
-    -dsuppress-uniques
-    -dsuppress-module-prefixes
-    -ddump-to-file
-#-}
-
 module DAFSA.Graph (Graph, fromWords, fromWordsAst, contains)  where
 
 import Control.DeepSeq (NFData, force)
@@ -31,8 +21,6 @@ import DAFSA.Internal.GraphBuilder (GraphBuilder(..), NodeType(..), GraphNode(..
 import Data.STRef.Strict (readSTRef)
 import Data.Coerce (coerce)
 import qualified Data.List as L
-
-{-# SPECIALISE M.lookup :: Int -> M.Map Int Int -> Maybe Int #-}
 
 data Graph = Graph { graphTransitions :: !(M.Map Int Int), graphRootNode :: !Int } deriving stock (Eq, Show, Generic)
 
@@ -50,7 +38,6 @@ contains w g = go w (Just (graphRootNode g)) where
                 go _ Nothing = False 
                 go [] (Just node) = testBit node 31
                 go (chr : chrs) (Just node) = go chrs (handleTransition g node chr)
-                --maybe False (`testBit` 31) (foldl' (handleTransition g) (Just (graphRootNode g)) w)
 
 handleTransition :: Graph -> Int -> Char -> Maybe Int
 handleTransition g currentId c = M.lookup (toTransition c currentId) (graphTransitions g)   
@@ -60,7 +47,7 @@ handleTransition g currentId c = M.lookup (toTransition c currentId) (graphTrans
 -- |_________ chr _________|_termination bit_|_______ id _________|
 --          32 bits              1 bit              31 bits
 toTransition :: Char -> Int -> Int
-toTransition chr nodeId = {-# SCC "toTransition" #-} unsafeShiftL (fromEnum chr) 32 .|. nodeId
+toTransition chr nodeId = unsafeShiftL (fromEnum chr) 32 .|. nodeId
 {-# INLINABLE toTransition #-}
 
 toGraph :: GraphBuilder s -> ST s Graph

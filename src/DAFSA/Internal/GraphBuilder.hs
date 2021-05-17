@@ -20,9 +20,6 @@ import Data.Hashable (Hashable (hashWithSalt))
 import DAFSA.Internal.MonadUtil ( whenM, ifM )
 import Data.Functor ((<&>), ($>))
 
--- {-# SPECIALIZE INLINE M.insert :: ID -> GraphNode -> M.Map ID GraphNode -> M.Map ID GraphNode #-}
--- {-# SPECIALIZE INLINE M.insert :: (ID, Char) -> ID -> M.Map (ID, Char) ID -> M.Map (ID, Char) ID #-}
-
 newtype ID = ID { getID :: Int } 
         deriving stock    (Read, Generic)
         deriving newtype  (Eq, Ord, Enum, Bounded, Num, Real, Integral, NFData, Hashable)
@@ -56,7 +53,6 @@ instance Hashable GraphNodeIdentifier where
 instance Show GraphNode where
         show GraphNode{..} = "{(" <> show nodeId <> "-" <> show nodeType <> ")[" <> show nodeChildTransitions <> "][" <> show nodeLastChild <> "]}"
 
-
 data GraphBuilder s = GraphBuilder { 
                 nodes :: !(STRef s (M.Map ID GraphNode)),
                 maxId :: !(STRef s Int),
@@ -71,8 +67,7 @@ graphNodeIdentifier GraphNode{..} = GraphNodeIdentifier nodeType nodeChildTransi
 build :: [String] -> ST s (GraphBuilder s)
 build wrds = do
         initialGraph <- initialState
-        -- let uniqueSymbols = nubOrd (concat wrds)
-        register <- newSTRef HM.empty --HT.newSized (length uniqueSymbols)
+        register <- newSTRef HM.empty
         for_ wrds $ \word -> do
                 !commonPrefix <- walkPrefix word initialGraph
                 let !currentSuffix = drop (length commonPrefix) word
@@ -119,7 +114,7 @@ addNodeToGraph g currentNode chrToAdd restOfChrs = do
         let !_nodeId = nodeId currentNode
             !newId = coerce (oldMaxId + 1) :: ID
             !newNode = mkNewNode newId
-            !newTransition = makeStrict (chrToAdd, newId)
+            !newTransition = (chrToAdd, newId)
             !changedLastNode = GraphNode {
                         nodeId = _nodeId,
                         nodeType = nodeType currentNode,
@@ -129,35 +124,28 @@ addNodeToGraph g currentNode chrToAdd restOfChrs = do
         {-# SCC "addNodeToGraph1" #-} writeSTRef (maxId g) (coerce newId)
         {-# SCC "addNodeToGraph2" #-} modifySTRef' (nodes g) (M.insert _nodeId changedLastNode . M.insert newId newNode)
         {-# SCC "addNodeToGraph3" #-} modifySTRef' (transitions g) (M.insert (chrToAdd, _nodeId) newId)
-        {-# SCC "addNodeToGraph4" #-} whenM (pure (_nodeId == nodeId _rootNode)) (modifySTRef' (rootNode g) (\r@GraphNode{..} -> r { nodeChildTransitions = S.insert newTransition nodeChildTransitions, nodeLastChild = Just newTransition }))
+        {-# SCC "addNodeToGraph4" #-} whenM (pure (_nodeId == nodeId _rootNode)) (writeSTRef (rootNode g) changedLastNode)
         addSuffix g newNode restOfChrs
 
 replaceOrRegister :: STRef s (HM.HashMap GraphNodeIdentifier GraphNode) -> GraphBuilder s -> GraphNode -> ST s GraphNode
 replaceOrRegister registry g n = do
         !lastChild <- getLastChild n g
         x <- case lastChild of
-                        Nothing -> pure n
-                        Just child -> replaceOrRegister registry g child
+                Nothing -> pure n
+                Just child -> replaceOrRegister registry g child
         ifM (pure (nodeId x /= nodeId n)) (swapChildState g registry n x) (pure x)       
 
 swapChildState :: GraphBuilder s -> STRef s (HM.HashMap GraphNodeIdentifier GraphNode) -> GraphNode -> GraphNode -> ST s GraphNode
 swapChildState g registry n childNode = do
-        -- reg <- readSTRef registry
         equivalentNode <- findEquivalentFrozenNode childNode registry
         let !_nodeId = nodeId n
         case equivalentNode of
-                Nothing -> do
-                        modifySTRef' registry (HM.insert (graphNodeIdentifier childNode) childNode) $> n
+                Nothing -> modifySTRef' registry (HM.insert (graphNodeIdentifier childNode) childNode) $> n
                 Just n' -> do
                         let (oldMaxTransition, newSet) = S.deleteFindMax (nodeChildTransitions n)
                             !_nodeId' = nodeId n'
-                            !newTransition = makeStrict (fst oldMaxTransition, _nodeId')
-                        let !changedParentNode = GraphNode {
-                                nodeId = _nodeId,
-                                nodeType = nodeType n,
-                                nodeChildTransitions = S.insert newTransition newSet,
-                                nodeLastChild = Just newTransition
-                            }
+                            !newTransition = (fst oldMaxTransition, _nodeId')
+                            !changedParentNode = GraphNode { nodeId = _nodeId, nodeType = nodeType n, nodeChildTransitions = S.insert newTransition newSet, nodeLastChild = Just newTransition }
                         {-# SCC "swapChildState2" #-} modifySTRef' (nodes g) (M.delete (nodeId childNode)) -- deleting child with equivalent state
                         {-# SCC "swapChildState3" #-} modifySTRef' (nodes g) (M.insert (nodeId changedParentNode) changedParentNode) -- updating parent node in list of all nodes
                         {-# SCC "swapChildState4" #-} modifySTRef' (transitions g) (M.insert (fst newTransition, _nodeId) _nodeId')
@@ -204,12 +192,7 @@ walkPrefix xs g = do
                         Just newId -> go xs' graph newId (acc ++ [(newId, x)])
 
 mkNewNode :: ID -> GraphNode
-mkNewNode _id = GraphNode {
-             nodeId = _id,
-             nodeType = NonTerminating,
-             nodeChildTransitions = S.empty,
-             nodeLastChild = Nothing
-        }
+mkNewNode _id = GraphNode { nodeId = _id, nodeType = NonTerminating, nodeChildTransitions = S.empty, nodeLastChild = Nothing }
 
 mkNewTerminatingNode :: ID -> GraphNode
 mkNewTerminatingNode _id = let g = mkNewNode _id in g { nodeType = Terminating }
@@ -223,6 +206,3 @@ getLastChild n GraphBuilder{..} = case nodeLastChild n of
                                         Just (_, _id) -> do
                                                 _nodes <- readSTRef nodes
                                                 pure (M.lookup _id _nodes)
-
-makeStrict :: (a, b) -> (a, b)
-makeStrict (a, b) = seq a (seq b (a, b))
