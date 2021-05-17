@@ -1,0 +1,716 @@
+
+==================== Tidy Core ====================
+2021-05-17 13:51:13.049514 UTC
+
+Result size of Tidy Core
+  = {terms: 1,015, types: 1,512, coercions: 298, joins: 1/4}
+
+-- RHS size: {terms: 11, types: 9, coercions: 0, joins: 0/0}
+$WGraph :: Map Int Int -> Int -> Graph
+$WGraph
+  = \ (dt :: Map Int Int) (dt :: Int) ->
+      case dt of dt { __DEFAULT -> case dt of { I# dt -> Graph dt dt } }
+
+Rec {
+-- RHS size: {terms: 17, types: 24, coercions: 0, joins: 0/0}
+fromWords_go :: [(Int, Int)] -> ()
+fromWords_go
+  = \ (ds :: [(Int, Int)]) ->
+      case ds of {
+        [] -> ();
+        : x xs ->
+          case x of { (x1, y) ->
+          case x1 of { I# ipv -> case y of { I# ipv1 -> fromWords_go xs } }
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+$fShowGraph2 :: Int
+$fShowGraph2 = I# 0#
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+$fShowGraph7 :: Addr#
+$fShowGraph7 = "Graph {"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+$fShowGraph6 :: [Char]
+$fShowGraph6 = unpackCString# $fShowGraph7
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+$fShowGraph5 :: Addr#
+$fShowGraph5 = "graphTransitions = "#
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+$fShowGraph4 :: Addr#
+$fShowGraph4 = "graphRootNode = "#
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+$fShowGraph3 :: Addr#
+$fShowGraph3 = "}"#
+
+-- RHS size: {terms: 61, types: 38, coercions: 0, joins: 0/1}
+$w$cshowsPrec :: Int# -> Map Int Int -> Int# -> ShowS
+$w$cshowsPrec
+  = \ (ww :: Int#)
+      (ww1
+         :: Map Int Int
+         Unf=OtherCon [])
+      (ww2 :: Int#) ->
+      let {
+        f :: String -> String
+        f = $w$cshowsPrec $fShowInt $fShowInt 0# ww1 } in
+      case >=# ww 11# of {
+        __DEFAULT ->
+          \ (x :: String) ->
+            ++
+              $fShowGraph6
+              (unpackAppendCString#
+                 $fShowGraph5
+                 (f (++
+                       showCommaSpace1
+                       (unpackAppendCString#
+                          $fShowGraph4
+                          (case $wshowSignedInt 0# ww2 (unpackAppendCString# $fShowGraph3 x)
+                           of
+                           { (# ww5, ww6 #) ->
+                           : ww5 ww6
+                           })))));
+        1# ->
+          \ (x :: String) ->
+            : $fShow(,)4
+              (++
+                 $fShowGraph6
+                 (unpackAppendCString#
+                    $fShowGraph5
+                    (f (++
+                          showCommaSpace1
+                          (unpackAppendCString#
+                             $fShowGraph4
+                             (case $wshowSignedInt
+                                     0# ww2 (unpackAppendCString# $fShowGraph3 (: $fShow(,)2 x))
+                              of
+                              { (# ww5, ww6 #) ->
+                              : ww5 ww6
+                              }))))))
+      }
+
+-- RHS size: {terms: 12, types: 9, coercions: 0, joins: 0/0}
+$fShowGraph_$cshowsPrec :: Int -> Graph -> ShowS
+$fShowGraph_$cshowsPrec
+  = \ (w :: Int) (w1 :: Graph) ->
+      case w of { I# ww1 ->
+      case w1 of { Graph ww3 ww4 -> $w$cshowsPrec ww1 ww3 ww4 }
+      }
+
+-- RHS size: {terms: 9, types: 7, coercions: 0, joins: 0/0}
+$fShowGraph_$cshow :: Graph -> String
+$fShowGraph_$cshow
+  = \ (x :: Graph) ->
+      case x of { Graph ww1 ww2 -> $w$cshowsPrec 0# ww1 ww2 [] }
+
+-- RHS size: {terms: 8, types: 6, coercions: 0, joins: 0/0}
+$fShowGraph1 :: Graph -> ShowS
+$fShowGraph1
+  = \ (w :: Graph) ->
+      case w of { Graph ww1 ww2 -> $w$cshowsPrec 0# ww1 ww2 }
+
+-- RHS size: {terms: 6, types: 4, coercions: 0, joins: 0/0}
+$fShowGraph_$cshowList :: [Graph] -> ShowS
+$fShowGraph_$cshowList
+  = \ (ls :: [Graph]) (s :: String) -> showList__ $fShowGraph1 ls s
+
+-- RHS size: {terms: 4, types: 1, coercions: 0, joins: 0/0}
+$fShowGraph :: Show Graph
+$fShowGraph
+  = C:Show
+      $fShowGraph_$cshowsPrec $fShowGraph_$cshow $fShowGraph_$cshowList
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+$tc'Graph3 :: Addr#
+$tc'Graph3 = "'Graph"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+$tc'Graph2 :: TrName
+$tc'Graph2 = TrNameS $tc'Graph3
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+$tcGraph2 :: Addr#
+$tcGraph2 = "Graph"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+$tcGraph1 :: TrName
+$tcGraph1 = TrNameS $tcGraph2
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep :: KindRep
+$krep = KindRepTyConApp $tcInt []
+
+-- RHS size: {terms: 3, types: 2, coercions: 0, joins: 0/0}
+$krep1 :: [KindRep]
+$krep1 = : $krep []
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep2 :: [KindRep]
+$krep2 = : $krep $krep1
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep3 :: KindRep
+$krep3 = KindRepTyConApp $tcMap $krep2
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+$trModule2 :: Addr#
+$trModule2 = "DAFSA.Graph"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+$trModule1 :: TrName
+$trModule1 = TrNameS $trModule2
+
+-- RHS size: {terms: 1, types: 0, coercions: 0, joins: 0/0}
+$trModule4 :: Addr#
+$trModule4 = "hs-dawg-0.1.0.0-AKB0GdN1pfYHQblIz7ZHjU"#
+
+-- RHS size: {terms: 2, types: 0, coercions: 0, joins: 0/0}
+$trModule3 :: TrName
+$trModule3 = TrNameS $trModule4
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$trModule :: Module
+$trModule = Module $trModule3 $trModule1
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+$tcGraph :: TyCon
+$tcGraph
+  = TyCon
+      1275500557749437569##
+      15517338774698256724##
+      $trModule
+      $tcGraph1
+      0#
+      krep$*
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$krep4 :: KindRep
+$krep4 = KindRepTyConApp $tcGraph []
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$krep5 :: KindRep
+$krep5 = KindRepFun $krep $krep4
+
+-- RHS size: {terms: 3, types: 0, coercions: 0, joins: 0/0}
+$tc'Graph1 :: KindRep
+$tc'Graph1 = KindRepFun $krep3 $krep5
+
+-- RHS size: {terms: 7, types: 0, coercions: 0, joins: 0/0}
+$tc'Graph :: TyCon
+$tc'Graph
+  = TyCon
+      13446792256655537374##
+      5295318802107691648##
+      $trModule
+      $tc'Graph2
+      0#
+      $tc'Graph1
+
+-- RHS size: {terms: 5, types: 6, coercions: 0, joins: 0/0}
+graphTransitions :: Graph -> Map Int Int
+graphTransitions
+  = \ (ds :: Graph) -> case ds of { Graph ds1 dt -> ds1 }
+
+-- RHS size: {terms: 6, types: 6, coercions: 0, joins: 0/0}
+graphRootNode :: Graph -> Int
+graphRootNode
+  = \ (ds :: Graph) -> case ds of { Graph ds1 dt -> I# dt }
+
+-- RHS size: {terms: 3, types: 2, coercions: 0, joins: 0/0}
+lvl :: Map Int Int -> Map Int Int -> Bool
+lvl = $fEqMap_$c== $fEqInt $fEqInt
+
+-- RHS size: {terms: 19, types: 14, coercions: 0, joins: 0/0}
+$fEqGraph_$c== :: Graph -> Graph -> Bool
+$fEqGraph_$c==
+  = \ (w :: Graph) (w1 :: Graph) ->
+      case w of { Graph ww1 ww2 ->
+      case w1 of { Graph ww4 ww5 ->
+      case lvl ww1 ww4 of {
+        False -> False;
+        True -> tagToEnum# (==# ww2 ww5)
+      }
+      }
+      }
+
+-- RHS size: {terms: 23, types: 14, coercions: 0, joins: 0/0}
+$fEqGraph_$c/= :: Graph -> Graph -> Bool
+$fEqGraph_$c/=
+  = \ (eta :: Graph) (eta1 :: Graph) ->
+      case eta of { Graph a1 dt ->
+      case eta1 of { Graph b1 dt1 ->
+      case lvl a1 b1 of {
+        False -> True;
+        True ->
+          case ==# dt dt1 of {
+            __DEFAULT -> True;
+            1# -> False
+          }
+      }
+      }
+      }
+
+-- RHS size: {terms: 3, types: 1, coercions: 0, joins: 0/0}
+$fEqGraph :: Eq Graph
+$fEqGraph = C:Eq $fEqGraph_$c== $fEqGraph_$c/=
+
+-- RHS size: {terms: 5, types: 3, coercions: 0, joins: 0/0}
+$fNFDataGraph1 :: Int -> ()
+$fNFDataGraph1 = \ (ds :: Int) -> case ds of { I# ipv -> () }
+
+-- RHS size: {terms: 8, types: 8, coercions: 6, joins: 0/0}
+$fNFDataGraph_$crnf :: Graph -> ()
+$fNFDataGraph_$crnf
+  = \ (x :: Graph) ->
+      case x of { Graph g1 dt ->
+      $fNFDataMap_$crnf
+        ($fNFDataGraph1 `cast` <Co:3>) ($fNFDataGraph1 `cast` <Co:3>) g1
+      }
+
+-- RHS size: {terms: 1, types: 0, coercions: 3, joins: 0/0}
+$fNFDataGraph :: NFData Graph
+$fNFDataGraph = $fNFDataGraph_$crnf `cast` <Co:3>
+
+-- RHS size: {terms: 9, types: 39, coercions: 91, joins: 0/0}
+$fGenericGraph1
+  :: forall x.
+     Graph
+     -> M1
+          C
+          ('MetaCons "Graph" 'PrefixI 'True)
+          (M1
+             S
+             ('MetaSel
+                ('Just "graphTransitions")
+                'NoSourceUnpackedness
+                'SourceStrict
+                'DecidedStrict)
+             (K1 R (Map Int Int))
+           :*: M1
+                 S
+                 ('MetaSel
+                    ('Just "graphRootNode")
+                    'NoSourceUnpackedness
+                    'SourceStrict
+                    'DecidedUnpack)
+                 (K1 R Int))
+          x
+$fGenericGraph1
+  = \ (@ x) (x1 :: Graph) ->
+      case x1 of { Graph g1 dt ->
+      (:*: (g1 `cast` <Co:27>) ((I# dt) `cast` <Co:23>)) `cast` <Co:41>
+      }
+
+-- RHS size: {terms: 8, types: 69, coercions: 137, joins: 0/0}
+$fGenericGraph_$cto :: forall x. Rep Graph x -> Graph
+$fGenericGraph_$cto
+  = \ (@ x) (ds :: Rep Graph x) ->
+      case ds `cast` <Co:91> of { :*: ds1 ds2 ->
+      $WGraph (ds1 `cast` <Co:25>) (ds2 `cast` <Co:21>)
+      }
+
+-- RHS size: {terms: 3, types: 1, coercions: 57, joins: 0/0}
+$fGenericGraph :: Generic Graph
+$fGenericGraph
+  = C:Generic ($fGenericGraph1 `cast` <Co:57>) $fGenericGraph_$cto
+
+Rec {
+-- RHS size: {terms: 56, types: 38, coercions: 0, joins: 0/0}
+$w$sgo8 :: forall a1. Int# -> a1 -> Map Int a1 -> Map Int a1
+$w$sgo8
+  = \ (@ a1) (ww :: Int#) (w :: a1) (w1 :: Map Int a1) ->
+      case w of x1 { __DEFAULT ->
+      case w1 of {
+        Bin ipv ipv1 ipv2 ipv3 ipv4 ->
+          case ipv1 of wild1 { I# y# ->
+          case <# ww y# of {
+            __DEFAULT ->
+              case ==# ww y# of {
+                __DEFAULT -> balanceR wild1 ipv2 ipv3 ($w$sgo8 ww x1 ipv4);
+                1# -> Bin ipv (I# ww) x1 ipv3 ipv4
+              };
+            1# -> balanceL wild1 ipv2 ($w$sgo8 ww x1 ipv3) ipv4
+          }
+          };
+        Tip -> Bin 1# (I# ww) x1 Tip Tip
+      }
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 145, types: 306, coercions: 0, joins: 0/0}
+$wpoly_create
+  :: forall a.
+     Int# -> [(Int, a)] -> (# Map Int a, [(Int, a)], [(Int, a)] #)
+$wpoly_create
+  = \ (@ a) (ww :: Int#) (w :: [(Int, a)]) ->
+      case w of wild10 {
+        [] -> (# Tip, [], [] #);
+        : ipv8 ipv9 ->
+          case ww of wild {
+            __DEFAULT ->
+              case $wpoly_create (uncheckedIShiftRA# wild 1#) wild10 of
+              { (# ww2, ww3, ww4 #) ->
+              case ww3 of wild13 {
+                [] -> (# ww2, [], ww4 #);
+                : ds14 ds15 ->
+                  case ds14 of { (ky2, y) ->
+                  case ds15 of wild15 {
+                    [] ->
+                      case y of y1 { __DEFAULT -> (# insertMax ky2 y1 ww2, [], ww4 #) };
+                    : ipv10 ipv11 ->
+                      case ipv10 of { (ky3, ds16) ->
+                      case ky2 of wild1 { I# x ->
+                      case ky3 of { I# y1 ->
+                      case >=# x y1 of {
+                        __DEFAULT ->
+                          case $wpoly_create (uncheckedIShiftRA# wild 1#) wild15 of
+                          { (# ww6, ww7, ww8 #) ->
+                          case y of y2 { __DEFAULT -> (# link wild1 y2 ww2 ww6, ww7, ww8 #) }
+                          };
+                        1# -> (# ww2, [], wild13 #)
+                      }
+                      }
+                      }
+                      }
+                  }
+                  }
+              }
+              };
+            1# ->
+              case ipv8 of { (kx2, x2) ->
+              case ipv9 of wild13 {
+                [] ->
+                  case x2 of x3 { __DEFAULT ->
+                  (# case kx2 of dt { I# ipv -> Bin 1# dt x3 Tip Tip }, [], [] #)
+                  };
+                : ds11 ds12 ->
+                  case ds11 of { (ky2, ds13) ->
+                  case kx2 of wild1 { I# x ->
+                  case ky2 of { I# y ->
+                  case >=# x y of {
+                    __DEFAULT ->
+                      case x2 of x3 { __DEFAULT ->
+                      (# Bin 1# wild1 x3 Tip Tip, wild13, [] #)
+                      };
+                    1# ->
+                      case x2 of x3 { __DEFAULT ->
+                      (# Bin 1# wild1 x3 Tip Tip, [], wild13 #)
+                      }
+                  }
+                  }
+                  }
+                  }
+              }
+              }
+          }
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 20, types: 29, coercions: 0, joins: 0/0}
+poly_go :: forall a. [(Int, a)] -> Map Int a -> Map Int a
+poly_go
+  = \ (@ a) (ds :: [(Int, a)]) (eta :: Map Int a) ->
+      case ds of {
+        [] -> eta;
+        : y ys ->
+          case y of { (k1, x2) ->
+          case k1 of { I# ww1 -> poly_go ys ($w$sgo8 ww1 x2 eta) }
+          }
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 20, types: 29, coercions: 0, joins: 0/0}
+poly_go1 :: forall a. [(Int, a)] -> Map Int a -> Map Int a
+poly_go1
+  = \ (@ a) (ds :: [(Int, a)]) (eta :: Map Int a) ->
+      case ds of {
+        [] -> eta;
+        : y ys ->
+          case y of { (k1, x3) ->
+          case k1 of { I# ww1 -> poly_go1 ys ($w$sgo8 ww1 x3 eta) }
+          }
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 73, types: 97, coercions: 0, joins: 0/0}
+$wpoly_go8
+  :: forall a. Int# -> Map Int a -> [(Int, a)] -> Map Int a
+$wpoly_go8
+  = \ (@ a) (ww :: Int#) (w :: Map Int a) (w1 :: [(Int, a)]) ->
+      case w1 of wild5 {
+        [] -> w;
+        : ipv3 ipv4 ->
+          case ipv3 of { (kx1, x1) ->
+          case ipv4 of wild7 {
+            [] -> case x1 of x2 { __DEFAULT -> insertMax kx1 x2 w };
+            : ipv5 ipv6 ->
+              case ipv5 of { (ky1, ds7) ->
+              case kx1 of wild { I# x ->
+              case ky1 of { I# y ->
+              case >=# x y of {
+                __DEFAULT ->
+                  case $wpoly_create ww wild7 of { (# ww2, ww3, ww4 #) ->
+                  case ww4 of wild11 {
+                    [] ->
+                      case x1 of x2 { __DEFAULT ->
+                      $wpoly_go8 (uncheckedIShiftL# ww 1#) (link wild x2 w ww2) ww3
+                      };
+                    : ipv7 ipv8 ->
+                      case x1 of x2 { __DEFAULT -> poly_go1 wild11 (link wild x2 w ww2) }
+                  }
+                  };
+                1# -> poly_go wild5 w
+              }
+              }
+              }
+              }
+          }
+          }
+      }
+end Rec }
+
+Rec {
+-- RHS size: {terms: 20, types: 29, coercions: 0, joins: 0/0}
+$sfromList1 :: forall a. [(Int, a)] -> Map Int a -> Map Int a
+$sfromList1
+  = \ (@ a) (ds :: [(Int, a)]) (eta :: Map Int a) ->
+      case ds of {
+        [] -> eta;
+        : y ys ->
+          case y of { (k1, x1) ->
+          case k1 of { I# ww1 -> $sfromList1 ys ($w$sgo8 ww1 x1 eta) }
+          }
+      }
+end Rec }
+
+-- RHS size: {terms: 64, types: 70, coercions: 0, joins: 0/0}
+$sfromList :: forall a. [(Int, a)] -> Map Int a
+$sfromList
+  = \ (@ a) (ds :: [(Int, a)]) ->
+      case ds of {
+        [] -> Tip;
+        : ds1 ds2 ->
+          case ds1 of { (kx, x) ->
+          case ds2 of wild2 {
+            [] ->
+              case x of x1 { __DEFAULT ->
+              case kx of dt { I# ipv -> Bin 1# dt x1 Tip Tip }
+              };
+            : ipv ipv1 ->
+              case ipv of { (ky, ds3) ->
+              case kx of wild4 { I# x1 ->
+              case ky of { I# y ->
+              case >=# x1 y of {
+                __DEFAULT ->
+                  case x of x0 { __DEFAULT ->
+                  $wpoly_go8 1# (Bin 1# wild4 x0 Tip Tip) wild2
+                  };
+                1# ->
+                  case x of x0 { __DEFAULT ->
+                  $sfromList1 wild2 (Bin 1# wild4 x0 Tip Tip)
+                  }
+              }
+              }
+              }
+              }
+          }
+          }
+      }
+
+Rec {
+-- RHS size: {terms: 24, types: 26, coercions: 0, joins: 0/0}
+fromWords_go15 :: [ID] -> Map ID GraphNode -> [ID]
+fromWords_go15
+  = \ (z' :: [ID]) (ds :: Map ID GraphNode) ->
+      case ds of {
+        Bin dt kx x l r ->
+          fromWords_go15
+            (case x of { GraphNode dt1 ds4 ds5 ds6 ->
+             case ds4 of {
+               Terminating -> : kx (fromWords_go15 z' r);
+               NonTerminating -> fromWords_go15 z' r
+             }
+             })
+            l;
+        Tip -> z'
+      }
+end Rec }
+
+-- RHS size: {terms: 132, types: 153, coercions: 4, joins: 0/2}
+$wtoGraph
+  :: forall s.
+     MutVar# s (Map ID GraphNode)
+     -> MutVar# s (Map Transition ID)
+     -> MutVar# s GraphNode
+     -> State# s
+     -> (# State# s, Graph #)
+$wtoGraph
+  = \ (@ s)
+      (ww :: MutVar# s (Map ID GraphNode))
+      (ww1 :: MutVar# s (Map Transition ID))
+      (ww2 :: MutVar# s GraphNode)
+      (w :: State# s) ->
+      case readMutVar# ww1 w of { (# ipv, ipv1 #) ->
+      case readMutVar# ww ipv of { (# ipv2, ipv3 #) ->
+      case readMutVar# ww2 ipv2 of { (# ipv4, ipv5 #) ->
+      case fromList_go ((fromWords_go15 [] ipv3) `cast` <Co:2>) Nil
+      of terminations
+      { __DEFAULT ->
+      letrec {
+        go15 :: [(Int, Int)] -> Map Transition ID -> [(Int, Int)]
+        go15
+          = \ (z' :: [(Int, Int)]) (ds :: Map Transition ID) ->
+              case ds of {
+                Bin dt kx x l r ->
+                  case kx of { (chr, pId) ->
+                  go15
+                    (: (case chr of { C# c# ->
+                        case pId `cast` <Co:1> of { I# ww4 ->
+                        case $wmember ww4 terminations of {
+                          False ->
+                            I#
+                              (orI# (uncheckedIShiftL# (ord# c#) 32#) (andI# ww4 -2147483649#));
+                          True ->
+                            I# (orI# (uncheckedIShiftL# (ord# c#) 32#) (orI# ww4 2147483648#))
+                        }
+                        }
+                        },
+                        case x `cast` <Co:1> of { I# ww4 ->
+                        case $wmember ww4 terminations of {
+                          False -> I# (andI# ww4 -2147483649#);
+                          True -> I# (orI# ww4 2147483648#)
+                        }
+                        })
+                       (go15 z' r))
+                    l
+                  };
+                Tip -> z'
+              }; } in
+      let {
+        x :: [(Int, Int)]
+        x = go15 [] ipv1 } in
+      case fromWords_go x of { () ->
+      case x of m { __DEFAULT ->
+      (# ipv4,
+         case ipv5 of { GraphNode dt ds4 ds5 ds6 ->
+         case $wmember dt terminations of {
+           False ->
+             case $sfromList m of dt1 { __DEFAULT ->
+             Graph dt1 (andI# dt -2147483649#)
+             };
+           True ->
+             case $sfromList m of dt1 { __DEFAULT ->
+             Graph dt1 (orI# dt 2147483648#)
+             }
+         }
+         } #)
+      }
+      }
+      }
+      }
+      }
+      }
+
+-- RHS size: {terms: 11, types: 25, coercions: 0, joins: 0/0}
+fromWords1
+  :: forall s. GraphBuilder s -> State# s -> (# State# s, Graph #)
+fromWords1
+  = \ (@ s) (w :: GraphBuilder s) (w1 :: State# s) ->
+      case w of { GraphBuilder ww1 ww2 ww3 ww4 ->
+      $wtoGraph ww1 ww3 ww4 w1
+      }
+
+-- RHS size: {terms: 14, types: 49, coercions: 0, joins: 0/0}
+fromWordsAst :: [String] -> Graph
+fromWordsAst
+  = \ (wrds :: [String]) ->
+      case runRW#
+             (\ (s1 :: State# RealWorld) ->
+                case build1 wrds s1 of { (# ipv, ipv1 #) -> fromWords1 ipv1 ipv })
+      of
+      { (# ipv, ipv1 #) ->
+      ipv1
+      }
+
+-- RHS size: {terms: 16, types: 50, coercions: 0, joins: 0/0}
+fromWords :: [String] -> Graph
+fromWords
+  = \ (wrds :: [String]) ->
+      case runRW#
+             (\ (s1 :: State# RealWorld) ->
+                case build1 (sortBy $fOrd[]_$s$ccompare1 wrds) s1 of
+                { (# ipv, ipv1 #) ->
+                fromWords1 ipv1 ipv
+                })
+      of
+      { (# ipv, ipv1 #) ->
+      ipv1
+      }
+
+Rec {
+-- RHS size: {terms: 31, types: 26, coercions: 0, joins: 0/0}
+$wpoly_go15 :: forall a. Int# -> Map Int a -> Maybe a
+$wpoly_go15
+  = \ (@ a) (ww :: Int#) (w :: Map Int a) ->
+      case w of {
+        Bin ipv ipv1 ipv2 ipv3 ipv4 ->
+          case ipv1 of { I# y# ->
+          case <# ww y# of {
+            __DEFAULT ->
+              case ==# ww y# of {
+                __DEFAULT -> $wpoly_go15 ww ipv4;
+                1# -> Just ipv2
+              };
+            1# -> $wpoly_go15 ww ipv3
+          }
+          };
+        Tip -> Nothing
+      }
+end Rec }
+
+-- RHS size: {terms: 52, types: 35, coercions: 0, joins: 1/1}
+contains :: String -> Graph -> Bool
+contains
+  = \ (w :: String) (g :: Graph) ->
+      joinrec {
+        go :: String -> Maybe Int -> Bool
+        go (ds :: String) (ds1 :: Maybe Int)
+          = case ds1 of {
+              Nothing -> False;
+              Just ipv ->
+                case ds of {
+                  [] ->
+                    case ipv of { I# x# ->
+                    case andI# x# 2147483648# of {
+                      __DEFAULT -> True;
+                      0# -> False
+                    }
+                    };
+                  : chr chrs ->
+                    case chr of { C# c# ->
+                    case ipv of { I# y# ->
+                    case g of { Graph ds2 dt ->
+                    jump go
+                      chrs ($wpoly_go15 (orI# (uncheckedIShiftL# (ord# c#) 32#) y#) ds2)
+                    }
+                    }
+                    }
+                }
+            }; } in
+      jump go w (Just (case g of { Graph ds dt -> I# dt }))
+
+
+------ Local rules for imported ids --------
+"SPEC/DAFSA.Graph fromList @ Int _"
+    forall (@ a) ($dOrd :: Ord Int). fromList $dOrd = $sfromList
+

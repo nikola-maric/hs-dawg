@@ -1,0 +1,455 @@
+	Mon May 17 16:28 2021 Time and Allocation Profiling Report  (Final)
+
+	   hs-dawg-exe +RTS -N -p -RTS
+
+	total time  =        0.16 secs   (586 ticks @ 1000 us, 8 processors)
+	total alloc = 803,603,640 bytes  (excludes profiling overheads)
+
+COST CENTRE       MODULE                      SRC                                                  %time %alloc
+
+addNodeToGraph2   DAFSA.Internal.GraphBuilder src/DAFSA/Internal/GraphBuilder.hs:125:39-120         12.8   25.0
+compare           DAFSA.Internal.GraphBuilder src/DAFSA/Internal/GraphBuilder.hs:25:32-34           10.6    0.0
+addNodeToGraph3   DAFSA.Internal.GraphBuilder src/DAFSA/Internal/GraphBuilder.hs:126:39-103          9.6   10.6
+addNodeToGraph    DAFSA.Internal.GraphBuilder src/DAFSA/Internal/GraphBuilder.hs:(111,1)-(128,38)    9.0    3.7
+toGraph           DAFSA.Graph                 src/DAFSA/Graph.hs:(54,1)-(60,101)                     7.8   11.3
+lookup#           Data.HashMap.Internal       Data/HashMap/Internal.hs:599:1-82                      3.4    1.2
+swapChildState    DAFSA.Internal.GraphBuilder src/DAFSA/Internal/GraphBuilder.hs:(139,1)-(152,46)    3.4    0.9
+insert'.go        Data.HashMap.Internal       Data/HashMap/Internal.hs:(787,5)-(816,76)              2.9    3.0
+swapChildState2   DAFSA.Internal.GraphBuilder src/DAFSA/Internal/GraphBuilder.hs:149:55-106          2.9    6.0
+swapChildState3   DAFSA.Internal.GraphBuilder src/DAFSA/Internal/GraphBuilder.hs:150:55-132          2.7    6.0
+swapChildState4   DAFSA.Internal.GraphBuilder src/DAFSA/Internal/GraphBuilder.hs:151:55-131          2.6    4.9
+getLastChild      DAFSA.Internal.GraphBuilder src/DAFSA/Internal/GraphBuilder.hs:(204,1)-(208,74)    2.6    3.6
+handleTransition  DAFSA.Graph                 src/DAFSA/Graph.hs:43:1-89                             2.6    0.2
+main.textWords    Main                        app/Main.hs:9:9-59                                     2.0    3.9
+walkPrefix.go     DAFSA.Internal.GraphBuilder src/DAFSA/Internal/GraphBuilder.hs:(187,9)-(192,78)    1.9    0.8
+packNodeId        DAFSA.Graph                 src/DAFSA/Graph.hs:(64,1)-(67,55)                      1.7    0.2
+replaceOrRegister DAFSA.Internal.GraphBuilder src/DAFSA/Internal/GraphBuilder.hs:(131,1)-(136,82)    1.4    1.2
+==                DAFSA.Internal.GraphBuilder src/DAFSA/Internal/GraphBuilder.hs:48:87-88            1.2    0.4
+MAIN              MAIN                        <built-in>                                             1.0    0.0
+copy.\            Data.HashMap.Internal.Array Data/HashMap/Internal/Array.hs:(335,9)-(336,30)        1.0    1.6
+nodeId            DAFSA.Internal.GraphBuilder src/DAFSA/Internal/GraphBuilder.hs:39:9-14             1.0    0.5
+clone16           Data.HashMap.Internal       Data/HashMap/Internal.hs:(2261,1)-(2262,19)            0.9    3.3
+toGraph.m         DAFSA.Graph                 src/DAFSA/Graph.hs:59:9-151                            0.7    2.0
+hashWithSalt      DAFSA.Internal.GraphBuilder src/DAFSA/Internal/GraphBuilder.hs:50:9-122            0.2    1.6
+
+
+                                                                                                                                                   individual      inherited
+COST CENTRE                               MODULE                          SRC                                                  no.      entries  %time %alloc   %time %alloc
+
+MAIN                                      MAIN                            <built-in>                                            399           0    1.0    0.0   100.0  100.0
+ CAF                                      GHC.Conc.Signal                 <entire-module>                                       501           0    0.0    0.0     0.0    0.0
+ CAF                                      GHC.IO.Encoding                 <entire-module>                                       482           0    0.0    0.0     0.0    0.0
+ CAF                                      GHC.IO.Encoding.Iconv           <entire-module>                                       480           0    0.0    0.0     0.0    0.0
+ CAF                                      GHC.IO.Exception                <entire-module>                                       474           0    0.0    0.0     0.0    0.0
+ CAF                                      GHC.IO.FD                       <entire-module>                                       473           0    0.0    0.0     0.0    0.0
+ CAF                                      GHC.IO.Handle.FD                <entire-module>                                       471           0    0.0    0.0     0.0    0.0
+ CAF                                      GHC.IO.Handle.Internals         <entire-module>                                       470           0    0.0    0.0     0.0    0.0
+ CAF                                      GHC.IO.Handle.Text              <entire-module>                                       469           0    0.0    0.0     0.0    0.0
+ CAF                                      GHC.Show                        <entire-module>                                       451           0    0.0    0.0     0.0    0.0
+ CAF                                      GHC.Event.Poll                  <entire-module>                                       417           0    0.0    0.0     0.0    0.0
+ CAF                                      GHC.Event.Thread                <entire-module>                                       416           0    0.0    0.0     0.0    0.0
+ CAF:$fEqID1                              DAFSA.Internal.GraphBuilder     <no location info>                                    744           0    0.0    0.0     0.0    0.0
+  /=                                      DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:25:28-29           872           1    0.0    0.0     0.0    0.0
+ CAF:$fEqID2                              DAFSA.Internal.GraphBuilder     <no location info>                                    743           0    0.0    0.0     0.0    0.0
+  ==                                      DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:25:28-29           848           1    0.0    0.0     0.0    0.0
+ CAF:$fGSumarityM2                        Data.Hashable.Generic.Instances <no location info>                                    551           0    0.0    0.0     0.0    0.0
+  sumSize                                 Data.Hashable.Generic.Instances Data/Hashable/Generic/Instances.hs:121:5-22           940           1    0.0    0.0     0.0    0.0
+ CAF:$fHashable()_$chash                  Data.Hashable.Class             Data/Hashable/Class.hs:366:5-8                        554           0    0.0    0.0     0.0    0.0
+  hash                                    Data.Hashable.Class             Data/Hashable/Class.hs:366:5-19                       900           1    0.0    0.0     0.0    0.0
+ CAF:$fHashable()_$chashWithSalt          Data.Hashable.Class             Data/Hashable/Class.hs:367:5-16                       588           0    0.0    0.0     0.0    0.0
+  hashWithSalt                            Data.Hashable.Class             Data/Hashable/Class.hs:367:5-38                       897           1    0.0    0.0     0.0    0.0
+ CAF:$fHashable1Fixed_$chash              Data.Hashable.Class             Data/Hashable/Class.hs:313:5-8                        553           0    0.0    0.0     0.0    0.0
+  hash                                    Data.Hashable.Class             Data/Hashable/Class.hs:313:5-13                       906           1    0.0    0.0     0.0    0.0
+ CAF:$fHashable1Fixed_$chashWithSalt1     Data.Hashable.Class             Data/Hashable/Class.hs:314:5-16                       598           0    0.0    0.0     0.0    0.0
+  hashWithSalt                            Data.Hashable.Class             Data/Hashable/Class.hs:314:5-38                       903           1    0.0    0.0     0.0    0.0
+ CAF:$fHashableChar_$chash                Data.Hashable.Class             Data/Hashable/Class.hs:378:5-8                        557           0    0.0    0.0     0.0    0.0
+  hash                                    Data.Hashable.Class             Data/Hashable/Class.hs:378:5-19                       969           1    0.0    0.0     0.0    0.0
+ CAF:$fHashableChar_$chashWithSalt        Data.Hashable.Class             Data/Hashable/Class.hs:379:5-16                       585           0    0.0    0.0     0.0    0.0
+  hashWithSalt                            Data.Hashable.Class             Data/Hashable/Class.hs:379:5-38                       966           1    0.0    0.0     0.0    0.0
+ CAF:$fHashableGraphNodeIdentifier1       DAFSA.Internal.GraphBuilder     <no location info>                                    762           0    0.0    0.0     0.0    0.0
+  hash                                    Data.Hashable.Class             Data/Hashable/Class.hs:224:5-35                       932           0    0.0    0.0     0.0    0.0
+   hashWithSalt                           DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:50:9-122           933           0    0.0    0.0     0.0    0.0
+    hashWithSalt                          Data.Hashable.Class             Data/Hashable/Class.hs:227:5-38                       934           0    0.0    0.0     0.0    0.0
+     ghashWithSalt                        Data.Hashable.Generic.Instances Data/Hashable/Generic/Instances.hs:36:5-62            935           0    0.0    0.0     0.0    0.0
+      ghashWithSalt                       Data.Hashable.Generic.Instances Data/Hashable/Generic/Instances.hs:97:5-53            936           1    0.0    0.0     0.0    0.0
+       hashSum                            Data.Hashable.Generic.Instances Data/Hashable/Generic/Instances.hs:(100,5)-(104,46)   937           1    0.0    0.0     0.0    0.0
+        hashSum                           Data.Hashable.Generic.Instances Data/Hashable/Generic/Instances.hs:108:5-89           941           1    0.0    0.0     0.0    0.0
+         ghashWithSalt                    Data.Hashable.Generic.Instances Data/Hashable/Generic/Instances.hs:28:5-50            942           1    0.0    0.0     0.0    0.0
+          hashWithSalt                    Data.Hashable.Class             Data/Hashable/Class.hs:367:5-38                       943           0    0.0    0.0     0.0    0.0
+           defaultHashWithSalt            Data.Hashable.Class             Data/Hashable/Class.hs:290:1-50                       944           1    0.0    0.0     0.0    0.0
+            combine                       Data.Hashable.Class             Data/Hashable/Class.hs:780:1-40                       946           1    0.0    0.0     0.0    0.0
+         hashWithSalt                     Data.Hashable.Class             Data/Hashable/Class.hs:314:5-38                       947           0    0.0    0.0     0.0    0.0
+          defaultHashWithSalt             Data.Hashable.Class             Data/Hashable/Class.hs:290:1-50                       948           1    0.0    0.0     0.0    0.0
+           combine                        Data.Hashable.Class             Data/Hashable/Class.hs:780:1-40                       949           1    0.0    0.0     0.0    0.0
+        hashSum.sizeL                     Data.Hashable.Generic.Instances Data/Hashable/Generic/Instances.hs:104:9-46           938           1    0.0    0.0     0.0    0.0
+         unTagged                         Data.Hashable.Generic.Instances Data/Hashable/Generic/Instances.hs:114:40-47          939           1    0.0    0.0     0.0    0.0
+ CAF:$fHashableGraphNodeIdentifier3       DAFSA.Internal.GraphBuilder     <no location info>                                    761           0    0.0    0.0     0.0    0.0
+  hash                                    Data.Hashable.Class             Data/Hashable/Class.hs:224:5-35                       889           0    0.0    0.0     0.0    0.0
+   hashWithSalt                           DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:50:9-122           890           0    0.0    0.0     0.0    0.0
+    hashWithSalt                          Data.Hashable.Class             Data/Hashable/Class.hs:227:5-38                       891           0    0.0    0.0     0.0    0.0
+     ghashWithSalt                        Data.Hashable.Generic.Instances Data/Hashable/Generic/Instances.hs:36:5-62            892           0    0.0    0.0     0.0    0.0
+      ghashWithSalt                       Data.Hashable.Generic.Instances Data/Hashable/Generic/Instances.hs:97:5-53            893           1    0.0    0.0     0.0    0.0
+       hashSum                            Data.Hashable.Generic.Instances Data/Hashable/Generic/Instances.hs:(100,5)-(104,46)   894           1    0.0    0.0     0.0    0.0
+        hashSum                           Data.Hashable.Generic.Instances Data/Hashable/Generic/Instances.hs:108:5-89           895           1    0.0    0.0     0.0    0.0
+         ghashWithSalt                    Data.Hashable.Generic.Instances Data/Hashable/Generic/Instances.hs:28:5-50            896           1    0.0    0.0     0.0    0.0
+          hashWithSalt                    Data.Hashable.Class             Data/Hashable/Class.hs:367:5-38                       898           0    0.0    0.0     0.0    0.0
+           defaultHashWithSalt            Data.Hashable.Class             Data/Hashable/Class.hs:290:1-50                       899           1    0.0    0.0     0.0    0.0
+            combine                       Data.Hashable.Class             Data/Hashable/Class.hs:780:1-40                       902           1    0.0    0.0     0.0    0.0
+         hashWithSalt                     Data.Hashable.Class             Data/Hashable/Class.hs:314:5-38                       904           0    0.0    0.0     0.0    0.0
+          defaultHashWithSalt             Data.Hashable.Class             Data/Hashable/Class.hs:290:1-50                       905           1    0.0    0.0     0.0    0.0
+           combine                        Data.Hashable.Class             Data/Hashable/Class.hs:780:1-40                       907           1    0.0    0.0     0.0    0.0
+ CAF:$fHashableGraphNodeIdentifier5       DAFSA.Internal.GraphBuilder     <no location info>                                    760           0    0.0    0.0     0.0    0.0
+  hashWithSalt                            DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:50:9-122           951           0    0.0    0.0     0.0    0.0
+   hashWithSalt                           Data.Hashable.Class             Data/Hashable/Class.hs:619:5-32                       952           0    0.0    0.0     0.0    0.0
+    hashWithSalt1                         Data.Hashable.Class             Data/Hashable/Class.hs:271:1-45                       953           1    0.0    0.0     0.0    0.0
+     hashWithSalt                         Data.Hashable.Class             Data/Hashable/Class.hs:523:5-32                       955           1    0.0    0.0     0.0    0.0
+     liftHashWithSalt                     Data.Hashable.Class             Data/Hashable/Class.hs:526:5-46                       954           1    0.0    0.0     0.0    0.0
+      defaultLiftHashWithSalt             Data.Hashable.Class             Data/Hashable/Class.hs:283:1-60                       956           1    0.0    0.0     0.0    0.0
+ CAF:$fHashableGraphNodeIdentifier_$chash DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:49:10-37           763           0    0.0    0.0     0.0    0.0
+  hash                                    Data.Hashable.Class             Data/Hashable/Class.hs:224:5-35                       882           1    0.0    0.0     0.0    0.0
+ CAF:$fHashableID2                        DAFSA.Internal.GraphBuilder     <no location info>                                    758           0    0.0    0.0     0.0    0.0
+  hashWithSalt                            DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:25:81-88           960           1    0.0    0.0     0.0    0.0
+ CAF:$fNumID1                             DAFSA.Internal.GraphBuilder     <no location info>                                    710           0    0.0    0.0     0.0    0.0
+  fromInteger                             DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:25:52-54           817           1    0.0    0.0     0.0    0.0
+ CAF:$fOrdID7                             DAFSA.Internal.GraphBuilder     <no location info>                                    745           0    0.0    0.0     0.0    0.0
+  compare                                 DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:25:32-34           843           1    0.0    0.0     0.0    0.0
+ CAF:bitsPerSubkey                        Data.HashMap.Internal           Data/HashMap/Internal.hs:2268:1-13                    667           0    0.0    0.0     0.0    0.0
+  bitsPerSubkey                           Data.HashMap.Internal           Data/HashMap/Internal.hs:2268:1-17                    986           1    0.0    0.0     0.0    0.0
+ CAF:copyArray#                           Data.HashMap.Internal.Array     Data/HashMap/Internal/Array.hs:147:1-10               638           0    0.0    0.0     0.0    0.0
+  copyArray#                              Data.HashMap.Internal.Array     Data/HashMap/Internal/Array.hs:147:1-28              1005           1    0.0    0.0     0.0    0.0
+ CAF:empty                                Data.HashMap.Internal           Data/HashMap/Internal.hs:554:1-5                      658           0    0.0    0.0     0.0    0.0
+  empty                                   Data.HashMap.Internal           Data/HashMap/Internal.hs:554:1-13                     913           1    0.0    0.0     0.0    0.0
+ CAF:indexArray#                          Data.HashMap.Internal.Array     Data/HashMap/Internal/Array.hs:131:1-11               634           0    0.0    0.0     0.0    0.0
+  indexArray#                             Data.HashMap.Internal.Array     Data/HashMap/Internal/Array.hs:131:1-30              1010           1    0.0    0.0     0.0    0.0
+ CAF:initialState1                        DAFSA.Internal.GraphBuilder     <no location info>                                    713           0    0.0    0.0     0.0    0.0
+  initialState                            DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:(85,1)-(90,30)     804           1    0.0    0.0     0.0    0.0
+ CAF:initialState3                        DAFSA.Internal.GraphBuilder     <no location info>                                    712           0    0.0    0.0     0.0    0.0
+  initialState                            DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:(85,1)-(90,30)     814           0    0.0    0.0     0.0    0.0
+   mkNewNode                              DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:195:1-126          815           1    0.0    0.0     0.0    0.0
+ CAF:initialState4                        DAFSA.Internal.GraphBuilder     <no location info>                                    711           0    0.0    0.0     0.0    0.0
+  initialState                            DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:(85,1)-(90,30)     816           0    0.0    0.0     0.0    0.0
+   fromInteger                            DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:25:52-54           818           0    0.0    0.0     0.0    0.0
+ CAF:main1                                Main                            <no location info>                                    796           0    0.0    0.0     0.0    0.0
+  main                                    Main                            app/Main.hs:(7,1)-(11,44)                             798           1    0.0    0.0     0.0    0.0
+ CAF:main2                                Main                            <no location info>                                    795           0    0.0    0.0     0.0    0.0
+ CAF:maxChildren                          Data.HashMap.Internal           Data/HashMap/Internal.hs:2271:1-11                    668           0    0.0    0.0     0.0    0.0
+  maxChildren                             Data.HashMap.Internal           Data/HashMap/Internal.hs:2271:1-44                   1007           1    0.0    0.0     0.0    0.0
+ CAF:newArray#                            Data.HashMap.Internal.Array     Data/HashMap/Internal/Array.hs:116:1-9                630           0    0.0    0.0     0.0    0.0
+  newArray#                               Data.HashMap.Internal.Array     Data/HashMap/Internal/Array.hs:116:1-26               987           1    0.0    0.0     0.0    0.0
+ CAF:nodeHasChildren1                     DAFSA.Internal.GraphBuilder     <no location info>                                    684           0    0.0    0.0     0.0    0.0
+  nodeHasChildren                         DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:201:1-60           819           1    0.0    0.0     0.0    0.0
+ CAF:sizeofArray#                         Data.HashMap.Internal.Array     Data/HashMap/Internal/Array.hs:138:1-12               636           0    0.0    0.0     0.0    0.0
+  sizeofArray#                            Data.HashMap.Internal.Array     Data/HashMap/Internal/Array.hs:138:1-32               997           1    0.0    0.0     0.0    0.0
+ CAF:subkeyMask                           Data.HashMap.Internal           Data/HashMap/Internal.hs:2274:1-10                    670           0    0.0    0.0     0.0    0.0
+  subkeyMask                              Data.HashMap.Internal           Data/HashMap/Internal.hs:2274:1-47                    985           1    0.0    0.0     0.0    0.0
+ CAF:thawArray#                           Data.HashMap.Internal.Array     Data/HashMap/Internal/Array.hs:161:1-10               640           0    0.0    0.0     0.0    0.0
+  thawArray#                              Data.HashMap.Internal.Array     Data/HashMap/Internal/Array.hs:161:1-28              1038           1    0.0    0.0     0.0    0.0
+ CAF:unsafeFreezeArray#                   Data.HashMap.Internal.Array     Data/HashMap/Internal/Array.hs:120:1-18               631           0    0.0    0.0     0.0    0.0
+  unsafeFreezeArray#                      Data.HashMap.Internal.Array     Data/HashMap/Internal/Array.hs:120:1-44               990           1    0.0    0.0     0.0    0.0
+ CAF:writeArray#                          Data.HashMap.Internal.Array     Data/HashMap/Internal/Array.hs:128:1-11               633           0    0.0    0.0     0.0    0.0
+  writeArray#                             Data.HashMap.Internal.Array     Data/HashMap/Internal/Array.hs:128:1-30               989           1    0.0    0.0     0.0    0.0
+ main                                     Main                            app/Main.hs:(7,1)-(11,44)                             799           0    0.2    0.6    99.0  100.0
+  contains                                DAFSA.Graph                     src/DAFSA/Graph.hs:(36,1)-(40,83)                    1175       10000    0.0    0.1     2.7    0.3
+   contains.go                            DAFSA.Graph                     src/DAFSA/Graph.hs:(38,17)-(40,83)                   1176      121126    0.2    0.0     2.7    0.2
+    handleTransition                      DAFSA.Graph                     src/DAFSA/Graph.hs:43:1-89                           1177      111126    2.6    0.2     2.6    0.2
+     graphTransitions                     DAFSA.Graph                     src/DAFSA/Graph.hs:25:22-37                          1180      111126    0.0    0.0     0.0    0.0
+     toTransition                         DAFSA.Graph                     src/DAFSA/Graph.hs:50:1-67                           1178      111126    0.0    0.0     0.0    0.0
+   graphRootNode                          DAFSA.Graph                     src/DAFSA/Graph.hs:25:60-72                          1179       10000    0.0    0.0     0.0    0.0
+  main.dafsa                              Main                            app/Main.hs:10:9-36                                   801           1    0.0    0.0    94.0   95.1
+   fromWords                              DAFSA.Graph                     src/DAFSA/Graph.hs:30:1-64                            802           1    0.3    0.1    94.0   95.1
+    build                                 DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:(68,1)-(79,25)     803           1    0.0    0.0    82.3   81.2
+     build.\                              DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:(71,30)-(76,61)    807       10000    0.3    0.1    82.3   81.2
+      addSuffix                           DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:(93,1)-(108,47)    822       88414    0.9    0.8    39.6   41.5
+       addNodeToGraph                     DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:(111,1)-(128,38)   826       78414    9.0    3.7    38.7   40.7
+        addNodeToGraph._nodeId            DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:114:13-41          831       78414    0.3    0.0     0.3    0.0
+         nodeId                           DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:39:9-14            832       78414    0.0    0.0     0.0    0.0
+        addNodeToGraph.changedLastNode    DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:(118,13)-(123,17)  833       78414    0.7    0.6     0.7    0.6
+         nodeChildTransitions             DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:41:9-28            835       78414    0.0    0.0     0.0    0.0
+         nodeType                         DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:40:9-16            834       78414    0.0    0.0     0.0    0.0
+        addNodeToGraph.newId              DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:115:13-48          829       78414    0.0    0.0     0.0    0.0
+        addNodeToGraph.newNode            DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:116:13-38          840       78414    0.0    0.4     0.0    0.4
+         mkNewNode                        DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:195:1-126          841       78414    0.0    0.0     0.0    0.0
+        addNodeToGraph.newTransition      DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:117:13-46          830       78414    0.0    0.0     0.0    0.0
+        addNodeToGraph1                   DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:124:39-73          836       78414    0.0    0.0     0.0    0.0
+         maxId                            DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:58:17-21           837       78414    0.0    0.0     0.0    0.0
+        addNodeToGraph2                   DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:125:39-120         838       78414   12.8   25.0    16.4   25.0
+         nodes                            DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:57:17-21           839       78414    0.0    0.0     0.0    0.0
+         compare                          DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:25:32-34           844           0    3.6    0.0     3.6    0.0
+        addNodeToGraph3                   DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:126:39-103         845       78414    9.6   10.6    10.2   10.6
+         transitions                      DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:59:17-27           846       78414    0.0    0.0     0.0    0.0
+         compare                          DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:25:32-34           856           0    0.7    0.0     0.7    0.0
+        addNodeToGraph4                   DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:127:39-122         847       78414    0.2    0.2     0.3    0.4
+         nodeId                           DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:39:9-14            850       78414    0.0    0.2     0.0    0.2
+         rootNode                         DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:60:17-24           851          59    0.0    0.0     0.0    0.0
+         ==                               DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:25:28-29           849           0    0.2    0.0     0.2    0.0
+        maxId                             DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:58:17-21           828       78414    0.0    0.0     0.0    0.0
+        rootNode                          DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:60:17-24           827       78414    0.0    0.0     0.0    0.0
+        addSuffix._nodeId                 DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:103:13-31          853       68414    0.2    0.0     0.2    0.0
+         nodeId                           DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:39:9-14            854       68414    0.0    0.0     0.0    0.0
+        transitions                       DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:59:17-27           852       68414    0.0    0.0     0.0    0.0
+        addSuffix.terminationNode         DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:95:13-58           859       10000    0.2    0.0     0.2    0.0
+         mkNewTerminatingNode             DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:198:1-80           860       10000    0.0    0.0     0.0    0.0
+          mkNewTerminatingNode.g          DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:198:32-48          861       10000    0.0    0.0     0.0    0.0
+           mkNewNode                      DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:195:1-126          862       10000    0.0    0.0     0.0    0.0
+        nodeId                            DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:39:9-14            864       10000    0.2    0.0     0.2    0.0
+        compare                           DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:25:32-34           855           0    1.2    0.0     1.2    0.0
+       addSuffix._nodeId                  DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:94:13-31           857       10000    0.0    0.0     0.0    0.0
+        nodeId                            DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:39:9-14            858       10000    0.0    0.0     0.0    0.0
+       addSuffix._nodeId                  DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:103:13-31          824       10000    0.0    0.0     0.0    0.0
+        nodeId                            DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:39:9-14            825       10000    0.0    0.0     0.0    0.0
+       transitions                        DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:59:17-27           823       10000    0.0    0.0     0.0    0.0
+      replaceOrRegister                   DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:(131,1)-(136,82)   868       88352    1.4    1.2    38.6   38.7
+       nodeId                             DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:39:9-14            874      176704    0.7    0.4     0.7    0.4
+       getLastChild                       DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:(204,1)-(208,74)   869       88352    2.6    3.6     4.1    3.6
+        nodeLastChild                     DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:42:9-21            870       88352    0.0    0.0     0.0    0.0
+        compare                           DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:25:32-34           871           0    1.5    0.0     1.5    0.0
+       swapChildState                     DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:(139,1)-(152,46)   875       78408    3.4    0.9    32.1   33.6
+        findEquivalentFrozenNode          DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:(155,1)-(157,52)   876       78408    0.2    0.2     8.9    4.7
+         graphNodeIdentifier              DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:65:1-85            879       78408    0.0    0.0     0.0    0.0
+         lookup#                          Data.HashMap.Internal           Data/HashMap/Internal.hs:599:1-82                     880       78408    3.4    1.2     8.7    4.4
+          unArray                         Data.HashMap.Internal.Array     Data/HashMap/Internal/Array.hs:197:7-13              1009      303724    0.0    0.0     0.0    0.0
+          sparseIndex                     Data.HashMap.Internal           Data/HashMap/Internal.hs:2277:1-42                   1008       88568    0.0    0.0     0.0    0.0
+          hash                            Data.HashMap.Internal           Data/HashMap/Internal.hs:195:1-28                     881       78408    0.3    0.0     3.9    2.8
+           hash                           Data.Hashable.Class             Data/Hashable/Class.hs:224:5-35                       883           0    0.2    0.0     3.6    2.8
+            hashWithSalt                  DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:50:9-122           884       78408    0.2    1.0     3.4    2.8
+             hashWithSalt                 Data.Hashable.Class             Data/Hashable/Class.hs:227:5-38                       887       78408    0.3    0.0     0.3    0.0
+              ghashWithSalt               Data.Hashable.Generic.Instances Data/Hashable/Generic/Instances.hs:36:5-62            888       78408    0.0    0.0     0.0    0.0
+             hashWithSalt                 Data.Hashable.Class             Data/Hashable/Class.hs:619:5-32                       885       78408    0.0    0.0     2.9    1.8
+              hashWithSalt1               Data.Hashable.Class             Data/Hashable/Class.hs:271:1-45                       886       78408    0.3    0.3     2.9    1.8
+               liftHashWithSalt           Data.Hashable.Class             Data/Hashable/Class.hs:(622,5)-(625,46)               908       78408    0.5    0.0     1.7    0.6
+                liftHashWithSalt.finalise Data.Hashable.Class             Data/Hashable/Class.hs:624:9-44                       909       78408    0.5    0.3     1.0    0.5
+                 hashWithSalt             Data.Hashable.Class             Data/Hashable/Class.hs:314:5-38                       910           0    0.2    0.0     0.5    0.2
+                  defaultHashWithSalt     Data.Hashable.Class             Data/Hashable/Class.hs:290:1-50                       911       78408    0.2    0.0     0.3    0.2
+                   combine                Data.Hashable.Class             Data/Hashable/Class.hs:780:1-40                       912       78408    0.2    0.2     0.2    0.2
+                liftHashWithSalt.step     Data.Hashable.Class             Data/Hashable/Class.hs:625:9-46                       950       78350    0.2    0.2     0.2    0.2
+               hashWithSalt               DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:25:81-88           962           0    0.0    0.0     0.3    0.2
+                hashWithSalt              Data.Hashable.Class             Data/Hashable/Class.hs:314:5-38                       963           0    0.2    0.0     0.3    0.2
+                 defaultHashWithSalt      Data.Hashable.Class             Data/Hashable/Class.hs:290:1-50                       964       78350    0.2    0.0     0.2    0.2
+                  combine                 Data.Hashable.Class             Data/Hashable/Class.hs:780:1-40                       965       78350    0.0    0.2     0.0    0.2
+               liftHashWithSalt           Data.Hashable.Class             Data/Hashable/Class.hs:526:5-46                       957           0    0.0    0.0     0.5    0.7
+                defaultLiftHashWithSalt   Data.Hashable.Class             Data/Hashable/Class.hs:283:1-60                       958           0    0.0    0.0     0.5    0.7
+                 liftHashWithSalt2        Data.Hashable.Class             Data/Hashable/Class.hs:529:5-58                       959       78350    0.3    0.4     0.3    0.4
+                 hashWithSalt             Data.Hashable.Class             Data/Hashable/Class.hs:379:5-38                       967           0    0.0    0.0     0.2    0.3
+                  defaultHashWithSalt     Data.Hashable.Class             Data/Hashable/Class.hs:290:1-50                       968       78350    0.0    0.0     0.2    0.3
+                   combine                Data.Hashable.Class             Data/Hashable/Class.hs:780:1-40                       971       78350    0.2    0.2     0.2    0.2
+                   hash                   Data.Hashable.Class             Data/Hashable/Class.hs:378:5-19                       970           0    0.0    0.2     0.0    0.2
+          ==                              DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:48:87-88          1011       40214    1.2    0.4     1.4    0.4
+           ==                             DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:29:62-63          1012       40214    0.0    0.0     0.0    0.0
+           ==                             DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:25:28-29          1040           0    0.2    0.0     0.2    0.0
+          lookup#.\                       Data.HashMap.Internal           Data/HashMap/Internal.hs:599:58-66                   1013       40214    0.0    0.0     0.0    0.0
+          lookup#.\                       Data.HashMap.Internal           Data/HashMap/Internal.hs:599:33-45                    914       38194    0.0    0.0     0.0    0.0
+        swapChildState._nodeId            DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:141:13-31          877       78408    0.2    0.0     0.2    0.0
+         nodeId                           DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:39:9-14            878       78408    0.0    0.0     0.0    0.0
+        swapChildState.(...)              DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:145:29-97         1016       40214    0.2    0.0     0.2    0.0
+         nodeChildTransitions             DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:41:9-28           1017       40214    0.0    0.0     0.0    0.0
+        swapChildState._nodeId'           DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:146:29-49         1014       40214    0.0    0.0     0.0    0.0
+         nodeId                           DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:39:9-14           1015       40214    0.0    0.0     0.0    0.0
+        swapChildState.changedParentNode  DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:148:29-192        1020       40214    0.2    0.2     0.2    0.2
+         nodeType                         DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:40:9-16           1021       40214    0.0    0.0     0.0    0.0
+        swapChildState.newSet             DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:145:29-97         1018       40214    0.0    0.0     0.0    0.0
+        swapChildState.newTransition      DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:147:29-77         1019       40214    0.0    0.0     0.0    0.0
+        swapChildState.oldMaxTransition   DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:145:29-97         1032       40214    0.0    0.0     0.0    0.0
+        swapChildState2                   DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:149:55-106        1022       40214    2.9    6.0     3.9    6.0
+         nodeId                           DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:39:9-14           1024       40214    0.0    0.0     0.0    0.0
+         nodes                            DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:57:17-21          1023       40214    0.0    0.0     0.0    0.0
+         compare                          DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:25:32-34          1025           0    1.0    0.0     1.0    0.0
+        swapChildState3                   DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:150:55-132        1026       40214    2.7    6.0     3.6    6.0
+         nodeId                           DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:39:9-14           1028       40214    0.0    0.0     0.0    0.0
+         nodes                            DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:57:17-21          1027       40214    0.0    0.0     0.0    0.0
+         compare                          DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:25:32-34          1029           0    0.9    0.0     0.9    0.0
+        swapChildState4                   DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:151:55-131        1030       40214    2.6    4.9     3.4    4.9
+         transitions                      DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:59:17-27          1031       40214    0.0    0.0     0.0    0.0
+         compare                          DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:25:32-34          1033           0    0.9    0.0     0.9    0.0
+        graphNodeIdentifier               DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:65:1-85            915       38194    0.0    0.0     0.0    0.0
+        insert                            Data.HashMap.Internal.Strict    Data/HashMap/Internal/Strict.hs:167:1-27              916       38194    0.2    0.0     8.4   10.8
+         insert                           Data.HashMap.Internal           Data/HashMap/Internal.hs:781:1-37                     917       38194    0.0    0.0     8.2   10.8
+          hash                            Data.HashMap.Internal           Data/HashMap/Internal.hs:195:1-28                     918       38194    0.0    0.0     1.9    1.6
+           hash                           Data.Hashable.Class             Data/Hashable/Class.hs:224:5-35                       919           0    0.2    0.0     1.9    1.6
+            hashWithSalt                  DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:50:9-122           920       38194    0.0    0.6     1.7    1.6
+             hashWithSalt                 Data.Hashable.Class             Data/Hashable/Class.hs:227:5-38                       923       38194    0.2    0.0     0.2    0.0
+              ghashWithSalt               Data.Hashable.Generic.Instances Data/Hashable/Generic/Instances.hs:36:5-62            924       38194    0.0    0.0     0.0    0.0
+             hashWithSalt                 Data.Hashable.Class             Data/Hashable/Class.hs:619:5-32                       921       38194    0.0    0.0     1.5    1.0
+              hashWithSalt1               Data.Hashable.Class             Data/Hashable/Class.hs:271:1-45                       922       38194    0.0    0.2     1.5    1.0
+               liftHashWithSalt           Data.Hashable.Class             Data/Hashable/Class.hs:(622,5)-(625,46)               925       38194    0.2    0.0     0.2    0.3
+                liftHashWithSalt.step     Data.Hashable.Class             Data/Hashable/Class.hs:625:9-46                       972       48079    0.0    0.1     0.0    0.1
+                liftHashWithSalt.finalise Data.Hashable.Class             Data/Hashable/Class.hs:624:9-44                       926       38194    0.0    0.2     0.0    0.2
+                 hashWithSalt             Data.Hashable.Class             Data/Hashable/Class.hs:314:5-38                       927           0    0.0    0.0     0.0    0.1
+                  defaultHashWithSalt     Data.Hashable.Class             Data/Hashable/Class.hs:290:1-50                       928       38194    0.0    0.0     0.0    0.1
+                   combine                Data.Hashable.Class             Data/Hashable/Class.hs:780:1-40                       929       38194    0.0    0.1     0.0    0.1
+               hashWithSalt               DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:25:81-88           976           0    0.2    0.0     0.3    0.1
+                hashWithSalt              Data.Hashable.Class             Data/Hashable/Class.hs:314:5-38                       991           0    0.0    0.0     0.2    0.1
+                 defaultHashWithSalt      Data.Hashable.Class             Data/Hashable/Class.hs:290:1-50                       992       48078    0.2    0.0     0.2    0.1
+                  combine                 Data.Hashable.Class             Data/Hashable/Class.hs:780:1-40                       993       48078    0.0    0.1     0.0    0.1
+               liftHashWithSalt           Data.Hashable.Class             Data/Hashable/Class.hs:526:5-46                       973           0    0.0    0.0     1.0    0.4
+                defaultLiftHashWithSalt   Data.Hashable.Class             Data/Hashable/Class.hs:283:1-60                       974           0    0.3    0.0     1.0    0.4
+                 liftHashWithSalt2        Data.Hashable.Class             Data/Hashable/Class.hs:529:5-58                       975       48079    0.2    0.2     0.2    0.2
+                  hashWithSalt            DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:25:81-88           977           0    0.0    0.0     0.0    0.0
+                   hashWithSalt           Data.Hashable.Class             Data/Hashable/Class.hs:314:5-38                       978           0    0.0    0.0     0.0    0.0
+                    defaultHashWithSalt   Data.Hashable.Class             Data/Hashable/Class.hs:290:1-50                       979           1    0.0    0.0     0.0    0.0
+                     combine              Data.Hashable.Class             Data/Hashable/Class.hs:780:1-40                       980           1    0.0    0.0     0.0    0.0
+                 hashWithSalt             Data.Hashable.Class             Data/Hashable/Class.hs:379:5-38                       981           0    0.2    0.0     0.5    0.2
+                  defaultHashWithSalt     Data.Hashable.Class             Data/Hashable/Class.hs:290:1-50                       982       48079    0.2    0.0     0.3    0.2
+                   combine                Data.Hashable.Class             Data/Hashable/Class.hs:780:1-40                       984       48079    0.2    0.1     0.2    0.1
+                   hash                   Data.Hashable.Class             Data/Hashable/Class.hs:378:5-19                       983           0    0.0    0.1     0.0    0.1
+          insert'                         Data.HashMap.Internal           Data/HashMap/Internal.hs:(785,1)-(816,76)             930       38194    0.0    0.0     6.3    9.3
+           insert'.go                     Data.HashMap.Internal           Data/HashMap/Internal.hs:(787,5)-(816,76)             931      161503    2.9    3.0     6.3    9.3
+            unMArray                      Data.HashMap.Internal.Array     Data/HashMap/Internal/Array.hs:229:7-14               988      283003    0.0    0.0     0.0    0.0
+            clone16                       Data.HashMap.Internal           Data/HashMap/Internal.hs:(2261,1)-(2262,19)          1045      100328    0.9    3.3     0.9    3.3
+             unArray                      Data.HashMap.Internal.Array     Data/HashMap/Internal/Array.hs:197:7-13              1046      100328    0.0    0.0     0.0    0.0
+            insert'.go.i                  Data.HashMap.Internal           Data/HashMap/Internal.hs:813:13-25                   1042      100328    0.0    0.0     0.0    0.0
+            insert'.go.st                 Data.HashMap.Internal           Data/HashMap/Internal.hs:808:13-32                   1041      100328    0.3    0.4     0.3    0.4
+             unArray                      Data.HashMap.Internal.Array     Data/HashMap/Internal/Array.hs:197:7-13              1043      100328    0.0    0.0     0.0    0.0
+            insert'.go.st'                Data.HashMap.Internal           Data/HashMap/Internal.hs:809:13-48                   1044      100328    0.0    0.0     0.0    0.0
+            insert'.go.i                  Data.HashMap.Internal           Data/HashMap/Internal.hs:806:13-31                   1000       49608    0.0    0.1     0.0    0.1
+             sparseIndex                  Data.HashMap.Internal           Data/HashMap/Internal.hs:2277:1-42                   1001       49608    0.0    0.0     0.0    0.0
+            insert'.go.m                  Data.HashMap.Internal           Data/HashMap/Internal.hs:805:13-24                    994       49608    0.0    0.0     0.0    0.0
+            unArray                       Data.HashMap.Internal.Array     Data/HashMap/Internal/Array.hs:197:7-13              1037       45962    0.0    0.0     0.0    0.0
+            insert'.go.ary'               Data.HashMap.Internal           Data/HashMap/Internal.hs:797:17-56                    995       26627    0.7    0.4     2.0    2.4
+             copy                         Data.HashMap.Internal.Array     Data/HashMap/Internal/Array.hs:(331,1)-(336,30)       999       53254    0.2    0.1     1.2    1.7
+              copy.\                      Data.HashMap.Internal.Array     Data/HashMap/Internal/Array.hs:(335,9)-(336,30)      1002       53254    1.0    1.6     1.0    1.6
+               unArray                    Data.HashMap.Internal.Array     Data/HashMap/Internal/Array.hs:197:7-13              1004       53254    0.0    0.0     0.0    0.0
+               unMArray                   Data.HashMap.Internal.Array     Data/HashMap/Internal/Array.hs:229:7-14              1003       53254    0.0    0.0     0.0    0.0
+             unMArray                     Data.HashMap.Internal.Array     Data/HashMap/Internal/Array.hs:229:7-14              1006       53254    0.0    0.0     0.0    0.0
+             new_                         Data.HashMap.Internal.Array     Data/HashMap/Internal/Array.hs:265:1-28               998       26627    0.2    0.3     0.2    0.3
+             unArray                      Data.HashMap.Internal.Array     Data/HashMap/Internal/Array.hs:197:7-13               996       26627    0.0    0.0     0.0    0.0
+            insert'.go.st                 Data.HashMap.Internal           Data/HashMap/Internal.hs:800:17-36                   1034       22981    0.2    0.1     0.2    0.1
+             unArray                      Data.HashMap.Internal.Array     Data/HashMap/Internal/Array.hs:197:7-13              1035       22981    0.0    0.0     0.0    0.0
+            insert'.go.st'                Data.HashMap.Internal           Data/HashMap/Internal.hs:801:17-52                   1036       22981    0.0    0.0     0.0    0.0
+       /=                                 DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:25:28-29           873           0    0.3    0.0     0.3    0.0
+      build.\.currentSuffix               DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:73:21-68           811       10000    0.0    0.0     0.0    0.0
+      lastState                           DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:(175,1)-(179,61)   812       10000    0.7    0.1     0.9    0.1
+       rootNode                           DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:60:17-24           813          59    0.0    0.0     0.0    0.0
+       compare                            DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:25:32-34           867           0    0.2    0.0     0.2    0.0
+      walkPrefix                          DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:(182,1)-(192,78)   808       10000    0.2    0.1     2.9    0.8
+       walkPrefix.go                      DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:(187,9)-(192,78)   810       42712    1.9    0.8     2.6    0.8
+        compare                           DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:25:32-34           865           0    0.7    0.0     0.7    0.0
+       rootNode                           DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:60:17-24           809       10000    0.0    0.0     0.0    0.0
+       nodeId                             DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:39:9-14            866        9990    0.2    0.0     0.2    0.0
+      nodeHasChildren                     DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:201:1-60           820           0    0.0    0.0     0.0    0.0
+       nodeChildTransitions               DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:41:9-28            821       10000    0.0    0.0     0.0    0.0
+     replaceOrRegister                    DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:(131,1)-(136,82)  1048           7    0.0    0.0     0.0    0.0
+      nodeId                              DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:39:9-14           1053          14    0.0    0.0     0.0    0.0
+      getLastChild                        DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:(204,1)-(208,74)  1049           7    0.0    0.0     0.0    0.0
+       nodeLastChild                      DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:42:9-21           1050           7    0.0    0.0     0.0    0.0
+      swapChildState                      DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:(139,1)-(152,46)  1054           6    0.0    0.0     0.0    0.0
+       findEquivalentFrozenNode           DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:(155,1)-(157,52)  1055           6    0.0    0.0     0.0    0.0
+        graphNodeIdentifier               DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:65:1-85           1058           6    0.0    0.0     0.0    0.0
+        lookup#                           Data.HashMap.Internal           Data/HashMap/Internal.hs:599:1-82                    1059           6    0.0    0.0     0.0    0.0
+         unArray                          Data.HashMap.Internal.Array     Data/HashMap/Internal/Array.hs:197:7-13              1072          22    0.0    0.0     0.0    0.0
+         hash                             Data.HashMap.Internal           Data/HashMap/Internal.hs:195:1-28                    1060           6    0.0    0.0     0.0    0.0
+          hash                            Data.Hashable.Class             Data/Hashable/Class.hs:224:5-35                      1061           0    0.0    0.0     0.0    0.0
+           hashWithSalt                   DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:50:9-122          1062           6    0.0    0.0     0.0    0.0
+            hashWithSalt                  Data.Hashable.Class             Data/Hashable/Class.hs:227:5-38                      1065           6    0.0    0.0     0.0    0.0
+             ghashWithSalt                Data.Hashable.Generic.Instances Data/Hashable/Generic/Instances.hs:36:5-62           1066           6    0.0    0.0     0.0    0.0
+            hashWithSalt                  Data.Hashable.Class             Data/Hashable/Class.hs:619:5-32                      1063           6    0.0    0.0     0.0    0.0
+             hashWithSalt1                Data.Hashable.Class             Data/Hashable/Class.hs:271:1-45                      1064           6    0.0    0.0     0.0    0.0
+              liftHashWithSalt            Data.Hashable.Class             Data/Hashable/Class.hs:(622,5)-(625,46)              1067           6    0.0    0.0     0.0    0.0
+               liftHashWithSalt.finalise  Data.Hashable.Class             Data/Hashable/Class.hs:624:9-44                      1068           6    0.0    0.0     0.0    0.0
+                hashWithSalt              Data.Hashable.Class             Data/Hashable/Class.hs:314:5-38                      1069           0    0.0    0.0     0.0    0.0
+                 defaultHashWithSalt      Data.Hashable.Class             Data/Hashable/Class.hs:290:1-50                      1070           6    0.0    0.0     0.0    0.0
+                  combine                 Data.Hashable.Class             Data/Hashable/Class.hs:780:1-40                      1071           6    0.0    0.0     0.0    0.0
+               liftHashWithSalt.step      Data.Hashable.Class             Data/Hashable/Class.hs:625:9-46                      1097           5    0.0    0.0     0.0    0.0
+              hashWithSalt                DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:25:81-88          1101           0    0.0    0.0     0.0    0.0
+               hashWithSalt               Data.Hashable.Class             Data/Hashable/Class.hs:314:5-38                      1102           0    0.0    0.0     0.0    0.0
+                defaultHashWithSalt       Data.Hashable.Class             Data/Hashable/Class.hs:290:1-50                      1103           5    0.0    0.0     0.0    0.0
+                 combine                  Data.Hashable.Class             Data/Hashable/Class.hs:780:1-40                      1104           5    0.0    0.0     0.0    0.0
+              liftHashWithSalt            Data.Hashable.Class             Data/Hashable/Class.hs:526:5-46                      1098           0    0.0    0.0     0.0    0.0
+               defaultLiftHashWithSalt    Data.Hashable.Class             Data/Hashable/Class.hs:283:1-60                      1099           0    0.0    0.0     0.0    0.0
+                liftHashWithSalt2         Data.Hashable.Class             Data/Hashable/Class.hs:529:5-58                      1100           5    0.0    0.0     0.0    0.0
+                hashWithSalt              Data.Hashable.Class             Data/Hashable/Class.hs:379:5-38                      1105           0    0.0    0.0     0.0    0.0
+                 defaultHashWithSalt      Data.Hashable.Class             Data/Hashable/Class.hs:290:1-50                      1106           5    0.0    0.0     0.0    0.0
+                  combine                 Data.Hashable.Class             Data/Hashable/Class.hs:780:1-40                      1108           5    0.0    0.0     0.0    0.0
+                  hash                    Data.Hashable.Class             Data/Hashable/Class.hs:378:5-19                      1107           0    0.0    0.0     0.0    0.0
+         lookup#.\                        Data.HashMap.Internal           Data/HashMap/Internal.hs:599:33-45                   1110           4    0.0    0.0     0.0    0.0
+         sparseIndex                      Data.HashMap.Internal           Data/HashMap/Internal.hs:2277:1-42                   1073           4    0.0    0.0     0.0    0.0
+         ==                               DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:48:87-88          1074           2    0.0    0.0     0.0    0.0
+          ==                              DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:29:62-63          1075           2    0.0    0.0     0.0    0.0
+         lookup#.\                        Data.HashMap.Internal           Data/HashMap/Internal.hs:599:58-66                   1076           2    0.0    0.0     0.0    0.0
+       swapChildState._nodeId             DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:141:13-31         1056           6    0.0    0.0     0.0    0.0
+        nodeId                            DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:39:9-14           1057           6    0.0    0.0     0.0    0.0
+       graphNodeIdentifier                DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:65:1-85           1111           4    0.0    0.0     0.0    0.0
+       insert                             Data.HashMap.Internal.Strict    Data/HashMap/Internal/Strict.hs:167:1-27             1112           4    0.0    0.0     0.0    0.0
+        insert                            Data.HashMap.Internal           Data/HashMap/Internal.hs:781:1-37                    1113           4    0.0    0.0     0.0    0.0
+         hash                             Data.HashMap.Internal           Data/HashMap/Internal.hs:195:1-28                    1114           4    0.0    0.0     0.0    0.0
+          hash                            Data.Hashable.Class             Data/Hashable/Class.hs:224:5-35                      1115           0    0.0    0.0     0.0    0.0
+           hashWithSalt                   DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:50:9-122          1116           4    0.0    0.0     0.0    0.0
+            hashWithSalt                  Data.Hashable.Class             Data/Hashable/Class.hs:227:5-38                      1119           4    0.0    0.0     0.0    0.0
+             ghashWithSalt                Data.Hashable.Generic.Instances Data/Hashable/Generic/Instances.hs:36:5-62           1120           4    0.0    0.0     0.0    0.0
+            hashWithSalt                  Data.Hashable.Class             Data/Hashable/Class.hs:619:5-32                      1117           4    0.0    0.0     0.0    0.0
+             hashWithSalt1                Data.Hashable.Class             Data/Hashable/Class.hs:271:1-45                      1118           4    0.0    0.0     0.0    0.0
+              liftHashWithSalt            Data.Hashable.Class             Data/Hashable/Class.hs:(622,5)-(625,46)              1121           4    0.0    0.0     0.0    0.0
+               liftHashWithSalt.finalise  Data.Hashable.Class             Data/Hashable/Class.hs:624:9-44                      1134           4    0.0    0.0     0.0    0.0
+                hashWithSalt              Data.Hashable.Class             Data/Hashable/Class.hs:314:5-38                      1135           0    0.0    0.0     0.0    0.0
+                 defaultHashWithSalt      Data.Hashable.Class             Data/Hashable/Class.hs:290:1-50                      1136           4    0.0    0.0     0.0    0.0
+                  combine                 Data.Hashable.Class             Data/Hashable/Class.hs:780:1-40                      1137           4    0.0    0.0     0.0    0.0
+               liftHashWithSalt.step      Data.Hashable.Class             Data/Hashable/Class.hs:625:9-46                      1122           4    0.0    0.0     0.0    0.0
+              hashWithSalt                DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:25:81-88          1126           0    0.0    0.0     0.0    0.0
+               hashWithSalt               Data.Hashable.Class             Data/Hashable/Class.hs:314:5-38                      1127           0    0.0    0.0     0.0    0.0
+                defaultHashWithSalt       Data.Hashable.Class             Data/Hashable/Class.hs:290:1-50                      1128           4    0.0    0.0     0.0    0.0
+                 combine                  Data.Hashable.Class             Data/Hashable/Class.hs:780:1-40                      1129           4    0.0    0.0     0.0    0.0
+              liftHashWithSalt            Data.Hashable.Class             Data/Hashable/Class.hs:526:5-46                      1123           0    0.0    0.0     0.0    0.0
+               defaultLiftHashWithSalt    Data.Hashable.Class             Data/Hashable/Class.hs:283:1-60                      1124           0    0.0    0.0     0.0    0.0
+                liftHashWithSalt2         Data.Hashable.Class             Data/Hashable/Class.hs:529:5-58                      1125           4    0.0    0.0     0.0    0.0
+                hashWithSalt              Data.Hashable.Class             Data/Hashable/Class.hs:379:5-38                      1130           0    0.0    0.0     0.0    0.0
+                 defaultHashWithSalt      Data.Hashable.Class             Data/Hashable/Class.hs:290:1-50                      1131           4    0.0    0.0     0.0    0.0
+                  combine                 Data.Hashable.Class             Data/Hashable/Class.hs:780:1-40                      1133           4    0.0    0.0     0.0    0.0
+                  hash                    Data.Hashable.Class             Data/Hashable/Class.hs:378:5-19                      1132           0    0.0    0.0     0.0    0.0
+         insert'                          Data.HashMap.Internal           Data/HashMap/Internal.hs:(785,1)-(816,76)            1138           4    0.0    0.0     0.0    0.0
+          insert'.go                      Data.HashMap.Internal           Data/HashMap/Internal.hs:(787,5)-(816,76)            1139          17    0.0    0.0     0.0    0.0
+           unMArray                       Data.HashMap.Internal.Array     Data/HashMap/Internal/Array.hs:229:7-14              1157          30    0.0    0.0     0.0    0.0
+           clone16                        Data.HashMap.Internal           Data/HashMap/Internal.hs:(2261,1)-(2262,19)          1155          12    0.0    0.0     0.0    0.0
+            unArray                       Data.HashMap.Internal.Array     Data/HashMap/Internal/Array.hs:197:7-13              1156          12    0.0    0.0     0.0    0.0
+           insert'.go.i                   Data.HashMap.Internal           Data/HashMap/Internal.hs:813:13-25                   1141          12    0.0    0.0     0.0    0.0
+           insert'.go.st                  Data.HashMap.Internal           Data/HashMap/Internal.hs:808:13-32                   1140          12    0.0    0.0     0.0    0.0
+            unArray                       Data.HashMap.Internal.Array     Data/HashMap/Internal/Array.hs:197:7-13              1142          12    0.0    0.0     0.0    0.0
+           insert'.go.st'                 Data.HashMap.Internal           Data/HashMap/Internal.hs:809:13-48                   1143          12    0.0    0.0     0.0    0.0
+           insert'.go.i                   Data.HashMap.Internal           Data/HashMap/Internal.hs:806:13-31                   1149           4    0.0    0.0     0.0    0.0
+            sparseIndex                   Data.HashMap.Internal           Data/HashMap/Internal.hs:2277:1-42                   1150           4    0.0    0.0     0.0    0.0
+           insert'.go.m                   Data.HashMap.Internal           Data/HashMap/Internal.hs:805:13-24                   1144           4    0.0    0.0     0.0    0.0
+           insert'.go.ary'                Data.HashMap.Internal           Data/HashMap/Internal.hs:797:17-56                   1145           3    0.0    0.0     0.0    0.0
+            copy                          Data.HashMap.Internal.Array     Data/HashMap/Internal/Array.hs:(331,1)-(336,30)      1148           6    0.0    0.0     0.0    0.0
+             copy.\                       Data.HashMap.Internal.Array     Data/HashMap/Internal/Array.hs:(335,9)-(336,30)      1151           6    0.0    0.0     0.0    0.0
+              unArray                     Data.HashMap.Internal.Array     Data/HashMap/Internal/Array.hs:197:7-13              1153           6    0.0    0.0     0.0    0.0
+              unMArray                    Data.HashMap.Internal.Array     Data/HashMap/Internal/Array.hs:229:7-14              1152           6    0.0    0.0     0.0    0.0
+            unMArray                      Data.HashMap.Internal.Array     Data/HashMap/Internal/Array.hs:229:7-14              1154           6    0.0    0.0     0.0    0.0
+            new_                          Data.HashMap.Internal.Array     Data/HashMap/Internal/Array.hs:265:1-28              1147           3    0.0    0.0     0.0    0.0
+            unArray                       Data.HashMap.Internal.Array     Data/HashMap/Internal/Array.hs:197:7-13              1146           3    0.0    0.0     0.0    0.0
+           unArray                        Data.HashMap.Internal.Array     Data/HashMap/Internal/Array.hs:197:7-13              1161           2    0.0    0.0     0.0    0.0
+           insert'.go.st                  Data.HashMap.Internal           Data/HashMap/Internal.hs:800:17-36                   1158           1    0.0    0.0     0.0    0.0
+            unArray                       Data.HashMap.Internal.Array     Data/HashMap/Internal/Array.hs:197:7-13              1159           1    0.0    0.0     0.0    0.0
+           insert'.go.st'                 Data.HashMap.Internal           Data/HashMap/Internal.hs:801:17-52                   1160           1    0.0    0.0     0.0    0.0
+       swapChildState.(...)               DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:145:29-97         1079           2    0.0    0.0     0.0    0.0
+        nodeChildTransitions              DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:41:9-28           1080           2    0.0    0.0     0.0    0.0
+       swapChildState._nodeId'            DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:146:29-49         1077           2    0.0    0.0     0.0    0.0
+        nodeId                            DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:39:9-14           1078           2    0.0    0.0     0.0    0.0
+       swapChildState.changedParentNode   DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:148:29-192        1083           2    0.0    0.0     0.0    0.0
+        nodeType                          DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:40:9-16           1084           2    0.0    0.0     0.0    0.0
+       swapChildState.newSet              DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:145:29-97         1081           2    0.0    0.0     0.0    0.0
+       swapChildState.newTransition       DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:147:29-77         1082           2    0.0    0.0     0.0    0.0
+       swapChildState.oldMaxTransition    DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:145:29-97         1095           2    0.0    0.0     0.0    0.0
+       swapChildState2                    DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:149:55-106        1085           2    0.0    0.0     0.0    0.0
+        nodeId                            DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:39:9-14           1087           2    0.0    0.0     0.0    0.0
+        nodes                             DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:57:17-21          1086           2    0.0    0.0     0.0    0.0
+       swapChildState3                    DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:150:55-132        1089           2    0.0    0.0     0.0    0.0
+        nodeId                            DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:39:9-14           1091           2    0.0    0.0     0.0    0.0
+        nodes                             DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:57:17-21          1090           2    0.0    0.0     0.0    0.0
+       swapChildState4                    DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:151:55-131        1093           2    0.0    0.0     0.0    0.0
+        transitions                       DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:59:17-27          1094           2    0.0    0.0     0.0    0.0
+     rootNode                             DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:60:17-24          1047           1    0.0    0.0     0.0    0.0
+     initialState                         DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:(85,1)-(90,30)     805           0    0.0    0.0     0.0    0.0
+      initialState.\                      DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:87:48-84           806           1    0.0    0.0     0.0    0.0
+       nodeId                             DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:39:9-14            842           1    0.0    0.0     0.0    0.0
+    toGraph                               DAFSA.Graph                     src/DAFSA/Graph.hs:(54,1)-(60,101)                   1162           1    7.8   11.3    11.4   13.9
+     nodeId                               DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:39:9-14           1172           1    0.0    0.0     0.0    0.0
+     packNodeId                           DAFSA.Graph                     src/DAFSA/Graph.hs:(64,1)-(67,55)                    1173           1    0.0    0.0     0.0    0.0
+      packNodeId.intId                    DAFSA.Graph                     src/DAFSA/Graph.hs:67:38-55                          1174           1    0.0    0.0     0.0    0.0
+     toGraph.m                            DAFSA.Graph                     src/DAFSA/Graph.hs:59:9-151                          1167           1    0.7    2.0     3.2    2.3
+      toGraph.m.\                         DAFSA.Graph                     src/DAFSA/Graph.hs:59:49-125                         1168       78414    0.3    0.0     2.6    0.3
+       packNodeId                         DAFSA.Graph                     src/DAFSA/Graph.hs:(64,1)-(67,55)                    1169      156828    1.7    0.2     1.7    0.2
+        packNodeId.intId                  DAFSA.Graph                     src/DAFSA/Graph.hs:67:38-55                          1170      156828    0.0    0.0     0.0    0.0
+       toTransition                       DAFSA.Graph                     src/DAFSA/Graph.hs:50:1-67                           1171       78414    0.5    0.2     0.5    0.2
+     toGraph.terminations                 DAFSA.Graph                     src/DAFSA/Graph.hs:58:9-132                          1163           1    0.2    0.2     0.3    0.2
+      toGraph.terminations.\              DAFSA.Graph                     src/DAFSA/Graph.hs:58:77-101                         1164       38199    0.0    0.0     0.2    0.0
+       ==                                 DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:29:62-63          1166       38199    0.0    0.0     0.0    0.0
+       nodeType                           DAFSA.Internal.GraphBuilder     src/DAFSA/Internal/GraphBuilder.hs:40:9-16           1165       38199    0.2    0.0     0.2    0.0
+  main.textWords                          Main                            app/Main.hs:9:9-59                                    800           1    2.0    3.9     2.0    3.9
