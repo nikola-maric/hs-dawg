@@ -85,7 +85,7 @@ Lot more GCs than TextSet, lot more allocations, but in the end less maximum mem
 
 There is simplifer output in this repo for `Graph` module in [link](https://github.com/nikola-maric/hs-dawg/blob/master/src/DAFSA/Graph.dump-simpl) and I suspect it could be made faster if I reduce number of packing/unpacking in `contains` method, but when I tried I didnt get anywhere.
 
-From memory side, most of allocations happen in `addNodeToGraph`/`replaceOrRegister`/`swapChildState`. Im including ouptuts of running app with `stack --profile run hs-dawg-exe --rts-options -p` and also output of [profiteur tool](https://hackage.haskell.org/package/profiteur)
+From memory side, most of allocations happen in `addNodeToGraph`/`replaceOrRegister`/`swapChildState`. Im including ouptuts of running app with `stack --profile run hs-dawg-exe --rts-options -p` and also output of [profiteur tool](https://hackage.haskell.org/package/profiteur) [here](https://github.com/nikola-maric/nikola-maric.github.io/tree/master/hs-dawg-perf)
 
 
 
